@@ -1,3 +1,26 @@
+/*
+ * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ * 
+ * This class is based on the W3C document 'Cascading Style Sheets Level 2 
+ * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July 
+ * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology, 
+ * European Research Consortium for Informatics and Mathematics, Keio 
+ * University), All Rights Reserved. 
+ * <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">
+ *     Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
+ */
 package org.cobogw.gwt.user.client;
 
 import com.google.gwt.core.client.GWT;
@@ -20,10 +43,15 @@ import org.cobogw.gwt.user.client.impl.CSSImpl;
  * <p>The support for browser incompatibilities is probably not complete, if
  * you find any issue please report. 
  * 
- * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/propidx.html">
- *     W3C Appendix F. Full property table</a>
+ * <p>This class is based on the W3C document 'Cascading Style Sheets Level 2 
+ * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July 
+ * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology, 
+ * European Research Consortium for Informatics and Mathematics, Keio 
+ * University), All Rights Reserved.
  * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">
  *     Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
+ * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/propidx.html">
+ *     W3C Appendix F. Full property table</a>
  */
 public final class CSS {
   private static CSSImpl impl;
@@ -36,6 +64,7 @@ public final class CSS {
    * This class contains all CSS Attributes. 
    */
   public static final class A {
+
     /**
      * AZIMUTH
      * <p>CSS: 'azimuth', javaScript: 'azimuth'
@@ -1405,6 +1434,7 @@ public final class CSS {
     public static final String Z_INDEX = "zIndex";
   }
 
+
   /**
    * This class contains all named (i.e. String) values grouped by the
    * property. The values {@link V#AUTO}, {@link V#NONE} and {@link V#INHERIT}
@@ -1412,6 +1442,7 @@ public final class CSS {
    * class when only the property and other numeric property values are valid.    
    */
   public static final class V {
+
     /**
      * AUTO
      * <p>Can be used with a number CSS properties, see properties for detail.
@@ -1437,6 +1468,7 @@ public final class CSS {
       public static final String FAR_LEFT = "far-left";
       public static final String LEFT = "left";
       public static final String CENTER_LEFT = "center-left";
+
       /**
        * Default value for {@link A#AZIMUTH}.
        */
@@ -1449,16 +1481,21 @@ public final class CSS {
       public static final String LEFTWARDS = "leftwards";
       public static final String RIGHTWARDS = "rightwards";
     }
+
+
     /**
      * CSS property {@link A#BACKGROUND_ATTACHMENT} values.
      */
     public static final class BACKGROUND_ATTACHMENT {
+
       /**
        * Default value for {@link A#BACKGROUND_ATTACHMENT}.
        */
       public static final String SCROLL = "scroll";
       public static final String FIXED = "fixed";
     }
+
+
     /**
      * CSS property {@link A#BACKGROUND_POSITION} values.
      */
@@ -1468,10 +1505,13 @@ public final class CSS {
       public static final String RIGHT = "right";
       public static final String TOP = "top";
     }
+
+
     /**
      * CSS property {@link A#BACKGROUND_REPEAT} values.
      */
     public static final class BACKGROUND_REPEAT {
+
       /**
        * Default value for {@link A#BACKGROUND_REPEAT }.
        */
@@ -1480,96 +1520,122 @@ public final class CSS {
       public static final String REPEAT_Y = "repeat-y";
       public static final String NO_REPEAT = "no-repeat";
     }
+
+
     /**
      * CSS property {@link A#BORDER_COLLAPSE} values.
      */
     public static final class BORDER_COLLAPSE {
       public static final String COLLAPSE = "collapse";
+
       /**
        * Default value for {@link A#BORDER_COLLAPSE }.
        */
       public static final String SEPARATE = "separate";
     }
+
+
     /**
      * CSS property {@link A#BORDER_STYLE} values.
      */
     public static final class BORDER_STYLE {
+
       /**
        * No border; the computed border width is zero.
        */
       public static final String NONE = "none";
+
       /**
        * Same as 'none', except in terms of border conflict resolution for 
        * table elements.
        */
       public static final String HIDDEN = "hidden";
+
       /**
        * The border is a series of dots.
        */
       public static final String DOTTED = "dotted";
+
       /**
        * The border is a series of short line segments.
        */
       public static final String DASHED = "dashed";
+
       /**
        * The border is a single line segment.
        */
       public static final String SOLID = "solid";
+
       /**
        * The border is two solid lines. The sum of the two lines and the space
        *  between them equals the value of 'border-width'.
        */
       public static final String DOUBLE = "double";
+
       /**
        * The border looks as though it were carved into the canvas.
        */
       public static final String GROOVE = "groove";
+
       /**
        * The opposite of 'groove': the border looks as though it were coming 
        * out of the canvas.
        */
       public static final String RIDGE = "ridge";
+
       /**
        * The border makes the box look as though it were embedded in the canvas.
        */
       public static final String INSET = "inset";
+
       /**
        * The opposite of 'inset': the border makes the box look as though it 
        * were coming out of the canvas.
        */
       public static final String OUTSET = "outset";
     }
+
+
     /**
      * CSS property {@link A#BORDER_WIDTH} values.
      */
     public static final class BORDER_WIDTH {
+
       /**
        * A thin border.
        */
       public static final String THIN = "thin";
+
       /**
        * A medium border.
        */
       public static final String MEDIUM = "medium";
+
       /**
        * A thick border.
        */
       public static final String THICK = "thick";
     }
+
+
     /**
      * CSS property {@link A#CAPTION_SIDE} values.
      */
     public static final class CAPTION_SIDE {
       public static final String BOTTOM = "bottom";
+
       /**
        * Default value for {@link A#CAPTION_SIDE}.
        */
       public static final String TOP = "top";
     }
+
+
     /**
      * CSS property {@link A#CLEAR} values.
      */
     public static final class CLEAR {
+
       /**
        * Default value for {@link A#CLEAR}.
        */
@@ -1578,39 +1644,48 @@ public final class CSS {
       public static final String RIGHT = "right";
       public static final String BOTH = "both";
     }
+
+
     /**
      * CSS property {@link A#CONTENT} values.
      */
     public static final class CONTENT {
+
       /**
        * Default value for {@link A#CONTENT}.
        */
       public static final String NORMAL = "normal";
       public static final String NONE = "none";
-      //public static final String ATTR(<SPAN >&LT;IDENTIFIER&GT;</SPAN>) = "attr(<span >&lt;identifier&gt;</span>)";
+      // public static final String ATTR(<SPAN >&LT;IDENTIFIER&GT;</SPAN>) = "attr(<span >&lt;identifier&gt;</span>)";
       public static final String OPEN_QUOTE = "open-quote";
       public static final String CLOSE_QUOTE = "close-quote";
       public static final String NO_OPEN_QUOTE = "no-open-quote";
       public static final String NO_CLOSE_QUOTE = "no-close-quote";
     }
+
+
     /**
      * CSS property {@link A#CURSOR} values.
      */
     public static final class CURSOR {
+
       /**
        * Default value for {@link A#CURSOR}.
        */
+      
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String ALL_SCROLL = "all-scroll";
       public static final String AUTO = "auto";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String COL_RESIZE = "col-resize";
       public static final String CROSSHAIR = "crosshair";
       public static final String DEFAULT = "default";
+
       /**
        * Microsoft specific, preferable avoid.
        * @deprecated use 'pointer'. Property which is the equivalent of pointer 
@@ -1620,15 +1695,18 @@ public final class CSS {
       public static final String HAND = "hand";
       public static final String HELP = "help";
       public static final String MOVE = "move";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String NO_DROP = "no-drop";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String NOT_ALLOWED = "not-allowed";
       public static final String POINTER = "pointer";
+
       /**
        * Microsoft specific, preferable avoid.
        */
@@ -1641,48 +1719,61 @@ public final class CSS {
       public static final String SW_RESIZE = "sw-resize";
       public static final String S_RESIZE = "s-resize";
       public static final String W_RESIZE = "w-resize";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String ROW_RESIZE = "row-resize";
       public static final String TEXT = "text";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String VERTICAL_TEXT = "vertical-text";
+
       /**
        * Microsoft specific, preferable avoid.
        */
       public static final String WAIT = "wait";
     }
+
+
     /**
      * CSS property {@link A#DIRECTION} values.
      */
     public static final class DIRECTION {
+
       /**
        * Direction left to right.
        * Default value for {@link A#DIRECTION}.
        */
       public static final String LTR = "ltr";
+
       /**
        * Direction right to left.
        */
       public static final String RTL = "rtl";
     }
+
+
     /**
      * CSS property {@link A#DISPLAY} values.
      */
     public static final class DISPLAY {
+
       /**
        * This value causes an element to generate a block box.
        */
       public static final String BLOCK = "block";
+
       /**
        * This value causes an element to generate one or more inline boxes.
        * Default value for {@link A#DISPLAY}.
-       * <p>Note that although the initial value of 'display' is 'inline', rules in the user agent's default style sheet may override this value. See the sample style sheet for HTML 4 in the appendix.
+       * <p>Note that although the initial value of 'display' is 'inline', rules
+       * in the user agent's default style sheet may override this value.
        */
       public static final String INLINE = "inline";
+
       /**
        * This value causes an element to generate a block box, which itself is
        * flowed as a single inline box, similar to a replaced element. The
@@ -1690,15 +1781,23 @@ public final class CSS {
        * itself is formatted as an inline replaced element.
        */
       public static final String INLINE_BLOCK = "inline-block";
+
       /**
        * This value causes an element (e.g., LI in HTML) to generate a principal
-       * block box and a list-item inline box. For information about lists and
-       * examples of list formatting, please consult the section on lists.
+       * block box and a list-item inline box.
        */
       public static final String LIST_ITEM = "list-item";
+
       /**
-       * This value causes an element to generate no boxes in the formatting structure (i.e., the element has no effect on layout). Descendant elements do not generate any boxes either; this behavior cannot be overridden by setting the 'display' property on the descendants.
-       * <p>Please note that a display of 'none' does not create an invisible box; it creates no box at all. CSS includes mechanisms that enable an element to generate boxes in the formatting structure that affect formatting but are not visible themselves. Please consult the section on visibility for details.
+       * This value causes an element to generate no boxes in the formatting 
+       * structure (i.e., the element has no effect on layout). Descendant 
+       * elements do not generate any boxes either; this behavior cannot be 
+       * overridden by setting the 'display' property on the descendants.
+       * <p>Please note that a display of 'none' does not create an invisible 
+       * box; it creates no box at all. CSS includes mechanisms that enable an
+       * element to generate boxes in the formatting structure that affect 
+       * formatting but are not visible themselves. Please consult the section
+       * on visibility for details.
        */
       public static final String NONE = "none";
       public static final String RUN_IN = "run-in";
@@ -1713,6 +1812,8 @@ public final class CSS {
       public static final String TABLE_CELL = "table-cell";
       public static final String TABLE_CAPTION = "table-caption";
     }
+
+
     /**
      * CSS property {@link A#ELEVATION} values.
      */
@@ -1720,39 +1821,55 @@ public final class CSS {
       public static final String ABOVE = "above";
       public static final String BELOW = "below";
       public static final String HIGHER = "higher";
+
       /**
        * Default value for {@link A#ELEVATION}.
        */
       public static final String LEVEL = "level";
       public static final String LOWER = "lower";
     }
+
+
     /**
      * CSS property {@link A#EMPTY_CELLS} values.
      */
     public static final class EMPTY_CELLS {
+
       /**
        * Default value for {@link A#EMPTY_CELLS}.
        */
       public static final String SHOW = "show";
       public static final String HIDE = "hide";
     }
+
+
     /**
      * CSS property {@link A#FLOAT} values.
      */
     public static final class FLOAT {
       public static final String LEFT = "left";
+
       /**
        * Default value for {@link A#FLOAT}.
        */
       public static final String NONE = "none";
       public static final String RIGHT = "right";
     }
+
+
     /**
-     * CSS property {@link A#FONT_FAMILY} values.
+     * CSS property {@link A#FONT_FAMILY} values. These are the generic font
+     * families and are a fallback mechanism.
      */
     public static final class FONT_FAMILY {
-      //TODO FONT_FAMILY
+      public static final String CURSIVE = "cursive";
+      public static final String FANTASY = "fantasy";
+      public static final String MONOSPACE = "monospace";
+      public static final String SANS_SERIF = "sans-serif";
+      public static final String SERIF = "serif";
     }
+
+
     /**
      * CSS property {@link A#FONT_SIZE} values.
      */
@@ -1760,6 +1877,7 @@ public final class CSS {
       public static final String XX_SMALL = "xx-small";
       public static final String X_SMALL = "x-small";
       public static final String SMALL = "small";
+
       /**
        * Default value for {@link A#FONT_SIZE}.
        */
@@ -1768,36 +1886,46 @@ public final class CSS {
       public static final String X_LARGE = "x-large";
       public static final String XX_LARGE = "xx-large";
     }
+
+
     /**
      * CSS property {@link A#FONT_STYLE} values.
      */
     public static final class FONT_STYLE {
       public static final String ITALIC = "italic";
+
       /**
        * Default value for {@link A#FONT_STYLE}.
        */
       public static final String NORMAL = "normal";
       public static final String OBLIQUE = "oblique";
     }
+
+
     /**
      * CSS property {@link A#FONT_VARIANT} values.
      */
     public static final class FONT_VARIANT {
+
       /**
        * Default value for {@link A#FONT_VARIANT}.
        */
       public static final String NORMAL = "normal";
       public static final String SMALL_CAPS = "small-caps";
     }
+
+
     /**
      * CSS property {@link A#FONT_WEIGHT} values.
      */
     public static final class FONT_WEIGHT {
+
       /**
        * Value 'normal' is synonymous with '400'.
        * Default value for {@link A#FONT_WEIGHT}.
        */
       public static final String NORMAL = "normal";
+
       /**
        * Value 'bold' is synonymous with '700'.
        */
@@ -1807,12 +1935,14 @@ public final class CSS {
       public static final String W_100 = "100";
       public static final String W_200 = "200";
       public static final String W_300 = "300";
+
       /**
        * Value '400' is synonymous with 'normal'.
        */
       public static final String W_400 = "400";
       public static final String W_500 = "500";
       public static final String W_600 = "600";
+
       /**
        * Value '700' is synonymous with 'bold'.
        */
@@ -1820,145 +1950,180 @@ public final class CSS {
       public static final String W_800 = "800";
       public static final String W_900 = "900";
     }
+
+
     /**
      * CSS property {@link A#FONT} values.
      */
     public static final class FONT {
+
       /**
        * The font used for captioned controls (e.g., buttons, drop-downs, etc.).
        */
       public static final String CAPTION = "caption";
+
       /**
        * The font used to label icons.
        */
       public static final String ICON = "icon";
+
       /**
-       * The font used in menus (e.g., dropdown menus and menu lists).
+       * The font used in menus (e.g., drop-down menus and menu lists).
        */
       public static final String MENU = "menu";
+
       /**
        * The font used in dialog boxes.
        */
       public static final String MESSAGE_BOX = "message-box";
+
       /**
        * The font used for labeling small controls.
        */
       public static final String SMALL_CAPTION = "small-caption";
+
       /**
        * The font used in window status bars.
        */
       public static final String STATUS_BAR = "status-bar";
     }
+
+
     /**
      * CSS property {@link A#LETTER_SPACING} values.
      */
     public static final class LETTER_SPACING {
+
       /**
        * Default value for {@link A#LETTER_SPACING}.
        */
       public static final String NORMAL = "normal";
     }
+
+
     /**
      * CSS property {@link A#LINE_HEIGHT} values.
      */
     public static final class LINE_HEIGHT {
+
       /**
        * Default value for {@link A#LINE_HEIGHT}.
        */
       public static final String NORMAL = "normal";
     }
+
+
     /**
      * CSS property {@link A#LIST_STYLE_POSITION} values.
      */
     public static final class LIST_STYLE_POSITION {
       public static final String INSIDE = "inside";
+
       /**
        * Default value for {@link A#LIST_STYLE_POSITION}.
        */
       public static final String OUTSIDE = "outside";
     }
+
+
     /**
      * CSS property {@link A#LIST_STYLE_TYPE} values.
      */
     public static final class LIST_STYLE_TYPE {
+
       /**
        * Default value for {@link A#LIST_STYLE_TYPE}.
        */
+      
       /**
        *
        */
       public static final String DISC = "disc";
+
       /**
        *
        */
       public static final String CIRCLE = "circle";
+
       /**
        *
        */
       public static final String SQUARE = "square";
+
       /**
        * Decimal numbers, beginning with 1.
        */
       public static final String DECIMAL = "decimal";
+
       /**
-       * Decimal numbers padded by initial zeros (e.g., 01, 02, 03, ..., 98, 99).
+       * Decimal numbers padded by initial zeros (e.g., 01, 02, ..., 98, 99).
        */
       public static final String DECIMAL_LEADING_ZERO = "decimal-leading-zero";
+
       /**
        * Lowercase roman numerals (i, ii, iii, iv, v, etc.).
        */
       public static final String LOWER_ROMAN = "lower-roman";
+
       /**
        * Uppercase roman numerals (I, II, III, IV, V, etc.).
        */
       public static final String UPPER_ROMAN = "upper-roman";
+
       /**
-       * Lowercase classical Greek alpha, beta, gamma, ... (a, ß, ?, ...)
+       * Lowercase classical Greek alpha, beta, ... (&alpha;, &beta;, ?, ...).
        */
       public static final String LOWER_GREEK = "lower-greek";
+
       /**
-       * Lowercase ascii letters (a, b, c, ... z).
+       * Lowercase ASCII letters (a, b, c, ... z).
        */
       public static final String LOWER_LATIN = "lower-latin";
+
       /**
-       * Uppercase ascii letters (A, B, C, ... Z).
+       * Uppercase ASCII letters (A, B, C, ... Z).
        */
       public static final String UPPER_LATIN = "upper-latin";
+
       /**
        * Traditional Armenian numbering.
        */
       public static final String ARMENIAN = "armenian";
+
       /**
-       * Traditional Georgian numbering (an, ban, gan, ..., he, tan, in, in-an, ...).
+       * Traditional Georgian numbering (an, ban, gan, ..., in, in-an, ...).
        */
       public static final String GEORGIAN = "georgian";
+
       /**
-       * Lowercase ascii letters (a, b, c, ... z).
+       * Lowercase ASCII letters (a, b, c, ... z).
        */
       public static final String LOWER_ALPHA = "lower-alpha";
+
       /**
-       * Uppercase ascii letters (A, B, C, ... Z).
+       * Uppercase ASCII letters (A, B, C, ... Z).
        */
       public static final String UPPER_ALPHA = "upper-alpha";
+
       /**
        *
        */
       public static final String NONE = "none";
     }
+
+
     /**
      * CSS property {@link A#OUTLINE_COLOR} values.
      */
     public static final class OUTLINE_COLOR {
+
       /**
        * Default value for {@link A#OUTLINE_COLOR}.
        */
       public static final String INVERT = "invert";
-      /**
-       * See {@link V#BORDER_WIDTH}.
-       * Default 'medium'
-       */
-      //TODO:class OUTLINE_WIDTH {
     }
+
+
     /**
      * CSS property {@link A#OVERFLOW} values.
      */
@@ -1966,16 +2131,20 @@ public final class CSS {
       public static final String AUTO = "auto";
       public static final String HIDDEN = "hidden";
       public static final String SCROLL = "scroll";
+
       /**
        * Default value for {@link A#OVERFLOW}.
        */
       public static final String VISIBLE = "visible";
     }
+
+
     /**
      * CSS property {@link A#PAGE_BREAK_AFTER} values.
      */
     public static final class PAGE_BREAK_AFTER {
       public static final String ALWAYS = "always";
+
       /**
        * Default value for {@link A#PAGE_BREAK_AFTER}.
        */
@@ -1984,11 +2153,14 @@ public final class CSS {
       public static final String LEFT = "left";
       public static final String RIGHT = "right";
     }
+
+
     /**
      * CSS property {@link A#PAGE_BREAK_BEFORE} values.
      */
     public static final class PAGE_BREAK_BEFORE {
       public static final String ALWAYS = "always";
+
       /**
        * Default value for {@link A#PAGE_BREAK_BEFORE}.
        */
@@ -1997,22 +2169,28 @@ public final class CSS {
       public static final String LEFT = "left";
       public static final String RIGHT = "right";
     }
+
+
     /**
      * CSS property {@link A#PAGE_BREAK_INSIDE} values.
      */
     public static final class PAGE_BREAK_INSIDE {
+
       /**
        * Default value for {@link A#PAGE_BREAK_INSIDE}.
        */
       public static final String AUTO = "auto";
       public static final String AVOID = "avoid";
     }
+
+
     /**
      * CSS property {@link A#PITCH} values.
      */
     public static final class PITCH {
       public static final String X_LOW = "x-low";
       public static final String LOW = "low";
+
       /**
        * Default value for {@link A#PITCH}.
        */
@@ -2020,16 +2198,21 @@ public final class CSS {
       public static final String HIGH = "high";
       public static final String X_HIGH = "x-high";
     }
+
+
     /**
      * CSS property {@link A#PLAY_DURING} values.
      */
     public static final class PLAY_DURING {
+
       /**
        * Default value for {@link A#PLAY_DURING}.
        */
       public static final String AUTO = "auto";
       public static final String NONE = "none";
     }
+
+
     /**
      * CSS property {@link A#POSITION} values.
      */
@@ -2037,64 +2220,74 @@ public final class CSS {
       public static final String ABSOLUTE = "absolute";
       public static final String FIXED = "fixed";
       public static final String RELATIVE = "relative";
+
       /**
        * Default value for {@link A#POSITION}.
        */
       public static final String STATIC = "static";
     }
-    /**
-     * CSS property {@link A#QUOTES} values.
-     */
-    public static final class QUOTES { //TODO
-      public static final String NONE = "none";
-    }
+
+
     /**
      * CSS property {@link A#SPEAK_HEADER} values.
      */
     public static final class SPEAK_HEADER {
       public static final String ALWAYS = "always";
+
       /**
        * Default value for {@link A#SPEAK_HEADER}.
        */
       public static final String ONCE = "once";
     }
+
+
     /**
      * CSS property {@link A#SPEAK_NUMERAL} values.
      */
     public static final class SPEAK_NUMERAL {
       public static final String DIGITS = "digits";
+
       /**
        * Default value for {@link A#SPEAK_NUMERAL}.
        */
       public static final String CONTINUOUS = "continuous";
     }
+
+
     /**
      * CSS property {@link A#SPEAK_PUNCTUATION} values.
      */
     public static final class SPEAK_PUNCTUATION {
       public static final String CODE = "code";
+
       /**
        * Default value for {@link A#SPEAK_PUNCTUATION}.
        */
       public static final String NONE = "none";
     }
+
+
     /**
      * CSS property {@link A#SPEAK} values.
      */
     public static final class SPEAK {
       public static final String NONE = "none";
+
       /**
        * Default value for {@link A#SPEAK}.
        */
       public static final String NORMAL = "normal";
       public static final String SPELL_OUT = "spell-out";
     }
+
+
     /**
      * CSS property {@link A#SPEECH_RATE} values.
      */
     public static final class SPEECH_RATE {
       public static final String X_SLOW = "x-slow";
       public static final String SLOW = "slow";
+
       /**
        * Default value for {@link A#SPEECH_RATE}.
        */
@@ -2104,39 +2297,49 @@ public final class CSS {
       public static final String FASTER = "faster";
       public static final String SLOWER = "slower";
     }
+
+
     /**
      * CSS property {@link A#TABLE_LAYOUT} values.
      */
     public static final class TABLE_LAYOUT {
+
       /**
        * Default value for {@link A#TABLE_LAYOUT}.
        */
       public static final String AUTO = "auto";
       public static final String FIXED = "fixed";
     }
+
+
     /**
      * CSS property {@link A#TEXT_ALIGN} values.
      */
     public static final class TEXT_ALIGN {
       public static final String CENTER = "center";
       public static final String JUSTIFY = "justify";
+
       /**
-       * Implicit (i.e. real value is empty) default value for {@link A#TEXT_ALIGN}
-       * if 'direction' is 'ltr'
+       * Implicit (i.e. real value is empty) default value for 
+       * {@link A#TEXT_ALIGN} if 'direction' is 'ltr'
        */
       public static final String LEFT = "left";
+
       /**
-       * Implicit (i.e. real value is empty) default value for {@link A#TEXT_ALIGN}
-       * if 'direction' is 'rtl'
+       * Implicit (i.e. real value is empty) default value for 
+       * {@link A#TEXT_ALIGN} if 'direction' is 'rtl'.
        */
       public static final String RIGHT = "right";
     }
+
+
     /**
      * CSS property {@link A#TEXT_DECORATION} values.
      */
     public static final class TEXT_DECORATION {
       public static final String BLINK = "blink";
       public static final String LINE_THROUGH = "line-through";
+
       /**
        * Default value for {@link A#TEXT_DECORATION}.
        */
@@ -2144,33 +2347,42 @@ public final class CSS {
       public static final String UNDERLINE = "underline";
       public static final String OVERLINE = "overline";
     }
+
+
     /**
      * CSS property {@link A#TEXT_TRANSFORM} values.
      */
     public static final class TEXT_TRANSFORM {
       public static final String CAPITALIZE = "capitalize";
       public static final String LOWERCASE = "lowercase";
+
       /**
        * Default value for {@link A#TEXT_TRANSFORM}.
        */
       public static final String NONE = "none";
       public static final String UPPERCASE = "uppercase";
     }
+
+
     /**
      * CSS property {@link A#UNICODE_BIDI} values.
      */
     public static final class UNICODE_BIDI {
       public static final String BIDI_OVERRIDE = "bidi-override";
       public static final String EMBED = "embed";
+
       /**
        * Default value for {@link A#UNICODE_BIDI}.
        */
       public static final String NORMAL = "normal";
     }
+
+
     /**
      * CSS property {@link A#VERTICAL_ALIGN} values.
      */
     public static final class VERTICAL_ALIGN {
+
       /**
        * Default value for {@link A#VERTICAL_ALIGN}.
        */
@@ -2183,22 +2395,28 @@ public final class CSS {
       public static final String BOTTOM = "bottom";
       public static final String TEXT_BOTTOM = "text-bottom";
     }
+
+
     /**
      * CSS property {@link A#VISIBILITY} values.
      */
     public static final class VISIBILITY {
       public static final String COLLAPSE = "collapse";
       public static final String HIDDEN = "hidden";
+
       /**
        * Default value for {@link A#VISIBILITY}.
        */
       public static final String VISIBLE = "visible";
     }
+
+
     /**
      * CSS property {@link A#VOICE_FAMILY} values.
      */
-    public static final class VOICE_FAMILY {
-    }
+    public static final class VOICE_FAMILY {}
+
+
     /**
      * CSS property {@link A#VOLUME} values.
      */
@@ -2206,6 +2424,7 @@ public final class CSS {
       public static final String SILENT = "silent";
       public static final String X_SOFT = "x-soft";
       public static final String SOFT = "soft";
+
       /**
        * Default value for {@link A#VOLUME}.
        */
@@ -2213,10 +2432,13 @@ public final class CSS {
       public static final String LOUD = "loud";
       public static final String X_LOUD = "x-loud";
     }
+
+
     /**
      * CSS property {@link A#WHITE_SPACE} values.
      */
     public static final class WHITE_SPACE {
+
       /**
        * Default value for {@link A#WHITE_SPACE}.
        */
