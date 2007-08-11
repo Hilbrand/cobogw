@@ -754,6 +754,11 @@ public class Color {
   public static final String TOMATO = "#ff6347";
 
   /**
+   * Transparent
+   */
+  public static final String TRANSPARENT = "transparent";
+
+  /**
    * Turquoise (#40E0D0)
    */
   public static final String TURQUOISE = "#40e0d0";
