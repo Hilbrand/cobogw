@@ -79,7 +79,7 @@ public final class CSS {
     public static final String AZIMUTH = "azimuth";
 
     /**
-     * 
+     * BACKGROUND_ATTACHMENT
      * <p>CSS: 'background-attachment', javaScript: 'backgroundAttachment'
      * <br>Values: scroll | fixed | inherit
      * <br>Initial value: scroll
@@ -782,7 +782,7 @@ public final class CSS {
     public static final String LIST_STYLE = "listStyle";
 
     /**
-     * <br>MARGIN_RIGHT
+     * MARGIN_RIGHT
      * <p>CSS: 'margin-right', javaScript: 'marginRight'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
@@ -795,7 +795,7 @@ public final class CSS {
     public static final String MARGIN_RIGHT = "marginRight";
 
     /**
-     * <br>MARGIN_LEFT
+     * MARGIN_LEFT
      * <p>CSS: 'margin-left', javaScript: 'marginLeft'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
@@ -808,7 +808,7 @@ public final class CSS {
     public static final String MARGIN_LEFT = "marginLeft";
 
     /**
-     * <br>MARGIN_TOP
+     * MARGIN_TOP
      * <p>CSS: 'margin-top', javaScript: 'marginTop'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
@@ -821,7 +821,7 @@ public final class CSS {
     public static final String MARGIN_TOP = "marginTop";
 
     /**
-     * <br>MARGIN_BOTTOM
+     * MARGIN_BOTTOM
      * <p>CSS: 'margin-bottom', javaScript: 'marginBottom'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
@@ -834,7 +834,7 @@ public final class CSS {
     public static final String MARGIN_BOTTOM = "marginBottom";
 
     /**
-     * <br>MARGIN
+     * MARGIN
      * <p>CSS: 'margin', javaScript: 'margin'
      * <br>Values: &lt;margin-width&gt;{1,4} | inherit
      * <br>Initial value: see individual properties
@@ -847,7 +847,7 @@ public final class CSS {
     public static final String MARGIN = "margin";
 
     /**
-     * <br>MAX_HEIGHT
+     * MAX_HEIGHT
      * <p>CSS: 'max-height', javaScript: 'maxHeight'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | none | inherit
      * <br>Initial value: none
@@ -860,7 +860,7 @@ public final class CSS {
     public static final String MAX_HEIGHT = "maxHeight";
 
     /**
-     * <br>MAX_WIDTH
+     * MAX_WIDTH
      * <p>CSS: 'max-width', javaScript: 'maxWidth'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | none | inherit
      * <br>Initial value: none
@@ -873,7 +873,7 @@ public final class CSS {
     public static final String MAX_WIDTH = "maxWidth";
 
     /**
-     * <br>MIN_HEIGHT
+     * MIN_HEIGHT
      * <p>CSS: 'min-height', javaScript: 'minHeight'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | inherit
      * <br>Initial value: 0
@@ -886,7 +886,7 @@ public final class CSS {
     public static final String MIN_HEIGHT = "minHeight";
 
     /**
-     * <br>MIN_WIDTH
+     * MIN_WIDTH
      * <p>CSS: 'min-width', javaScript: 'minWidth'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | inherit
      * <br>Initial value: 0
