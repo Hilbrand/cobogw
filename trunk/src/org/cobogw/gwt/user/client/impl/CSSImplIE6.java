@@ -21,7 +21,7 @@ package org.cobogw.gwt.user.client.impl;
  */
 public class CSSImplIE6 extends CSSImpl {
 
-  public native String getFloatAttribute() /*-{
-    return 'styleFloat';
-  }-*/;
+  public String getFloatAttribute() {
+    return "styleFloat";
+  };
 }
