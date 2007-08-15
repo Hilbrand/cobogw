@@ -20,7 +20,7 @@ package org.cobogw.gwt.user.client.impl;
  */
 public class CSSImpl {
 
-  public native String getFloatAttribute() /*-{
-    return 'cssFloat';
-  }-*/;
+  public String getFloatAttribute() {
+    return "cssFloat";
+  };
 }
