@@ -120,7 +120,7 @@ public final class CSS {
      * <br>Initial value: 0% 0%
      * <br>Applies to: all
      * <br>Inherited?: no
-     * Percentages: refer to the size of the box itself
+     * <br>Percentages: refer to the size of the box itself
      * <br>Media groups: visual
      */
     public static final String BACKGROUND_POSITION = "backgroundPosition";
@@ -1687,10 +1687,9 @@ public final class CSS {
       public static final String DEFAULT = "default";
 
       /**
-       * Microsoft specific, preferable avoid.
-       * @deprecated use 'pointer'. Property which is the equivalent of pointer 
-       * and is needed in IE 5 and IE 5.5 which doesn't support 'pointer'. 
-       * But those browsers are not supported by GWT.
+       * @deprecated Microsoft specific, required for IE 5 and IE 5.5, but both
+       * browsers are not supported by GWT. Use {@link #POINTER} which is the 
+       * equivalent of <code>hand</code> and works in all browsers.
        */
       public static final String HAND = "hand";
       public static final String HELP = "help";
