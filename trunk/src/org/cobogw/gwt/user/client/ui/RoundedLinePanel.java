@@ -34,42 +34,42 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class RoundedLinePanel extends RoundedPanel {
 
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel()} 
    */
   public RoundedLinePanel() {
     super();
   }
 
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel(int corners)} 
    */
   public RoundedLinePanel(int corners) {
     super(corners);
   }
 
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel(int corners, int cornerHeight)} 
    */
   public RoundedLinePanel(int corners, int cornerHeight) {
     super(corners, cornerHeight);
   }
   
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel(Widget w)} 
    */
   public RoundedLinePanel(Widget w) {
     super(w);
   }
   
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel(Widget w, int corners)} 
    */
   public RoundedLinePanel(Widget w, int corners) {
     super(w, corners);
   }
 
-  /**
+  /*
    * {@see RoundedPanel#RoundedPanel(Widget w, int corners, int cornerHeight)} 
    */
   public RoundedLinePanel(Widget w, int corners, int cornerHeight) {

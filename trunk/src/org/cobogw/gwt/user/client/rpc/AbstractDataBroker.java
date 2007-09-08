@@ -73,9 +73,9 @@ public abstract class AbstractDataBroker implements DataBroker {
    * 
    * @param handler The handler to remove
    */
-  public void removeDataHandler(DataHandler dh) {
+  public void removeDataHandler(DataHandler handler) {
     if (null != dataHandlers) {
-      dataHandlers.remove(dh);
+      dataHandlers.remove(handler);
     }
   }
 }

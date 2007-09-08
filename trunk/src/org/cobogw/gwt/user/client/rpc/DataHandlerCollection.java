@@ -21,14 +21,14 @@ import java.util.Iterator;
 /**
  * A helper class for implementers of the {@link DataHandler} interface.
  */
-public class DataHandlerCollection extends ArrayList/* <DataEvent>*/ 
+public class DataHandlerCollection extends ArrayList/*<DataEvent>*/ 
     implements DataHandler {
 
   /**
-   * Fires the {@link DataHandler#onError(String) method to all listeners.
+   * Fires the {@link DataHandler#onError(String)} method to all listeners.
    */
   public void onError(String error) {
-    for (Iterator/* <DataHandler>*/ it = iterator(); it.hasNext();) {
+    for (Iterator/*<DataHandler>*/ it = iterator(); it.hasNext();) {
       DataHandler handler = (DataHandler) it.next();
 
       handler.onError(error);
@@ -36,11 +36,11 @@ public class DataHandlerCollection extends ArrayList/* <DataEvent>*/
   }
 
   /**
-   * Fires the {@link DataHandler#onRequested(DataEvent) method to all 
+   * Fires the {@link DataHandler#onRequested(DataEvent)} method to all 
    * listeners.
    */
   public void onRequested(DataEvent data) {
-    for (Iterator/* <DataHandler>*/ it = iterator(); it.hasNext();) {
+    for (Iterator/*<DataHandler>*/ it = iterator(); it.hasNext();) {
       DataHandler handler = (DataHandler) it.next();
 
       handler.onRequested(data);
@@ -48,10 +48,10 @@ public class DataHandlerCollection extends ArrayList/* <DataEvent>*/
   }
 
   /**
-   * Fires the {@link DataHandler#onSend(Object) method to all listeners.
+   * Fires the {@link DataHandler#onSend(Object)} method to all listeners.
    */
   public void onSend(Object data) {
-    for (Iterator/* <DataHandler>*/ it = iterator(); it.hasNext();) {
+    for (Iterator/*<DataHandler>*/ it = iterator(); it.hasNext();) {
       DataHandler handler = (DataHandler) it.next();
 
       handler.onSend(data);
