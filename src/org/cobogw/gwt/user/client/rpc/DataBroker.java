@@ -49,7 +49,7 @@ public interface DataBroker {
   
   /**
    * Performs the RPC to request data from the server, the received data will be 
-   * passed to the {@link DataHandler#onRequested(DataEvent) handlers.
+   * passed to the {@link DataHandler#onRequested(DataEvent)} handlers.
    * 
    * @param data Additional data to send to the server to instrument request
    */

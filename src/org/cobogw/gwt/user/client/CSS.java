@@ -37,7 +37,7 @@ import org.cobogw.gwt.user.client.impl.CSSImpl;
  * this class.
  * 
  * <p>This class takes care of browser incompatibilities where possible, like
- * {@link #CSS.A.FLOAT} or otherwise provides information regarding other
+ * {@link CSS.A#FLOAT} or otherwise provides information regarding other
  * solutions. 
  * 
  * <p>The support for browser incompatibilities is probably not complete, if
