@@ -140,28 +140,9 @@ import com.google.gwt.user.client.ui.Widget;
  *  .cbg-RP { background-color:#AAAAAA; }
  * </pre>
  *
- * TODO be a problem with the width under IE.
- * There seems to be a problem with the width under IE. The RoundedPanel div's
- * don't follow the width of the dialog. To fix this change the
- * <code>show</code> method as follows:
- *
- * <pre>
- * public void show() {
- *   super.show();
- *   // (The width must be set after the super.show() otherwise it will be 0).
- *   // NOTE: As of GWT 1.1 the .getOffsetWidth() returns 0 at this point.
- *   // This is different with earlier versions of GWT. Disable the line will 
- *   // make the rounded corners work in at least Firefox 1.5+, but not in IE.
- *   // I'm looking into this issue.
- *   rp.setWidth(panel.getOffsetWidth() + &quot;px&quot;);
- * }
- * </pre>
- *
  * Now by extending your own dialog class on this <code>RoundedDialogBox</code>
  * instead of the original <code>DialogBox</code> you will have rounded
  * corners around your dialog.
- *
- * @version 1.4
  */
 public class RoundedPanel extends SimplePanel {
 

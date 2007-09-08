@@ -15,10 +15,9 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-
-import org.cobogw.gwt.user.client.DOM2;
 
 /**
  * This class creates a DOM TextNode as a Widget. This is useful to simple add 
@@ -31,6 +30,16 @@ import org.cobogw.gwt.user.client.DOM2;
  * {@link Widget} class.
  */
 public class TextNode extends Widget {
+
+  /**
+   * Creates a DOM textNode with the text assigned as an {@link Element}.
+   *
+   * @param text Text to be assigned to the textNode
+   * @return DOM textNode with text assigned
+   */
+  public static native Element createTextNode(String text) /*-{
+    return $doc.createTextNode(text);
+  }-*/;
 
   /**
    * The attached state is locally maintained to trick the super class 
@@ -46,7 +55,7 @@ public class TextNode extends Widget {
    * @param text Text to be assigned to the TextNode
    */
   public TextNode(String text) {
-    setElement(DOM2.createTextNode(text));
+    setElement(createTextNode(text));
   }
 
   /**
