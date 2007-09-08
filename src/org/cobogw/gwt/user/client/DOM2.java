@@ -24,16 +24,6 @@ import com.google.gwt.user.client.Element;
 public class DOM2 {
 
   /**
-   * Creates a DOM textNode with the text assigned.
-   *
-   * @param text Text to be assigned to the textNode
-   * @return DOM textNode with text assigned
-   */
-  public static native Element createTextNode(String text) /*-{
-    return $doc.createTextNode(text);
-  }-*/;
-
-  /**
    * This method disables the event to select the element.
    *
    * @param element the element on which selection will be disabled

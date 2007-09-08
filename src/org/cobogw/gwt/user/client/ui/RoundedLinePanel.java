@@ -31,10 +31,6 @@ import com.google.gwt.user.client.ui.Widget;
  * background color on the top and bottom div's. The latter method can be used
  * for widgets that have a heading in a different color.
  * 
- * TODO make border width configurable
- * 
- * @author Hilbrand Bouwkamp(hs@bouwkamp.com)
- * @version $Id $
  */
 public class RoundedLinePanel extends RoundedPanel {
 
@@ -101,7 +97,8 @@ public class RoundedLinePanel extends RoundedPanel {
    * @param innerTop background color of the top div's
    * @param innerBottom background color of the bottom div's
    */
-  public void setCornerColor(String borderColor, String innerTop, String innerBottom) {
+  public void setCornerColor(String borderColor, String innerTop, 
+      String innerBottom) {
     setBorderLines(getContainerElement(), borderColor);
     if (null != divt[0]) {
       DOM.setStyleAttribute(divt[0], "backgroundColor", borderColor);
@@ -126,7 +123,8 @@ public class RoundedLinePanel extends RoundedPanel {
    * @param borderColor color of the border
    * @param backgroundColor backgroundColor of the element
    */
-  private void setBorder(Element elem, int corners, String borderColor, String backgroundColor) {
+  private void setBorder(Element elem, int corners, String borderColor, 
+      String backgroundColor) {
     DOM.setStyleAttribute(elem, "backgroundColor", backgroundColor);
     if (inMask(corners, LEFT)) {      
       DOM.setStyleAttribute(elem, "borderLeftStyle", "solid");
@@ -148,7 +146,7 @@ public class RoundedLinePanel extends RoundedPanel {
    * @param inner background color of the border div's
    */
   private void setBorderLines(Element elem, String borderColor) {
-    setBorder(elem, ALL, borderColor, "transparent");
-    DOM.setStyleAttribute(elem, "borderWidth", "0 1px");
+    setBorder(elem, corners, borderColor, "transparent");
+    DOM.setStyleAttribute(elem, "borderWidth", "1px");
   }
 }

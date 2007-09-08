@@ -17,7 +17,7 @@ package org.cobogw.gwt.user.client.ui;
 
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.HTML;
 
 /**
  * A widget that contains arbitrary text, <i>not</i> interpreted as HTML. Acts
@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.Label;
  * </ul>
  *
  */
-public class Span extends Label {
+public class Span extends HTML {
 
   /**
    * Creates an empty span.
