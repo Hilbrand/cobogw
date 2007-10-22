@@ -83,7 +83,7 @@ public class TextNode extends Widget {
    * @throws IllegalStateException if this widget is already attached
    */
   protected void onAttach() {
-    if (attached) {
+    if (isAttached()) {
       throw new IllegalStateException(
           "Should only call onAttach when the widget is detached from the browser's document");
     }
@@ -110,7 +110,7 @@ public class TextNode extends Widget {
    * @throws IllegalStateException if this widget is already detached
    */
   protected void onDetach() {
-    if (!attached) {
+    if (!isAttached()) {
       throw new IllegalStateException(
           "Should only call onDetach when the widget is attached to the browser's document");
     }
