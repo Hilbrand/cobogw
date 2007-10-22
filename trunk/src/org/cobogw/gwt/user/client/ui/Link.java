@@ -29,14 +29,14 @@ import com.google.gwt.user.client.ui.Widget;
  * <li>.cbg-Link { }</li>
  * </ul>
  */
-public class LinkWidget extends Widget {
+public class Link extends Widget {
 
   /**
    * Creates an empty anchor.
    */
-  public LinkWidget() {
+  public Link() {
     setElement(DOM.createAnchor());
-    setStyleName("cbg-LinkWidget");
+    setStyleName("cbg-Link");
   }
 
   /**
@@ -45,7 +45,7 @@ public class LinkWidget extends Widget {
    * @param url value of href attribute
    * @param text innerText value
    */
-  public LinkWidget(String url, String text) {
+  public Link(String url, String text) {
     this();
     setUrl(url);
     setText(text);
