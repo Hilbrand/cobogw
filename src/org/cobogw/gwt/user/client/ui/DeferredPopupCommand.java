@@ -55,19 +55,25 @@ import com.google.gwt.user.client.ui.PopupPanel;
  * </pre>
  */
 public class DeferredPopupCommand {
-  /**
-   * Enqueues a {@link Command} to be fired after all current events have been
-   * handled and displays a modal {@link PopupPanel} during the time the command
-   * is executed.
-   *
-   * @param cmd the command to be fired
-   * @param text String to be displayed on the {@link PopupPanel} for the
-   *           duration of the {@link Command#execute()} method
-   */
-  public static void addCommand(final Command cmd, final String text) {
-    addCommand(cmd, text, true);
-  }
+  PopupPanel popup;
 
+  public DeferredPopupCommand() {
+    this(true);
+  }
+  /**
+   * 
+   * @param modal <code>true</code> if keyboard or mouse events that do not
+   *          target the PopupPanel or its children should be ignored
+   */
+  public DeferredPopupCommand(boolean modal) {
+    this(new PopupPanel(false, modal));
+  } 
+  
+  public DeferredPopupCommand(PopupPanel popup) {
+    this.popup = popup;
+    popup.setStyleName("cbg-DeferredPopupCommand");
+  }
+  
   /**
    * Enqueues a {@link Command} to be fired after all current events have been
    * handled and displays an optional modal {@link PopupPanel} during the time
@@ -76,16 +82,11 @@ public class DeferredPopupCommand {
    * @param cmd the command to be fired
    * @param text String to be displayed on the {@link PopupPanel} for the
    *           duration of the {@link Command#execute()} method
-   * @param modal <code>true</code> if keyboard or mouse events that do not
-   *          target the PopupPanel or its children should be ignored
    */
-  public static void addCommand(final Command cmd, final String text,
-      boolean modal) {
-    PopupPanel popup = new PopupPanel(false, modal);
+  public void addCommand(final Command cmd, final String text) {
 
-    popup.add(new Label(text));
-    popup.setStyleName("cbg-DeferredPopupCommand");
-    addCommand(cmd, popup);
+    popup.setWidget(new Label(text));
+    DeferredPopupCommand.addCommand(cmd, popup);
   }
 
   /**
