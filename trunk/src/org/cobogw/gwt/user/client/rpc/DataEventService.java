@@ -17,6 +17,8 @@ package org.cobogw.gwt.user.client.rpc;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 
+import org.cobogw.gwt.user.client.ddw.DataEvent;
+
 /**
  * Marker interface that RPC interfaces 
  */
@@ -36,5 +38,5 @@ public interface DataEventService extends RemoteService {
    * @param sid Unique session key for security 
    * @param data Data to be stored at the server
    */
-  Object sendData(String sid, DataEvent data);
+  String sendData(String sid, DataEvent data);
 }
