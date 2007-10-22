@@ -17,6 +17,8 @@ package org.cobogw.gwt.user.client.rpc;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import org.cobogw.gwt.user.client.ddw.DataEvent;
+
 /**
  * Async interface linked to {@link DataEventService}. 
  */
@@ -29,7 +31,7 @@ public interface DataEventServiceAsync {
    * @param data Additional data to instrument the request
    * @param callback Method to handle server response
    */
-  DataEvent requestData(String sid, DataEvent data, AsyncCallback callback);
+  void requestData(String sid, DataEvent data, AsyncCallback callback);
   
   /**
    * Send data to the server to be stored.
@@ -38,5 +40,5 @@ public interface DataEventServiceAsync {
    * @param data Data to be stored at the server
    * @param callback Method to handle server response
    */
-  Object sendData(String sid, DataEvent data, AsyncCallback callback);
+  void sendData(String sid, DataEvent data, AsyncCallback callback);
 }

@@ -555,9 +555,8 @@ public final class CSS {
 
     /**
      * DISPLAY
-     * <p>For display values are not consistently supported on all browsers. 
-     * block, inline, none and list-item are safe the others work partly or not 
-     * at all.
+     * <p>Four display values are consistently supported on all browsers. block,
+     *  inline, none and list-item are safe the others work partly or not.
      * 
      * <p>CSS: 'display', javaScript: 'display'
      * <br>Values: inline | block | list-item | run-in | inline-block | table |
