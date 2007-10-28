@@ -15,7 +15,9 @@
  */
 package org.cobogw.gwt.user.client.rpc;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
 import org.cobogw.gwt.user.client.ddw.DataEvent;
 
@@ -23,6 +25,24 @@ import org.cobogw.gwt.user.client.ddw.DataEvent;
  * Async interface linked to {@link DataEventService}. 
  */
 public interface DataEventServiceAsync {
+
+  /**
+   * Utility class for simplifying access to the instance of async service.
+   */
+  public static class Util {
+    private static DataEventServiceAsync instance;
+    
+    public static DataEventServiceAsync getInstance(String entryPoint) {
+      if (null == instance) {
+        instance = (DataEventServiceAsync) GWT.create(
+            DataEventService.class);
+        ServiceDefTarget target = (ServiceDefTarget) instance;
+
+        target.setServiceEntryPoint(GWT.getModuleBaseURL() + entryPoint);
+      }
+      return instance;
+    }
+  }
 
   /**
    * Request data from the server.
