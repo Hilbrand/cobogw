@@ -215,8 +215,9 @@ public class Rating extends Composite {
       int height) {
     initWidget(panel);
     currentRating = initRating;
-    selectedVisible = "".equals(hoverImg) ? false : true;
+    selectedVisible = !"".equals(hoverImg);
     setStyleName("cbg-Rating");
+    DOM.setStyleAttribute(getElement(), CSS.A.CURSOR, CSS.V.CURSOR.POINTER);
     final int offset = (orientation & (LTR | TTB)) > 0 ? 1 : maxRating; 
     final int mlt = (orientation & (LTR | TTB)) > 0 ? 1 : -1; 
  
