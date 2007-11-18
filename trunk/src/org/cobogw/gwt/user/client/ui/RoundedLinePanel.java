@@ -99,7 +99,7 @@ public class RoundedLinePanel extends RoundedPanel {
    */
   public void setCornerColor(String borderColor, String innerTop, 
       String innerBottom) {
-    setBorderLines(getContainerElement(), borderColor);
+    setBorderContainer(borderColor, 1);
     if (null != divt[0]) {
       DOM.setStyleAttribute(divt[0], "backgroundColor", borderColor);
       for (int i = 1; i < cornerHeight; ++i) {
@@ -112,41 +112,20 @@ public class RoundedLinePanel extends RoundedPanel {
         setBorder(divb[i], corners & BOTTOM, borderColor, innerBottom);
       }
     }
-
   }
-  
+
   /**
-   * Sets the border style attributes on the element.
+   * Sets the border style attributes on the element. It can be used to set a
+   * different color on the border and the element the border is added to.
    * 
    * @param elem element to set the style attributes
-   * @param corners corners to set the style attritbutes
+   * @param corners corners to set the style attributes
    * @param borderColor color of the border
    * @param backgroundColor backgroundColor of the element
    */
-  private void setBorder(Element elem, int corners, String borderColor, 
+  protected void setBorder(Element elem, int corners, String borderColor, 
       String backgroundColor) {
     DOM.setStyleAttribute(elem, "backgroundColor", backgroundColor);
-    if (inMask(corners, LEFT)) {      
-      DOM.setStyleAttribute(elem, "borderLeftStyle", "solid");
-      DOM.setStyleAttribute(elem, "borderLeftColor", borderColor);
-    }
-    if (inMask(corners, RIGHT)) {
-      DOM.setStyleAttribute(elem, "borderRightStyle", "solid");
-      DOM.setStyleAttribute(elem, "borderRightColor", borderColor);
-    }
-  }  
-
-  /**
-   * Set the border style attributes on the element and sets the colors.
-   * This method is used to set the border lines on the div containing the
-   * widget wrapped by this class.
-   * 
-   * @param elem element to set the border on
-   * @param borderColor color of the border
-   * @param inner background color of the border div's
-   */
-  private void setBorderLines(Element elem, String borderColor) {
-    setBorder(elem, corners, borderColor, "transparent");
-    DOM.setStyleAttribute(elem, "borderWidth", "1px");
+    setBorder(elem, corners, borderColor);
   }
 }
