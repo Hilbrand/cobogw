@@ -147,7 +147,7 @@
 
   <target name="zip" depends="clean.all, package" 
     description="Put jar and readme.txt in zip file">
-    <zip destfile="${zipfile}.zip" >
+    <zip destfile="${zipfile}" >
       <zipfileset file="COPYING" prefix="${zipprefix}" />
       <zipfileset file="super/REAME.txt" prefix="${zipprefix}" />
       <zipfileset file="${jarfile}" prefix="${zipprefix}"/>
