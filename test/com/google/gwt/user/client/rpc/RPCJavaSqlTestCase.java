@@ -110,10 +110,18 @@ public class RPCJavaSqlTestCase extends GWTTestCase {
   }
 
   public void testTimestamp2() {
-    runTestTimestamp(Timestamp.valueOf("2007-1-1 0:0:0.0"));
+    runTestTimestamp(new Timestamp(1234567890123L));
   }
 
   public void testTimestamp3() {
+    runTestTimestamp(new Timestamp(-1234567890123L));
+  }
+
+  public void testTimestamp4() {
+    runTestTimestamp(Timestamp.valueOf("2007-1-1 0:0:0.0"));
+  }
+
+  public void testTimestamp5() {
     runTestTimestamp(Timestamp.valueOf("2007-12-31 23:59:59.999999999"));
   }
 
@@ -127,6 +135,8 @@ public class RPCJavaSqlTestCase extends GWTTestCase {
       public void onSuccess(Object result) {
         if (result instanceof Timestamp) {
           assertEquals(ts.getTime(), ((Timestamp) result).getTime());
+          assertEquals(ts.getNanos(), ((Timestamp) result).getNanos());
+          assertEquals(ts.toString(), ((Timestamp) result).toString());
         } else {
           fail("Result not instance of java.sql.Timestamp");
         }

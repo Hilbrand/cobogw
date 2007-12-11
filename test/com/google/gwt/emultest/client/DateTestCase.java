@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.google.gwt.emul.client;
+package com.google.gwt.emultest.client;
 
 import com.google.gwt.junit.client.GWTTestCase;
 
@@ -28,7 +28,7 @@ public class DateTestCase extends GWTTestCase {
    * @see com.google.gwt.junit.client.GWTTestCase#getModuleName()
    */
   public String getModuleName() {
-    return "com.google.gwt.emul.Emul";
+    return "com.google.gwt.emultest.Emul";
   }
 
   /**
