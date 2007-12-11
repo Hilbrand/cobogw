@@ -20,5 +20,5 @@
   <inherits name='com.google.gwt.json.JSON'/>
 
   <servlet path='/RPCJavaSqlTestCase' 
-       class='com.google.gwt.user.server.RPCJavaSqlServiceImpl'/>
+       class='com.google.gwt.user.server.RPCJavaSqlServiceImpl' />
 </module>

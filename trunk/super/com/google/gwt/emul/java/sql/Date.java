@@ -1,12 +1,12 @@
 /*
  * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -18,7 +18,7 @@ package java.sql;
 public class Date extends java.util.Date {
 
   static final long serialVersionUID = 1511598038487230103L;
-  
+
   public static Date valueOf(String s) {
     int year;
     int month;
@@ -44,13 +44,13 @@ public class Date extends java.util.Date {
    * @deprecated
    */
   public Date(int year, int month, int day) {
-    super(year, month, day);   
+    super(year, month, day);
   }
-  
+
   public Date(long date) {
     super(date);
   }
-  
+
   /**
    * @deprecated
    */
@@ -100,10 +100,10 @@ public class Date extends java.util.Date {
   public String toString() {
     int month = getMonth() + 1;
     int date = getDate();
-    
-    return 
-      (getYear() + 1900) + "-" + 
-      (month < 10 ? "0" : "") + month + "-" + 
+
+    return
+      (getYear() + 1900) + "-" +
+      (month < 10 ? "0" : "") + month + "-" +
       (date < 10 ? "0" : "") + date;
   }
 }
