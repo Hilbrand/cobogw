@@ -118,7 +118,7 @@ public class RPCJavaSqlTestCase extends GWTTestCase {
   }
 
   public void testTimestamp4() {
-    runTestTimestamp(Timestamp.valueOf("2007-1-1 0:0:0.0"));
+    runTestTimestamp(Timestamp.valueOf("2007-01-01 0:0:0.0"));
   }
 
   public void testTimestamp5() {

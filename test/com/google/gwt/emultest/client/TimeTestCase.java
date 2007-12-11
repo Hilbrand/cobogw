@@ -1,12 +1,12 @@
 /*
  * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -38,7 +38,7 @@ public class TimeTestCase extends GWTTestCase {
    */
   public void testValueOf1() {
     Time t1 = Time.valueOf("23:40:20");
-    
+
     assertEquals(23, t1.getHours());
     assertEquals(40, t1.getMinutes());
     assertEquals(20, t1.getSeconds());
@@ -51,7 +51,7 @@ public class TimeTestCase extends GWTTestCase {
     assertEquals(2, t2.getMinutes());
     assertEquals(3, t2.getSeconds());
     assertEquals(123000L, t2.getTime());
-  }    
+  }
 
   public void testValueOf3() {
     try {
@@ -59,7 +59,7 @@ public class TimeTestCase extends GWTTestCase {
 
       throw new AssertionError("Invalid date: 23:10x20, got:" + t3);
     } catch (Exception e) {
-      assertTrue(e instanceof IllegalArgumentException); 
+      assertTrue(e instanceof IllegalArgumentException);
     }
   }
 
@@ -69,10 +69,10 @@ public class TimeTestCase extends GWTTestCase {
 
       throw new AssertionError("Invalid date: 23:xx:20, got:" + t4);
     } catch (Exception e) {
-      assertTrue(e instanceof IllegalArgumentException); 
+      assertTrue(e instanceof IllegalArgumentException);
     }
   }
-  
+
   /**
    * test {@link Time#Time(long)}
    */
@@ -100,10 +100,10 @@ public class TimeTestCase extends GWTTestCase {
   public void testSetTime() {
     Time t1 = new Time(0);
     t1.setTime(1234567890123L);
-    
-    assertEquals(1234567890123L, t1.getTime());    
+
+    assertEquals(1234567890123L, t1.getTime());
   }
-  
+
   /**
    * test {@link Time#toString()}
    */

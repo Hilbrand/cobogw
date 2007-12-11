@@ -31,7 +31,7 @@ public class Time extends Date {
     if ((firstColon > 0) & (secondColon > 0) & (secondColon < s.length()-1)) {
         hour = Integer.parseInt(s.substring(0, firstColon));
         minute = Integer.parseInt(s.substring(firstColon+1, secondColon));
-        second = Integer.parseInt(s.substring(secondColon+1));         
+        second = Integer.parseInt(s.substring(secondColon+1));
     } else {
         throw new java.lang.IllegalArgumentException();
     }
@@ -42,7 +42,7 @@ public class Time extends Date {
    * @deprecated
    */
   public Time(int hour, int minute, int second) {
-    super(70, 0, 1, hour, minute, second);    
+    super(70, 0, 1, hour, minute, second);
   }
 
   public Time(long date) {

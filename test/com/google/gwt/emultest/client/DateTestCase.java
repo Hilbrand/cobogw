@@ -1,12 +1,12 @@
 /*
  * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -48,7 +48,7 @@ public class DateTestCase extends GWTTestCase {
     assertEquals(8, d2.getMonth());
     assertEquals(1, d2.getDate());
     assertEquals(1188597600000L, d2.getTime());
-  }    
+  }
 
   public void testValueOf3() {
     try {
@@ -56,7 +56,7 @@ public class DateTestCase extends GWTTestCase {
 
       throw new AssertionError("Invalid date: 2007-10x20, got:" + d3);
     } catch (Exception e) {
-      assertTrue(e instanceof IllegalArgumentException); 
+      assertTrue(e instanceof IllegalArgumentException);
     }
   }
 
@@ -66,10 +66,10 @@ public class DateTestCase extends GWTTestCase {
 
       throw new AssertionError("Invalid date: 2007-xx-20, got:" + d4);
     } catch (Exception e) {
-      assertTrue(e instanceof IllegalArgumentException); 
+      assertTrue(e instanceof IllegalArgumentException);
     }
   }
-  
+
   /**
    * Test {@link Date#Date(long)}
    */
@@ -96,10 +96,10 @@ public class DateTestCase extends GWTTestCase {
   public void testSetTime() {
     Date d1 = new Date(0);
     d1.setTime(1234567890123L);
-    
-    assertEquals(1234567890123L, d1.getTime());    
+
+    assertEquals(1234567890123L, d1.getTime());
   }
-  
+
   /**
    * Test {@link Date#toString())}
    */
