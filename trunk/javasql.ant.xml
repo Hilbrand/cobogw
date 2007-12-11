@@ -23,16 +23,16 @@
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar and JUNIT_JAR to the junit.jar file.
   </description>
-  <property name="version" value="0.1" />
+  <property name="version" value="1.0" />
   <property name="packagefile" value="cobogw.java.sql" />
   <property name="jarfile" value="${packagefile}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
   <property name="zipfile" value="${packagefile}-${version}.zip" />
-  <property name="src" location="src"/>
-  <property name="super" location="super"/>
-  <property name="build.dir" location="bin"/>
-  <property name="build.tests" location="test"/>
-  <property name="reports.tests" location="reports/${packagefile}"/>
+  <property name="src" location="src" />
+  <property name="super" location="super" />
+  <property name="build.dir" location="bin-${packagefile}" />
+  <property name="build.tests" location="test" />
+  <property name="reports.tests" location="reports/${packagefile}" />
   <property name="junit3.jar" location="${JUNIT_JAR}" />
   <property name="gwt.path" location="${GWT_HOME}" />
 
@@ -48,40 +48,40 @@
   </path>
 
   <target name="compile" description="Compile src to bin">
-    <mkdir dir="bin"/>
+    <mkdir dir="bin" />
     <javac srcdir="src:test" destdir="bin" includes="**" source="1.4">
-      <classpath refid="project.class.path"/>
+      <classpath refid="project.class.path" />
     </javac>
   </target>
 
   <target name="compile.debug" description="Compile src to bin in debug mode">
-    <mkdir dir="bin"/>
+    <mkdir dir="bin" />
     <javac srcdir="src:test" destdir="bin" includes="**" 
          debug="on" debuglevel="lines,vars,source" source="1.4">
-      <classpath refid="project.class.path"/>
+      <classpath refid="project.class.path" />
     </javac>
   </target>
 
   <target name="clean.build" description="Clean the compiled classes">
     <delete>
-      <fileset dir="bin" includes="**/*.class"/>
+      <fileset dir="bin" includes="**/*.class" />
     </delete>
   </target>
 
   <target name="clean.all" depends="clean.build"
       description="Clean all genererated files">
-    <delete file="${jarfile}"/>
-    <delete file="${zipfile}"/>
-    <delete file=""/>
+    <delete file="${jarfile}" />
+    <delete file="${zipfile}" />
+    <delete file="" />
   </target>
 
   <target name="unittest.hosted" 
       description="Run all JUnit tests in hosted mode">
-    <mkdir dir="${reports.tests}/hostedmode"/>
+    <mkdir dir="${reports.tests}/hostedmode" />
     <delete>
-      <fileset dir="${reports.tests}/hostedmode" includes="**/.txt"/>
+      <fileset dir="${reports.tests}/hostedmode" includes="**/.txt" />
     </delete>
-    <junit fork="yes" verbose="true">
+    <junit fork="yes">
       <classpath>
         <pathelement location="${src}" />
         <pathelement location="${super}" />
@@ -104,9 +104,9 @@
 
   <target name="unittest.web" 
       description="Run all JUnit tests in web mode">
-    <mkdir dir="${reports.tests}/webmode"/>
+    <mkdir dir="${reports.tests}/webmode" />
     <delete>
-      <fileset dir="${reports.tests}/webmode" includes="**/.txt"/>
+      <fileset dir="${reports.tests}/webmode" includes="**/.txt" />
     </delete>
     <junit fork="yes">
       <classpath>
@@ -119,12 +119,12 @@
         <pathelement path="${junit3.jar}" />
       </classpath>
       <jvmarg 
-          value="-Dgwt.args=-web -out www-test/webmode -style pretty"/>
+          value="-Dgwt.args=-web -out www-test/webmode -style pretty" />
       <formatter type="plain"/>
 
       <batchtest fork="yes" todir="${reports.tests}/webmode">
           <fileset dir="${build.tests}">
-            <include name="com/google/**/*Test*.java"/>
+            <include name="com/google/**/*Test*.java" />
           </fileset>
         </batchtest>
     </junit>
@@ -134,13 +134,13 @@
       description="Package up the project as a jar">
     <jar destfile="${jarfile}">
       <fileset dir="bin">
-        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.class"/>
+        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.class" />
       </fileset>
       <fileset dir="src">
-        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.java"/>
+        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.java" />
       </fileset>
       <fileset dir="super">
-        <include name="**/*.java"/>
+        <include name="**/*.java" />
       </fileset>
     </jar>
   </target>
@@ -154,5 +154,5 @@
     </zip>
   </target>
 
-  <target name="all" depends="zip"/>
+  <target name="all" depends="zip" />
 </project>
