@@ -27,7 +27,7 @@ import java.sql.Timestamp;
 public class Timestamp_CustomFieldSerializer {
   public static void deserialize(SerializationStreamReader streamReader, 
       Timestamp instance) throws SerializationException {
-    // No fields
+    instance.setNanos(streamReader.readInt());
   }
 
   public static Timestamp instantiate(SerializationStreamReader streamReader)
@@ -38,6 +38,7 @@ public class Timestamp_CustomFieldSerializer {
   public static void serialize(SerializationStreamWriter streamWriter,
       Timestamp instance) throws SerializationException {
     streamWriter.writeLong(instance.getTime());
+    streamWriter.writeInt(instance.getNanos());
   }
 }
  
