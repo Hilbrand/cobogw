@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
- Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  
  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  use this file except in compliance with the License. You may obtain a copy of
@@ -16,47 +16,51 @@
 -->
 <project name="cobogw" default="all" basedir=".">
   <description>
-    cobogw build file. This ant build file creates 2 jar files, the 
-    org.cobogw.gwt.jar file to use for the client, and the 
-    org.cobogw.gwt.server.jar to deploy on the server. 
+    cobogw build file. This ant build file creates the file org.cobogw.gwt.jar
+  	and packs jar, source and javadoc into a zip file.
     
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar.
   </description>
-  <property name="version.num" value="0.1" />
+  <property name="version" value="1.0" />
+  <property name="packagefile" value="org.cobogw.gwt" />
+  <property name="jarfile" value="${packagefile}.jar" />
+  <property name="zipprefix" value="${packagefile}-${version}" />
+  <property name="zipfile" value="${zipprefix}.zip" />
+  <property name="gwt.path" location="${GWT_HOME}" />
 
   <!-- set classpath -->
   <path id="project.class.path">
     <pathelement path="${java.class.path}/"/>
-    <pathelement path="${GWT_HOME}/gwt-user.jar"/>
+    <pathelement path="${gwt.path}/gwt-user.jar"/>
   </path>
 
   <target name="compile" description="Compile src to bin">
     <mkdir dir="bin"/>
-    <javac srcdir="src:test" destdir="bin" includes="**" source="1.4">
+    <javac srcdir="src" destdir="bin" includes="**" source="1.4">
       <classpath refid="project.class.path"/>
     </javac>
   </target>
 
   <target name="compile.debug" description="Compile src to bin in debug mode">
     <mkdir dir="bin"/>
-    <javac srcdir="src:test" destdir="bin" includes="**" 
+    <javac srcdir="src" destdir="bin" includes="**" 
          debug="on" debuglevel="lines,vars,source" source="1.4">
       <classpath refid="project.class.path"/>
     </javac>
   </target>
 
-  <target name="clean.all" description="Clean all genererated files">
-    <delete file="org.cobogw.gwt-${version.num}.zip"/>
-    <delete file="org.cobogw.gwt.jar"/>
-    <delete file="org.cobogw.gwt.server.jar"/>
+  <target name="clean.all" depends="clean.build"
+      description="Clean all genererated files">
+    <delete file="${zipfile}"/>
+    <delete file="${jarfile}"/>
     <delete>
-      <fileset dir="bin" includes="**/*.class"/>
       <fileset dir="doc/javadoc" includes="**"/>
     </delete>
   </target>
 
   <target name="clean.build" description="Clean the compiled classes">
+    <mkdir dir="bin"/>
     <delete>
       <fileset dir="bin" includes="**/*.class"/>
     </delete>
@@ -75,14 +79,14 @@
       <tag name="gwt.key" description="GWT i18n key in properties file"/>       
       <tag name="gwt.typeArgs" description="GWT serialization type helper"/>       
       <doctitle><![CDATA[<h1>ORG.COBOGW.GWT package</h1>]]></doctitle>
-      <bottom><![CDATA[<i>Copyright &#169; 2007 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>    
+      <bottom><![CDATA[<i>Copyright &#169; 2007-2008 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>    
       <classpath refid="project.class.path"/>
     </javadoc>
   </target>
   
   <target name="package" depends="clean.build, compile.debug"
       description="Package up the project as a jar">
-    <jar destfile="org.cobogw.gwt.jar">
+    <jar destfile="${jarfile}">
       <fileset dir="bin">
         <include name="**/*.class"/>
       </fileset>
@@ -90,33 +94,19 @@
       <fileset dir="src">
         <include name="**"/>
       </fileset>
-      <fileset dir="test">
-        <include name="**"/>     
-      </fileset>
     </jar>
   </target>
 
-  <target name="package.server" depends="clean.build, compile"
-      description="Package up all files needed on the server">
-    <delete file="org.cobogw.gwt.server.jar"/>
-    <jar destfile="org.cobogw.gwt.server.jar">
-      <fileset dir="bin">
-        <include name="**/*Service.class"/>
-      </fileset>
-    </jar>
-  </target>
-
-  <target name="zip" depends="clean.all, package.server, package, javadoc" 
+  <target name="zip" depends="clean.all, package, javadoc" 
     description="Put jar, source and javadoc in zip file">
-    <zip destfile="org.cobogw.gwt-${version.num}.zip">
-      <zipfileset dir="src/" prefix="src/" />
-      <zipfileset dir="doc/" prefix="doc/" />
-      <fileset file="COPYING" />
-      <fileset file="org.cobogw.gwt.jar" />
-      <fileset file="org.cobogw.gwt.server.jar" />
+    <zip destfile="${zipfile}">
+      <zipfileset dir="src/" prefix="${zipprefix}/src/" />
+      <zipfileset dir="doc/" prefix="${zipprefix}/doc/" />
+      <zipfileset file="COPYING" prefix="${zipprefix}" />
+      <zipfileset file="org.cobogw.gwt.jar" prefix="${zipprefix}" />
     </zip>
   </target>
 
-  <target name="all" depends="package.server, package, javadoc"/>
+  <target name="all" depends="package, javadoc"/>
 
 </project>
