@@ -22,7 +22,7 @@
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar.
   </description>
-  <property name="version" value="1.0" />
+  <property name="version" value="1.1" />
   <property name="packagefile" value="org.cobogw.gwt" />
   <property name="jarfile" value="${packagefile}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
@@ -37,7 +37,7 @@
 
   <target name="compile" description="Compile src to bin">
     <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin" includes="**" source="1.4">
+    <javac srcdir="src" destdir="bin" includes="**" source="1.5">
       <classpath refid="project.class.path"/>
     </javac>
   </target>
@@ -45,23 +45,22 @@
   <target name="compile.debug" description="Compile src to bin in debug mode">
     <mkdir dir="bin"/>
     <javac srcdir="src" destdir="bin" includes="**" 
-         debug="on" debuglevel="lines,vars,source" source="1.4">
+         debug="on" debuglevel="lines,vars,source" source="1.5">
       <classpath refid="project.class.path"/>
     </javac>
   </target>
 
   <target name="clean.all" depends="clean.build"
       description="Clean all genererated files">
-    <delete file="${zipfile}"/>
-    <delete file="${jarfile}"/>
-    <delete>
+    <delete failonerror="false" file="${zipfile}"/>
+    <delete failonerror="false" file="${jarfile}"/>
+    <delete failonerror="false">
       <fileset dir="doc/javadoc" includes="**"/>
     </delete>
   </target>
 
   <target name="clean.build" description="Clean the compiled classes">
-    <mkdir dir="bin"/>
-    <delete>
+    <delete failonerror="false" >
       <fileset dir="bin" includes="**/*.class"/>
     </delete>
   </target>

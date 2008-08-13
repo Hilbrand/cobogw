@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,15 +24,15 @@ import java.util.Iterator;
  * A helper class for implementers of the AsynCallback interface. This class
  * assumes that all objects added to it will be of type {@link AsyncCallback}.
  */
-public class AsyncCallbackCollection extends ArrayList /* <AsyncCallback>*/
-    implements AsyncCallback {
+public class AsyncCallbackCollection<T> extends ArrayList<AsyncCallback<T>>
+    implements AsyncCallback<T> {
 
   /**
    * Fires the {@link #onFailure(Throwable)} method to all listeners.
    */
   public void onFailure(Throwable caught) {
-    for (Iterator/* <AsyncCallback>*/ it = iterator(); it.hasNext();) {
-      AsyncCallback acceptor = (AsyncCallback) it.next();
+    for (Iterator<AsyncCallback<T>> it = iterator(); it.hasNext();) {
+      AsyncCallback<T> acceptor = it.next();
 
       acceptor.onFailure(caught);
     }
@@ -41,9 +41,9 @@ public class AsyncCallbackCollection extends ArrayList /* <AsyncCallback>*/
   /**
    * Fires the {@link #onSuccess(Object)} method to all listeners.
    */
-  public void onSuccess(Object result) {
-    for (Iterator/* <AsyncCallback>*/ it = iterator(); it.hasNext();) {
-      AsyncCallback acceptor = (AsyncCallback) it.next();
+  public void onSuccess(T result) {
+    for (Iterator<AsyncCallback<T>> it = iterator(); it.hasNext();) {
+      AsyncCallback<T> acceptor = it.next();
 
       acceptor.onSuccess(result);
     }

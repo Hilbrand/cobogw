@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * This file is a derivative work of the file:
  *   com.google.gwt.user.client.ui.TabBar.java
@@ -36,7 +36,7 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.ClickListener;
 import com.google.gwt.user.client.ui.Composite;
@@ -55,8 +55,8 @@ import com.google.gwt.user.client.ui.Widget;
  * A vertical bar of folder-style tabs, most commonly used as part of a
  * {@link org.cobogw.gwt.user.client.ui.VerticalTabPanel}.
  *
- * The vertical bar is a derivate of the TabBar
- * {@link com.google.gwt.user.client.ui.TabBar}. This class uses the same
+ * The vertical bar is derived from the TabBar
+ * {@link com.google.gwt.user.client.ui.TabBar} widget. This class uses the same
  * CSS style names as the TabBar class to minimize differences between
  * that class because the only difference is the orientation of the TabBar.
  *
@@ -72,10 +72,6 @@ import com.google.gwt.user.client.ui.Widget;
  * <li>.gwt-TabBar .gwt-TabBarItem-selected { additional style for selected
  * tabs } </li>
  * </ul>
- * <p>
- * <h3>Example</h3>
- * {@example com.bouwkamp.gwt..examples.VerticalTabBarExample}
- * </p>
  */
 public class VerticalTabBar extends Composite implements SourcesTabEvents,
     ClickListener {
@@ -97,7 +93,7 @@ public class VerticalTabBar extends Composite implements SourcesTabEvents,
 
     public void onBrowserEvent(Event event) {
       // No need for call to super.
-      switch (DOM.eventGetType(event)) {
+      switch (event.getTypeInt()) {
       case Event.ONCLICK:
         delegate.onClick(this);
       }
@@ -124,7 +120,7 @@ public class VerticalTabBar extends Composite implements SourcesTabEvents,
     rest.setStyleName("gwt-TabBarRest");
     panel.add(first);
     //set gwt-TabBarFirst on TR otherwise a 1px line remains visible in IE6 when display:none
-    DOM.setAttribute(DOM.getParent(DOM.getParent(first.getElement())), "className", "gwt-TabBarFirst");
+    first.getElement().getParentNode().getParentNode().<Element>cast().setClassName("gwt-TabBarFirst");
     panel.add(rest);
     panel.setCellWidth(rest, "100%");
   }
@@ -214,7 +210,7 @@ public class VerticalTabBar extends Composite implements SourcesTabEvents,
       return ((Label) widget).getText();
     } else {
       // This will be a ClickDecorator holding a user-supplied widget.
-      return DOM.getInnerHTML(widget.getElement());
+      return widget.getElement().getInnerHTML();
     }
   }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,6 +15,7 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -32,16 +33,6 @@ import com.google.gwt.user.client.ui.Widget;
 public class TextNode extends Widget {
 
   /**
-   * Creates a DOM textNode with the text assigned as an {@link Element}.
-   *
-   * @param text Text to be assigned to the textNode
-   * @return DOM textNode with text assigned
-   */
-  public static native Element createTextNode(String text) /*-{
-    return $doc.createTextNode(text);
-  }-*/;
-
-  /**
    * The attached state is locally maintained to trick the super class 
    * {@link Widget} to think it is not attached when it accesses it's own 
    * private field attached when it sets EventListeners and no EventListener
@@ -55,7 +46,7 @@ public class TextNode extends Widget {
    * @param text Text to be assigned to the TextNode
    */
   public TextNode(String text) {
-    setElement(createTextNode(text));
+    setElement(Document.get().createTextNode(text).<Element>cast());
   }
 
   /**
@@ -65,6 +56,7 @@ public class TextNode extends Widget {
    * 
    * @return <code>true</code> if the widget is attached
    */
+  @Override
   public boolean isAttached() {
     return attached;
   }
@@ -82,6 +74,7 @@ public class TextNode extends Widget {
    * 
    * @throws IllegalStateException if this widget is already attached
    */
+  @Override
   protected void onAttach() {
     if (isAttached()) {
       throw new IllegalStateException(
@@ -109,6 +102,7 @@ public class TextNode extends Widget {
    * 
    * @throws IllegalStateException if this widget is already detached
    */
+  @Override
   protected void onDetach() {
     if (!isAttached()) {
       throw new IllegalStateException(

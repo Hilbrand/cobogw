@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,8 +15,9 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -251,12 +252,12 @@ public class RoundedPanel extends SimplePanel {
   /**
    * Element array containing all div elements of the top corner div's.
    */
-  protected final Element[] divt;
+  protected final DivElement[] divt;
 
   /**
    * Element array containing all div elements of the bottom corner div's.
    */
-  protected final Element[] divb;
+  protected final DivElement[] divb;
 
   /**
    * Index of the corner height.
@@ -268,8 +269,8 @@ public class RoundedPanel extends SimplePanel {
    */
   protected final int corners;
 
-  private final Element body; // body of widget
-  private Element divElement; // div element containing widget
+  private final DivElement body; // body of widget
+  private DivElement divElement; // div element containing widget
 
   /**
    * Creates a new <code>RoundedPanel</code> with all corners rounded and
@@ -308,15 +309,15 @@ public class RoundedPanel extends SimplePanel {
    * @throws IndexOutOfBoundsException when cornerHeight below 1 or above 9
    */
   public RoundedPanel(int corners, int cornerHeight) {
-    super(DOM.createDiv());
-    body = getElement();
+    super();
+    body = getElement().cast();
     if (cornerHeight < 1 || cornerHeight > 9) {
       throw new IndexOutOfBoundsException(
           "RoundedPanel height range is between and including 1 and 9");
     }
     this.cornerHeight = cornerHeight;
-    divt = new Element[cornerHeight];
-    divb = new Element[cornerHeight];
+    divt = new DivElement[cornerHeight];
+    divb = new DivElement[cornerHeight];
     this.corners = corners;
     if (inMask(corners, TOP)) {
       final int ct = corners & TOP;
@@ -325,8 +326,8 @@ public class RoundedPanel extends SimplePanel {
         divt[i] = addLine(ct, cornerHeight - (i + 1));
       }
     }
-    divElement = DOM.createDiv();
-    DOM.appendChild(body, divElement);
+    divElement = Document.get().createDivElement();
+    body.appendChild(divElement);
     if (inMask(corners, BOTTOM)) {
       final int cb = corners & BOTTOM;
 
@@ -401,12 +402,12 @@ public class RoundedPanel extends SimplePanel {
   public void setCornerColor(String borderColor) {
     if (null != divt[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        DOM.setStyleAttribute(divt[i], "backgroundColor", borderColor);
+        divt[i].getStyle().setProperty("backgroundColor", borderColor);
       }
     }
     if (null != divb[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        DOM.setStyleAttribute(divb[i], "backgroundColor", borderColor);
+        divb[i].getStyle().setProperty("backgroundColor", borderColor);
       }
     }
   }
@@ -429,33 +430,22 @@ public class RoundedPanel extends SimplePanel {
   public void setCornerStyleName(String style) {
     if (null != divt[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        DOM.setAttribute(divt[i], "className", style);
+        divt[i].setClassName(style);
       }
     }
     if (null != divb[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        DOM.setAttribute(divb[i], "className", style);
+        divb[i].setClassName(style);
       }
     }
-  }
-
-  /**
-   * Set the style of the RoundedPanel. In most cases this is not necessary
-   * and setting the style on the widget to which the <code>RoundedPanel</code>
-   * is applied should be set, as is done when not using the
-   * <code>RoundedPanel</code>
-   *
-   * @param style CSS style name
-   */
-  public void setStyleName(String style) {
-    DOM.setAttribute(body, "className", style);
   }
 
   /**
    * Overwrite of parent getContainerElement()
    */
-  protected Element getContainerElement() {
-    return divElement;
+  @Override
+  protected com.google.gwt.user.client.Element getContainerElement() {
+    return divElement.cast();
   }
 
   /**
@@ -478,8 +468,8 @@ public class RoundedPanel extends SimplePanel {
    */
   protected void setBorderContainer(String borderColor, int borderWidth) { 
     setBorder(getContainerElement(), corners, borderColor);
-    DOM.setStyleAttribute(getContainerElement(), "borderWidth", 
-        "0 " + borderWidth + "px");
+    getContainerElement().getStyle().setProperty(
+        "borderWidth", "0 " + borderWidth + "px");
  }
 
   /**
@@ -491,12 +481,12 @@ public class RoundedPanel extends SimplePanel {
    */
   protected void setBorder(Element elem, int corners, String borderColor) {
     if (inMask(corners, LEFT)) {      
-      DOM.setStyleAttribute(elem, "borderLeftStyle", "solid");
-      DOM.setStyleAttribute(elem, "borderLeftColor", borderColor);
+      elem.getStyle().setProperty("borderLeftStyle", "solid");
+      elem.getStyle().setProperty("borderLeftColor", borderColor);
     }
     if (inMask(corners, RIGHT)) {
-      DOM.setStyleAttribute(elem, "borderRightStyle", "solid");
-      DOM.setStyleAttribute(elem, "borderRightColor", borderColor);
+      elem.getStyle().setProperty("borderRightStyle", "solid");
+      elem.getStyle().setProperty("borderRightColor", borderColor);
     }
   }
   
@@ -506,24 +496,24 @@ public class RoundedPanel extends SimplePanel {
    * @param corner corner mask to set rounded corner
    * @param heightIndex margin width for line
    */
-  private Element addLine(int corner, int heightIndex) {
+  private DivElement addLine(int corner, int heightIndex) {
     // margin 4 fields : top right bottom left  => "0 <width>px 0 <width>px"
     String mw = CORNERMARGIN[cornerHeight - 1][heightIndex] + "px ";
-    String margin = 
+    String margin =
         "0 " + (inMask(corner, RIGHT) ? mw : "0 ") +
         "0 " + (inMask(corner, LEFT) ? mw : "0");
-    Element div = DOM.createDiv();
-    
-    DOM.setIntStyleAttribute(div, "fontSize", 0);
-    DOM.setStyleAttribute(div, "height",
-        CORNERHEIGHT[cornerHeight - 1][heightIndex] + "px");
-    DOM.setStyleAttribute(div, "borderWidth",
+    DivElement div = Document.get().createDivElement();
+
+    div.getStyle().setPropertyPx("fontSize", 0);
+    div.getStyle().setPropertyPx("height",
+        CORNERHEIGHT[cornerHeight - 1][heightIndex]);
+    div.getStyle().setProperty("borderWidth",
         "0 " + CORNERBORDER[cornerHeight - 1][heightIndex] + "px");
-    DOM.setStyleAttribute(div, "lineHeight",
-        CORNERHEIGHT[cornerHeight - 1][heightIndex] + "px");
-    DOM.setStyleAttribute(div, "margin", margin);
-    DOM.setInnerHTML(div, "&nbsp;");
-    DOM.appendChild(body, div);
+    div.getStyle().setPropertyPx("lineHeight",
+        CORNERHEIGHT[cornerHeight - 1][heightIndex]);
+    div.getStyle().setProperty("margin", margin);
+    div.setInnerHTML("&nbsp;");
+    body.appendChild(div);
     return div;
   }
 }

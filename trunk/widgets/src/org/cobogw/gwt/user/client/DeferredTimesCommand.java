@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -37,7 +37,7 @@ public class DeferredTimesCommand extends DeferredCommand {
    * 
    * @param cmd the command to be fired
    * @param times maximum number of times the command is executed
-   * @param delayMillis time between execution in miliseconds
+   * @param delayMillis time between execution in milliseconds
    */
   public static void addCommand(final IncrementalCommand cmd, final int times,
       final int delayMillis) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,6 +15,8 @@
  */
 package org.cobogw.gwt.user.client.impl;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  * Native implementation associated with {@link org.cobogw.gwt.user.client.CSS}.
  */
@@ -22,5 +24,9 @@ public class CSSImpl {
 
   public String getFloatAttribute() {
     return "cssFloat";
-  };
+  }
+
+  public void setOpacity(Element e, float opacity) {
+    e.getStyle().setProperty("opacity", "" + opacity);
+  }
 }
