@@ -1,0 +1,41 @@
+body {
+  background-color:#fafafa;
+}
+
+.cbg-TabBarItem{
+  padding:0 8px;
+}
+
+.cbg-TabBarItem .gwt-Label {
+	background-color:#D3D3D3;
+/*  border-bottom: solid 2px lightblue;*/ 
+}
+.cbg-TabBarItem .cbg-RP {
+  background-color:#D3D3D3;
+}
+
+.cbg-TabBarItem-selected .gwt-Label { 
+background-color:maroon;
+  /* 
+  border-bottom: none; 
+  border-bottom: solid 2px maroon;
+  */ 
+}
+
+
+.cbg-TabbedPanel {
+background-color:yellow;
+}
+
+.cbg-TabbedPanelTab {
+
+}
+
+.cbg-TabbedPanelContent {
+background-color:maroon;
+  padding:10px;
+
+}
+.cbg-RatingWidgetItem {
+ margin-left:1px;
+ }
