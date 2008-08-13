@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -24,6 +24,7 @@
 package org.cobogw.gwt.user.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 
 import org.cobogw.gwt.user.client.impl.CSSImpl;
 
@@ -2446,5 +2447,16 @@ public final class CSS {
       public static final String PRE_WRAP = "pre-wrap";
       public static final String PRE_LINE = "pre-line";
     }
+  }
+
+  /**
+   * Set the Opacity on an element taking care of browser specific
+   * implementations.
+   *
+   * @param e Element to set opacity
+   * @param opacity value between 0 and 1
+   */
+  public static void setOpacity(Element e, float opacity) {
+    impl.setOpacity(e, opacity);
   }
 }

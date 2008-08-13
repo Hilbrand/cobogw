@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,7 +15,8 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
-import com.google.gwt.user.client.DOM;
+import com.google.gwt.dom.client.AnchorElement;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -35,7 +36,7 @@ public class Link extends Widget {
    * Creates an empty anchor.
    */
   public Link() {
-    setElement(DOM.createAnchor());
+    setElement(Document.get().createAnchorElement());
     setStyleName("cbg-Link");
   }
 
@@ -57,7 +58,7 @@ public class Link extends Widget {
    * @param target anchor target, e.g. "new"
    */
   public void setTarget(String target) {
-    DOM.setAttribute(getElement(), "target", target);
+    getElement().<AnchorElement>cast().setTarget(target);
   }
 
   /**
@@ -66,7 +67,7 @@ public class Link extends Widget {
    * @param text innerText value
    */
   public void setText(String text) {
-    DOM.setInnerText(getElement(), text);
+    getElement().<AnchorElement>cast().setInnerText(text);
   }
 
   /**
@@ -75,6 +76,6 @@ public class Link extends Widget {
    * @param url value of href attribute
    */
   public void setUrl(String url) {
-    DOM.setAttribute(getElement(), "href", url);
+    getElement().<AnchorElement>cast().setHref(url);
   }  
 }

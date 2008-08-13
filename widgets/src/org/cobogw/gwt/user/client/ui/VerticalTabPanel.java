@@ -1,5 +1,5 @@
 /*
- * Copyright 2007 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * This file is a derivative work of the file:
  *   com.google.gwt.user.client.ui.TabPanel.java
@@ -79,9 +79,6 @@ import java.util.Iterator;
  * containing the widget) }</li>
  * </ul>
  * 
- * <p>
- * <h3>Example</h3> {@example com.bouwkamp.gwt.examples.VerticalTabPanelExample}
- * </p>
  */
 public class VerticalTabPanel extends Composite implements TabListener,
     SourcesTabEvents, HasWidgets, IndexedPanel {
