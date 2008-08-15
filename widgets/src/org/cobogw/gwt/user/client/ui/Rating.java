@@ -24,7 +24,6 @@ import com.google.gwt.user.client.ui.Hidden;
 import com.google.gwt.user.client.ui.Widget;
 
 import org.cobogw.gwt.user.client.CSS;
-import org.cobogw.gwt.user.client.ui.RatingListener;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -95,7 +94,8 @@ public class Rating extends Composite {
   private int currentRating;
 
   /**
-   *
+   * Class for the individual rating items. The image is placed as background
+   * image.
    */
   private class RatingItem extends Widget {
 
@@ -142,6 +142,7 @@ public class Rating extends Composite {
       setImage(hoverImg);
     }
 
+    @Override
     public void onBrowserEvent(Event event) {
       switch (event.getTypeInt()) {
       case Event.ONMOUSEOVER:
@@ -163,6 +164,13 @@ public class Rating extends Composite {
     private void setImage(String img) {
       getElement().getStyle().setProperty(CSS.A.BACKGROUND_IMAGE, img);
     }
+  }
+
+  /**
+   * Default constructor. Creates a 5 star LTR rating widget.
+   */
+  public Rating() {
+   this(0, 5);
   }
 
   /**
