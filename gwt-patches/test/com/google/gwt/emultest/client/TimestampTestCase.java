@@ -105,6 +105,18 @@ public class TimestampTestCase extends GWTTestCase {
     }
   }
 
+  public void testValueOf7() {
+    Timestamp ts = Timestamp.valueOf("2007-08-09 08:09:08.009");
+
+    assertEquals(107, ts.getYear());
+    assertEquals(7, ts.getMonth());
+    assertEquals(9, ts.getDate());
+    assertEquals(8, ts.getHours());
+    assertEquals(9, ts.getMinutes());
+    assertEquals(8, ts.getSeconds());
+    assertEquals(9000000, ts.getNanos());
+  }
+
   /**
    * test {@link Timestamp#Timestamp(long)}
    */

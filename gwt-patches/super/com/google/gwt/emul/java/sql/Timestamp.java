@@ -26,29 +26,26 @@ public class Timestamp extends Date {
   // s = yyyy-mm-dd hh:mm:ss.fffffffff
   public static Timestamp valueOf(String s) {
     int year, month, day, hour, minute, second, nano;
-    int firstDash, secondDash, space, firstColon, secondColon, dot;
+    final String formatError =
+        "Timestamp format must be yyyy-mm-dd hh:mm:ss[.fffffffff]";
 
-    if (s == null) throw new java.lang.IllegalArgumentException();
+    if (s == null) throw new java.lang.IllegalArgumentException("null string");
+    final int space = s.indexOf(' ');
 
-    firstDash = s.indexOf('-');
-    secondDash = s.indexOf('-', firstDash+1);
-    space = s.indexOf(' ');
-    firstColon = s.indexOf(':');
-    secondColon = s.indexOf(':', firstColon+1);
-    dot = s.indexOf('.');
-    if ((firstDash > 0) & (secondDash > 0) &
-        (firstColon > 0) & (secondColon > 0) &
-        (dot > 0) & (dot < s.length()-1)) {
-      year = Integer.parseInt(s.substring(0, firstDash)) - 1900;
-      month = Integer.parseInt(s.substring(firstDash+1, secondDash)) - 1;
-      day = Integer.parseInt(s.substring(secondDash+1, space));
-      hour = Integer.parseInt(s.substring(space+1, firstColon));
-      minute = Integer.parseInt(s.substring(firstColon+1, secondColon));
-      second = Integer.parseInt(s.substring(secondColon+1, dot));
-      nano = Integer.parseInt(s.substring(dot+1));
-    } else {
-        throw new java.lang.IllegalArgumentException();
-    }
+    if (space < 0) throw new java.lang.IllegalArgumentException(formatError);
+    final String date[] = s.substring(0, space).split("-");
+    final int dot = s.indexOf('.');
+    final String time[] = s.substring(space+1, dot<0?s.length():dot).split(":");
+
+    if (date.length != 3 && time.length != 3)
+        throw new java.lang.IllegalArgumentException(formatError);   
+    year = Integer.parseInt(date[0]) - 1900;
+    month = Integer.parseInt(date[1]) - 1;
+    day = Integer.parseInt(date[2]);
+    hour = Integer.parseInt(time[0]);
+    minute = Integer.parseInt(time[1]);
+    second = Integer.parseInt(time[2]);
+    nano = dot<0 ? 0 :(int) (Double.parseDouble(s.substring(dot)) * 1000000000);
     return new Timestamp(year, month, day, hour, minute, second, nano);
   }
 
@@ -77,16 +74,11 @@ public class Timestamp extends Date {
   public int compareTo(Timestamp ts) {
     final int d = super.compareTo((Date)ts);
 
-    return
-        d == 0 ?
-            (getNanos()==ts.getNanos() ?
-                0 :
-                (getNanos()<ts.getNanos() ? -1 : 1))  :
-            d;
+    return d == 0 ? getNanos() - ts.getNanos() : d;
   }
 
-  // This implementation seems to be changed in Java version 1.6. In previous
-  // version =< 1.5 it always throws an ClassCastException.
+  // This implementation has changed in Java 1.6. In previous versions (=< 1.5)
+  // it always throws a ClassCastException.
   public int compareTo(Date d) {
     return
         d instanceof Timestamp ?
@@ -144,7 +136,7 @@ public class Timestamp extends Date {
     return this.jsdate.getFullYear() + '-' + (m < 10 ? '0' + m : m) +
         '-' + (d < 10 ? '0' + d : d) + ' ' + (h < 10 ? '0' + h : h) + ':' +
         (i < 10 ? '0' + i : i) + ':' + (s < 10 ? '0' + s : s) + '.' +
-        ('000000000' + nanos).slice(-9);
+        (nanos ? ('000000000' + nanos).slice(-9) : 0);
   }-*/;
 
   private native void setMilliseconds(int millis) /*-{
