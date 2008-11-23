@@ -23,7 +23,7 @@
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar and JUNIT_JAR to the junit.jar file.
   </description>
-	<property name="version" value="1.0" />
+	<property name="version" value="1.1" />
 	<property name="packagefile" value="cobogw.java.sql" />
 	<property name="jarfile" value="${packagefile}.jar" />
 	<property name="zipprefix" value="${packagefile}-${version}" />
