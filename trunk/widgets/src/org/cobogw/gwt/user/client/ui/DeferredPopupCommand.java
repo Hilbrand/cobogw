@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -61,19 +61,19 @@ public class DeferredPopupCommand {
     this(true);
   }
   /**
-   * 
+   *
    * @param modal <code>true</code> if keyboard or mouse events that do not
    *          target the PopupPanel or its children should be ignored
    */
   public DeferredPopupCommand(boolean modal) {
     this(new PopupPanel(false, modal));
-  } 
-  
+  }
+
   public DeferredPopupCommand(PopupPanel popup) {
     this.popup = popup;
     popup.setStyleName("cbg-DeferredPopupCommand");
   }
-  
+
   /**
    * Enqueues a {@link Command} to be fired after all current events have been
    * handled and displays an optional modal {@link PopupPanel} during the time
@@ -84,7 +84,6 @@ public class DeferredPopupCommand {
    *           duration of the {@link Command#execute()} method
    */
   public void addCommand(final Command cmd, final String text) {
-
     popup.setWidget(new Label(text));
     DeferredPopupCommand.addCommand(cmd, popup);
   }
