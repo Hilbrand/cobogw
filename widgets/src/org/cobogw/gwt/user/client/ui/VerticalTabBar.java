@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * This file is a derivative work of the file:
  *   com.google.gwt.user.client.ui.TabBar.java

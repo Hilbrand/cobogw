@@ -1,33 +1,33 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
+ *
  * This file is a derivative work of the file:
  *   com.google.gwt.user.client.ui.TabPanel.java
  * The original file is available from:
  *   http://code.google.com/webtoolkit/
- *       
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- *   
+ *
  * License of original work
- *   
+ *
  * Copyright 2006 Google Inc.
- *   
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -47,23 +47,22 @@ import com.google.gwt.user.client.ui.TabListenerCollection;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.client.ui.WidgetCollection;
 
-
 import java.util.Iterator;
 
 /**
  * A panel that represents a tabbed set of pages, each of which contains another
  * widget. Its child widgets are shown as the user selects the various tabs
  * associated with them. The tabs can contain arbitrary HTML.
- * 
- * The vertical tab panel is a derivate of the TabPanel 
+ *
+ * The vertical tab panel is derived from the TabPanel widget
  * {@link com.google.gwt.user.client.ui.TabPanel}. This class uses the same
- * CSS style names as the TabPanel class to minimize differences between 
+ * CSS style names as the TabPanel class to minimize differences between
  * that class because the only difference is the orientation of the TabPanel.
- *  
+ *
  * <p>
  * <img class='gallery' src='VerticalTabPanel.png'/>
  * </p>
- * 
+ *
  * <p>
  * Note that this widget is not a panel per se, but rather a
  * {@link com.google.gwt.user.client.ui.Composite} that aggregates a
@@ -71,21 +70,21 @@ import java.util.Iterator;
  * {@link com.google.gwt.user.client.ui.DeckPanel}. It does, however, implement
  * {@link com.google.gwt.user.client.ui.HasWidgets}.
  * </p>
- * 
+ *
  * <h3>CSS Style Rules</h3>
  * <ul class='css'>
  * <li>.gwt-TabPanel { the tab panel itself }</li>
  * <li>.gwt-TabPanelBottom { the bottom section of the tab panel (the deck
  * containing the widget) }</li>
  * </ul>
- * 
+ *
  */
 public class VerticalTabPanel extends Composite implements TabListener,
     SourcesTabEvents, HasWidgets, IndexedPanel {
 
-  private WidgetCollection children = new WidgetCollection(this);
-  private DeckPanel deck = new DeckPanel();
-  private VerticalTabBar tabBar = new VerticalTabBar();
+  private final WidgetCollection children = new WidgetCollection(this);
+  private final DeckPanel deck = new DeckPanel();
+  private final VerticalTabBar tabBar = new VerticalTabBar();
   private TabListenerCollection tabListeners;
 
   /**
@@ -111,7 +110,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Adds a widget to the tab panel.
-   * 
+   *
    * @param w the widget to be added
    * @param tabText the text to be shown on its tab
    */
@@ -121,7 +120,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Adds a widget to the tab panel.
-   * 
+   *
    * @param w the widget to be added
    * @param tabText the text to be shown on its tab
    * @param asHTML <code>true</code> to treat the specified text as HTML
@@ -132,7 +131,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Adds a widget to the tab panel.
-   * 
+   *
    * @param w the widget to be added
    * @param tabWidget the widget to be shown in the tab
    */
@@ -155,7 +154,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Gets the deck panel within this tab panel.
-   * 
+   *
    * @return the deck panel
    */
   public DeckPanel getDeckPanel() {
@@ -164,7 +163,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Gets the tab bar within this tab panel.
-   * 
+   *
    * @return the tab bar
    */
   public VerticalTabBar getTabBar() {
@@ -185,7 +184,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Inserts a widget into the tab panel.
-   * 
+   *
    * @param widget the widget to be inserted
    * @param tabText the text to be shown on its tab
    * @param asHTML <code>true</code> to treat the specified text as HTML
@@ -200,7 +199,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Inserts a widget into the tab panel.
-   * 
+   *
    * @param widget the widget to be inserted.
    * @param tabWidget the widget to be shown on its tab.
    * @param beforeIndex the index before which it will be inserted.
@@ -213,7 +212,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Inserts a widget into the tab panel.
-   * 
+   *
    * @param widget the widget to be inserted
    * @param tabText the text to be shown on its tab
    * @param beforeIndex the index before which it will be inserted
@@ -222,7 +221,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
     insert(widget, tabText, false, beforeIndex);
   }
 
-  public Iterator iterator() {
+  public Iterator<Widget> iterator() {
     return children.iterator();
   }
 
@@ -246,7 +245,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Removes the given widget, and its associated tab.
-   * 
+   *
    * @param widget the widget to be removed
    */
   public boolean remove(Widget widget) {
@@ -270,7 +269,7 @@ public class VerticalTabPanel extends Composite implements TabListener,
 
   /**
    * Programmatically selects the specified tab.
-   * 
+   *
    * @param index the index of the tab to be selected
    */
   public void selectTab(int index) {

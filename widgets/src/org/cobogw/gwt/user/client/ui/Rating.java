@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -294,15 +294,15 @@ public class Rating extends Composite {
 
   /**
    * Sets the rating selection to read only if argument is <code>true</code>,
-   * and if <code>false</code> makes setting new rating possible. The default
-   * value behavior of the {@link Rating} is that the rating can be set.
+   * and if <code>false</code> enable setting the rating.
    *
-   *
-   * @param readOnly If <code>true</code> make read only else make possible to
-   *        set rating
+   * @param readOnly If <code>true</code> make read only
    */
   public void setReadOnly(boolean readOnly) {
     this.readOnly = readOnly;
+    if (readOnly) {
+      setItemsState(-1);
+    }
     getElement().getStyle().setProperty(CSS.A.CURSOR,
         readOnly ? "" : CSS.V.CURSOR.POINTER);
   }
@@ -387,8 +387,8 @@ public class Rating extends Composite {
 
   /**
    * Private method sets the state of each rating item. <code>hoverIndex</code>
-   * is the item the user hovers over. In case the value is <code>-1</code> no
-   * hovering is done.
+   * is the item the user hovers over. In case the value is <code>-1</code> the
+   * hover state will not be shown. This is used to reset the hover state.
    *
    * @param hoverIndex Current item hovered or <code>-1</code> if no hover
    */
