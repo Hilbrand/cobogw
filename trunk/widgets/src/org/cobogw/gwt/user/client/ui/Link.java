@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -53,10 +53,28 @@ public class Link extends Widget {
   }
 
   /**
-   * Sets the <code>target</code> attribute.
+   * Adds properties to a link to open in the link an external window. This can
+   * be used to open a window in case you don't want the user to leave the
+   * web application. A use case is to open a help document.
    *
-   * @param target anchor target, e.g. "new"
+   * @param external If <code>true</code> adds properties to open the link in an
+   *                 new window and removes these properties when
+   *                 <code>false</code>
    */
+  public void setExternalLink(boolean external) {
+    getElement().<AnchorElement>cast().setRel(external? "external" : "");
+    getElement().<AnchorElement>cast().setTarget(external? "_blank": "");
+  }
+
+  /**
+   * @deprecated The method {@link #setExternalLink(boolean)} provides a
+   * preferred technique to make links open in new windows.
+   *
+   * <p>Sets the <code>target</code> attribute.
+   *
+   * @param target anchor target, e.g. "_blank"
+   */
+  @Deprecated
   public void setTarget(String target) {
     getElement().<AnchorElement>cast().setTarget(target);
   }
