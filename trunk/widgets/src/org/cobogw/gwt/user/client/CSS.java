@@ -1,5 +1,5 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,12 +25,13 @@ package org.cobogw.gwt.user.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.Widget;
 
 import org.cobogw.gwt.user.client.impl.CSSImpl;
 
 /**
  * <p>Defines a set of
- * <a href="http://www.w3.org/TR/REC-CSS1">CSS attributes, values</a> and 
+ * <a href="http://www.w3.org/TR/CSS21/">CSS attributes, values</a> and 
  * colors as a typesafe enumeration.  
  * 
  * <p>All static identifiers will be in-lined by the GWT compiler and unused 
@@ -54,12 +55,9 @@ import org.cobogw.gwt.user.client.impl.CSSImpl;
  * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/propidx.html">
  *     W3C Appendix F. Full property table</a>
  */
-public final class CSS {
-  private static CSSImpl impl;
+public class CSS {
 
-  static {
-    impl = (CSSImpl) GWT.create(CSSImpl.class);
-  }
+  private static final CSSImpl impl = GWT.create(CSSImpl.class);
 
   /**
    * This class contains all CSS Attributes. 
@@ -187,7 +185,7 @@ public final class CSS {
     /**
      * BORDER_STYLE
      * <p>CSS: 'border-style', javaScript: 'borderStyle'
-     * <br>Values: [none | hidden | dotted | dashed | solid | double | groove | 
+     * <br>Values: [{none | hidden | dotted | dashed | solid | double | groove | 
      * ridge | inset | outset]{1,4} | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -601,7 +599,7 @@ public final class CSS {
      * FLOAT
      * <p>'float' is a reserved keyword in javaScript. Therefore the name can't
      * be used. So the value 'cssFloat' is defined. However, in IE this name
-     * is called 'styleFloat'. The implementation takes care of this. 
+     * is called 'styleFloat'. This implementation takes care of that. 
      *  
      * <p>CSS: 'float', javaScript IE:'styleFloat', other: 'cssFloat' 
      * <br>Values: left | right | none | inherit
@@ -910,6 +908,20 @@ public final class CSS {
     public static final String ORPHANS = "orphans";
 
     /**
+     * OUTLINE
+     * <p>
+     * <p>Supported: Not supported by IE6 & 7.
+     * <p>CSS: 'outline', javaScript: 'outline'
+     * <br>Values: [ 'outline-color' || 'outline-style' || 'outline-width' ] 
+     * | inherit
+     * <br>Initial value: see individual properties
+     * <br>Applies to: all
+     * <br>Inherited?: no
+     * <br>Media groups: visual, interactive
+     */
+    public static final String OUTLINE = "outline";
+
+    /**
      * OUTLINE_COLOR
      * <p>CSS: 'outline-color', javaScript: 'outlineColor'
      * <br>Values: &lt;color&gt; | invert | inherit
@@ -941,18 +953,6 @@ public final class CSS {
      * <br>Media groups: visual, interactive
      */
     public static final String OUTLINE_WIDTH = "outlineWidth";
-
-    /**
-     * OUTLINE
-     * <p>CSS: 'outline', javaScript: 'outline'
-     * <br>Values: [ 'outline-color' || 'outline-style' || 'outline-width' ] 
-     * | inherit
-     * <br>Initial value: see individual properties
-     * <br>Applies to: all
-     * <br>Inherited?: no
-     * <br>Media groups: visual, interactive
-     */
-    public static final String OUTLINE = "outline";
 
     /**
      * OVERFLOW
@@ -1774,8 +1774,15 @@ public final class CSS {
       public static final String INLINE = "inline";
 
       /**
-       * This value causes an element to generate a block box, which itself is
-       * flowed as a single inline box, similar to a replaced element. The
+       * NOTE: The property 'inline-block' is not fully supported by
+       * Internet Explorer 6 and 7. To obtain the effect the static method
+       * {@link CSS#setInlineBlock(Element)} should be used. This method sets
+       * the property in a browser dependent way. For more background
+       * information on this issue see:
+       * {@link http://www.brunildo.org/test/InlineBlockLayout.html}
+       *
+       * <p>This value causes an element to generate a block box, which itself
+       * is flowed as a single inline box, similar to a replaced element. The
        * inside of an inline-block is formatted as a block box, and the element
        * itself is formatted as an inline replaced element.
        */
@@ -1871,6 +1878,11 @@ public final class CSS {
 
     /**
      * CSS property {@link A#FONT_SIZE} values.
+     * 
+     * <p>Avoid using font size set as named values, like the ones present in
+     * this class, e.g. small, etc., better should be avoided because different
+     * browsers will display font's in different sizes. In other words small in
+     * one browser isn't the same size as in another browser.
      */
     public static final class FONT_SIZE {
       public static final String XX_SMALL = "xx-small";
@@ -2450,13 +2462,99 @@ public final class CSS {
   }
 
   /**
+   * Convenience method to set a style property on an element.
+   * 
+   * <p>The GWT compiler will optimize this method away, meaning there are no
+   * additional costs of an extra method call when using method.
+   * 
+   * @param element Element to set the property on
+   * @param name Name of the property
+   * @param value Value of the property
+   */
+  public static void setProperty(Element element, String name, String value) {
+    element.getStyle().setProperty(name, value);
+  }
+  
+  /**
+   * Convenience method to set a style property on a widget.
+   * 
+   * <p>The GWT compiler will optimize this method away, meaning there are no
+   * additional costs of an extra method call when using method.
+   * 
+   * @param widget Widget to set the property on
+   * @param name Name of the property
+   * @param value Value of the property
+   */
+  public static void setProperty(Widget widget, String name, String value) {
+    widget.getElement().getStyle().setProperty(name, value);
+  }
+  
+  /**
+   * Convenience method to set a style pixel property on an element.
+   * 
+   * <p>The GWT compiler will optimize this method away, meaning there are no
+   * additional costs of an extra method call when using method.
+   * 
+   * @param element Element to set the property on
+   * @param name Name of the property
+   * @param value Value of the property in pixels
+   */
+  public static void setPropertyPx(Element element, String name, int value) {
+    element.getStyle().setPropertyPx(name, value);
+  }
+
+  /**
+   * Convenience method to set a style pixel property on an element.
+   * 
+   * <p>The GWT compiler will optimize this method away, meaning there are no
+   * additional costs of an extra method call when using method.
+   * 
+   * @param widget Widget to set the property on
+   * @param name Name of the property
+   * @param value Value of the property in pixels
+   */
+  public static void setPropertyPx(Widget widget, String name, int value) {
+    widget.getElement().getStyle().setPropertyPx(name, value);
+  }
+
+  /**
+   * Method to handle the browser specific implementation requirements for the
+   * property value 'inline-block' of the property 'display'. For more
+   * background information on the browser issues related to this property:
+   * @see http://www.brunildo.org/test/InlineBlockLayout.html
+   * @see http://www.tanfa.co.uk/archives/show.asp?var=300
+   * @see http://www.brunildo.org/test/inline-block.html 
+   *
+   * @param element Element to set the display property inline-block on
+   */
+  public static void setInlineBlock(Element element) {
+    impl.setInlineBlock(element);
+  }
+  
+  /**
    * Set the Opacity on an element taking care of browser specific
    * implementations.
    *
-   * @param e Element to set opacity
+   * @param element Element to set opacity
    * @param opacity value between 0 and 1
    */
-  public static void setOpacity(Element e, float opacity) {
-    impl.setOpacity(e, opacity);
+  public static void setOpacity(Element element, float opacity) {
+    impl.setOpacity(element, opacity);
+  }
+
+  /**
+   * Make an element unselectable by the user and takes care of the browser
+   * specific implementations.
+   *     
+   * <p>This method will <i>not</i> protect you from people who want to copy
+   * content and the technique should preferable only be used on specific
+   * elements like a button. 
+   * 
+   * @param element Element to make unselectable
+   * @param selectable If <code>true</code> elements becomes unselectable,
+   *                   if <code>false</code> it becomes selectable.
+   */
+  public static void setSelectable(Element element, boolean selectable) {
+    impl.setSelectable(element, selectable);
   }
 }
