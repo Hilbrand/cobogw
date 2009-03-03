@@ -1,7 +1,7 @@
 Testsuite: com.google.gwt.emultest.client.DateTestCase
-Tests run: 9, Failures: 0, Errors: 0, Time elapsed: 14,657 sec
+Tests run: 9, Failures: 0, Errors: 0, Time elapsed: 14,766 sec
 ------------- Standard Output ---------------
-Scanning for additional dependencies: jar:file:/G:/libs/gwt-windows-1.5.2/gwt-user.jar!/com/google/gwt/junit/translatable/com/google/gwt/junit/client/impl/GWTRunner.java
+Scanning for additional dependencies: jar:file:/E:/libraries/gwt-windows-1.5.3/gwt-user.jar!/com/google/gwt/junit/translatable/com/google/gwt/junit/client/impl/GWTRunner.java
    Computing all possible rebind results for 'com.google.gwt.junit.client.impl.JUnitHost'
       Rebinding com.google.gwt.junit.client.impl.JUnitHost
          Invoking <generate-with class='com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator'/>
@@ -17,9 +17,9 @@ Scanning for additional dependencies: jar:file:/G:/libs/gwt-windows-1.5.2/gwt-us
                                        private java.util.List<com.google.gwt.benchmarks.client.impl.Trial> trials
                                           java.util.List<com.google.gwt.benchmarks.client.impl.Trial>
                                              Verifying instantiability
-                                                java.util.ArrayList<com.google.gwt.benchmarks.client.impl.Trial>
-                                                   Checking parameters of 'java.util.ArrayList<com.google.gwt.benchmarks.client.impl.Trial>'
-                                                      Checking type argument 0 of type 'java.util.ArrayList<E>' because it is directly exposed in this type or in one of its subtypes
+                                                java.util.LinkedList<com.google.gwt.benchmarks.client.impl.Trial>
+                                                   Checking parameters of 'java.util.LinkedList<com.google.gwt.benchmarks.client.impl.Trial>'
+                                                      Checking type argument 0 of type 'java.util.LinkedList<E>' because it is directly exposed in this type or in one of its subtypes
                                                          com.google.gwt.benchmarks.client.impl.Trial
                                                             Verifying instantiability
                                                                com.google.gwt.benchmarks.client.impl.Trial
@@ -32,12 +32,12 @@ Scanning for additional dependencies: jar:file:/G:/libs/gwt-windows-1.5.2/gwt-us
                                                                                     [WARN] Field 'private final com.google.gwt.i18n.client.impl.ConstantMap.OrderedConstantSet<java.lang.String> keys' will not be serialized because it is final
 ------------- ---------------- ---------------
 
-Testcase: testValueOf1 took 13,921 sec
-Testcase: testValueOf2 took 0,031 sec
-Testcase: testValueOf3 took 0,016 sec
-Testcase: testValueOf4 took 0,062 sec
-Testcase: testDate1 took 0,015 sec
-Testcase: testDate2 took 0,031 sec
-Testcase: testSetTime took 0,062 sec
+Testcase: testValueOf1 took 13,718 sec
+Testcase: testValueOf2 took 0,015 sec
+Testcase: testValueOf3 took 0,015 sec
+Testcase: testValueOf4 took 0,016 sec
+Testcase: testDate1 took 0,016 sec
+Testcase: testDate2 took 0,015 sec
+Testcase: testSetTime took 0,015 sec
 Testcase: testToString1 took 0,016 sec
-Testcase: testToString2 took 0,032 sec
+Testcase: testToString2 took 0,016 sec

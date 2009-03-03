@@ -1,5 +1,5 @@
 Testsuite: com.google.gwt.user.client.rpc.RPCJavaSqlTestCase
-Tests run: 12, Failures: 0, Errors: 0, Time elapsed: 10,046 sec
+Tests run: 12, Failures: 0, Errors: 0, Time elapsed: 10,953 sec
 ------------- Standard Output ---------------
 Rebinding com.google.gwt.junit.client.impl.JUnitHost
    Invoking <generate-with class='com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator'/>
@@ -15,9 +15,9 @@ Rebinding com.google.gwt.junit.client.impl.JUnitHost
                                  private java.util.List<com.google.gwt.benchmarks.client.impl.Trial> trials
                                     java.util.List<com.google.gwt.benchmarks.client.impl.Trial>
                                        Verifying instantiability
-                                          java.util.ArrayList<com.google.gwt.benchmarks.client.impl.Trial>
-                                             Checking parameters of 'java.util.ArrayList<com.google.gwt.benchmarks.client.impl.Trial>'
-                                                Checking type argument 0 of type 'java.util.ArrayList<E>' because it is directly exposed in this type or in one of its subtypes
+                                          java.util.Vector<com.google.gwt.benchmarks.client.impl.Trial>
+                                             Checking parameters of 'java.util.Vector<com.google.gwt.benchmarks.client.impl.Trial>'
+                                                Checking type argument 0 of type 'java.util.Vector<E>' because it is directly exposed in this type or in one of its subtypes
                                                    com.google.gwt.benchmarks.client.impl.Trial
                                                       Verifying instantiability
                                                          com.google.gwt.benchmarks.client.impl.Trial
@@ -30,15 +30,15 @@ Rebinding com.google.gwt.junit.client.impl.JUnitHost
                                                                               [WARN] Field 'private final com.google.gwt.i18n.client.impl.ConstantMap.OrderedConstantSet<java.lang.String> keys' will not be serialized because it is final
 ------------- ---------------- ---------------
 
-Testcase: testDate1 took 8,672 sec
-Testcase: testDate2 took 0,063 sec
-Testcase: testDate3 took 0,063 sec
-Testcase: testTime1 took 0,062 sec
-Testcase: testTime2 took 0,062 sec
-Testcase: testTime3 took 0,14 sec
-Testcase: testTime4 took 0,094 sec
-Testcase: testTimestamp1 took 0,094 sec
-Testcase: testTimestamp2 took 0,125 sec
-Testcase: testTimestamp3 took 0,125 sec
-Testcase: testTimestamp4 took 0,094 sec
-Testcase: testTimestamp5 took 0,125 sec
+Testcase: testDate1 took 8,859 sec
+Testcase: testDate2 took 0,125 sec
+Testcase: testDate3 took 0,125 sec
+Testcase: testTime1 took 0,125 sec
+Testcase: testTime2 took 0,125 sec
+Testcase: testTime3 took 0,063 sec
+Testcase: testTime4 took 0,062 sec
+Testcase: testTimestamp1 took 0,063 sec
+Testcase: testTimestamp2 took 0,062 sec
+Testcase: testTimestamp3 took 0,047 sec
+Testcase: testTimestamp4 took 0,063 sec
+Testcase: testTimestamp5 took 0,063 sec
