@@ -193,7 +193,7 @@ public class Button extends FocusWidget implements HasHTML {
     CSS.setSelectable(buttonContent, false);
     setEnabled(true);
     setSize(70);
-    setSizeRatio(1);
+    setSizeRatio(1, 8);
     CSS.setProperty(this, CSS.A.FONT_FAMILY, "Arial, Helvetica, sans-serif");
     setColor(0, 0);
   }
@@ -330,7 +330,7 @@ public class Button extends FocusWidget implements HasHTML {
    * 50 the text color will be white, otherwise it will be black. The color for
    * the text of a disabled button is similarly created, but also uses the hue.
    * If the calculated text colors need to be different they can be overridden
-   * with the method {@link #setColorText(String, String))}.
+   * with the method {@link #setColorText(String, String)}.
    *
    * @param hue the hue component of the color, between 0-359
    * @param saturation the saturation component of the color, between 0-100
@@ -347,7 +347,7 @@ public class Button extends FocusWidget implements HasHTML {
     colorBorder =
         Color.HSBtoRGB(hue, saturation, 74/*187*/-satof).toRGBString();
     colorContentTop =
-        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toRGBString();
+        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toHexString();
     colorContentMid =
         Color.HSBtoRGB(hue, saturation, 93/*238*/-3/*7*/*satof).toRGBString();
     colorContentBottom =
@@ -432,16 +432,18 @@ public class Button extends FocusWidget implements HasHTML {
 
   /**
    * Sets the ratio between the button size and the font size. The ratio is
-   * applied to the height of elements and set in <code>em</code>. The ratio is
-   * also applied to the left and right padding of the <code>div</code>
-   * containing the text.
+   * applied to the height of elements and the calculated ratio's are set in
+   * <code>em</code> on the elements. The padding is applied to the left and
+   * right padding of the <code>div</code> containing the text and is specified
+   * in <code>px</code>.
    *
    * @param ratio Ratio between button size and font size
+   * @param padding Padding left and right side of text in <code>px</code> 
    */
-  public void setSizeRatio(double ratio) {
+  public void setSizeRatio(double ratio, int padding) {
     CSS.setProperty(buttonTop, CSS.A.BORDER_BOTTOM_WIDTH, ratio * 0.2 + "em");
     CSS.setProperty(buttonTop, CSS.A.HEIGHT, ratio * 0.9 + "em");
-    CSS.setProperty(buttonContent, CSS.A.PADDING, "0 " + (ratio * 0.8) + "em");
+    CSS.setProperty(buttonContent, CSS.A.PADDING, "0 " + padding + "px");
     CSS.setProperty(buttonContent, CSS.A.LINE_HEIGHT, ratio*1.8 + "em");
   }
 
@@ -454,7 +456,7 @@ public class Button extends FocusWidget implements HasHTML {
   /**
    * Set's the button text as plain text.
    *
-   * @param html The button text as plain text
+   * @param text The button text as plain text
    */
   public void setText(String text) {
     buttonContent.setInnerText(text);
