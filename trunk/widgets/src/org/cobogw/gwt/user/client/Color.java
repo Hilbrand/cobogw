@@ -1,12 +1,12 @@
 /*
- * Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -15,27 +15,31 @@
  */
 package org.cobogw.gwt.user.client;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.RootPanel;
+
 /**
- * This class defines a set of color keywords as a typesafe enumeration as 
+ * This class defines a set of color keywords as a typesafe enumeration as
  * defined in the CSS 2.1 Specification.
  * <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/">
- * http://www.w3.org/TR/2007/CR-CSS21-20070719/</a>  
- * 
- * <p>The list of 17 color keywords is: aqua, black, blue, fuchsia, gray, green, 
- * lime, maroon, navy, olive, orange, purple, red, silver, teal, white, and 
- * yellow. See also: Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) 
- * Specification on Colors:
- * <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units">
- * http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units</a>.
+ * http://www.w3.org/TR/2007/CR-CSS21-20070719/</a> and provides similar methods
+ * but nog a complete set of methods available in the
+ * <code>java.awt.Color</code>.
  *
- * <p>The class also provides a list of the X11 colors supported by popular 
- * browsers. The resulting list is precisely the same as the 
+ * <p>The list of 17 color keywords is: aqua, black, blue, fuchsia, gray, green,
+ * lime, maroon, navy, olive, orange, purple, red, silver, teal, white, and
+ * yellow. See also: Cascading Style Sheets Level 2 Revision 1 (CSS 2.1)
+ *
+ * <p>The class also provides a list of the X11 colors supported by popular
+ * browsers. The resulting list is precisely the same as the
  * <a href="http://www.w3.org/TR/SVG/types.html#ColorKeywords">
- * SVG 1.0 color keyword names</a>. These colors are defined in this class by 
+ * SVG 1.0 color keyword names</a>. These colors are defined in this class by
  * their respective numeric color value.
- * See also: 
- * <a href="http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color">  
- * http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color</a>.
+ *
+ * @see http://www.w3.org/TR/2007/CR-CSS21-20070719
+ * @see http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units
+ * @see http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color
  */
 public class Color {
 
@@ -782,4 +786,146 @@ public class Color {
    * YellowGreen (#9ACD32)
    */
   public static final String YELLOWGREEN = "#9acd32";
+
+  /**
+   * Creates a hex string representation of the RGB arguments, like "#0DFFAA".
+   *
+   * @param red the red component
+   * @param green the green component
+   * @param blue the blue component
+   * @return RGB values as a color property hex argument string
+   */
+  public static String toHexString(int red, int green, int blue) {
+    return "#" + (red<16?"0":"") + Integer.toHexString(red) +
+    (green<16?"0":"") + Integer.toHexString(green) +
+    (blue<16?"0":"") + Integer.toHexString(blue);
+  }
+
+  /**
+   * Creates a rgb() method string representation of the RGB arguments, like
+   * "rgb(red, green, blue)".
+   *
+   * @param red the red component
+   * @param green the green component
+   * @param blue the blue component
+   * @return RGB values as the string "rgb(red, green, blue)"
+   */
+  public static String toRGBString(int red, int green, int blue) {
+    return "rgb(" + red + "," + green + "," + blue + ")";
+  }
+
+  /**
+   * Converts the components of a color, as specified by the HSB model, to an
+   * equivalent set of values for the default RGB model. This method has a
+   * slightly different interface than the java.awt.Color version of this
+   * method.
+   *
+   * <p>The hue component should be a value between 0-360. The saturation and
+   * brightness should be an integer between 0-100.
+   *
+   * @param hue the hue component of the color, between 0-360
+   * @param saturation the saturation component of the color, between 0-100
+   * @param brightness the brightness component of the color, between 0-100
+   * @return a Color object with the specified hue, saturation, and brightness
+   */
+  public static Color HSBtoRGB(int hue, int saturation, int brightness) {
+    int r = 0, g = 0, b = 0;
+
+    brightness = (int)(brightness * 2.55);
+    if (saturation == 0) {
+      r = g = b = brightness;
+    } else {
+      double h = hue / 60.0;
+      double f = h - Math.floor(h);
+      int p = (brightness * (100 - saturation)) / 100;
+      int q = (int)((brightness * (100 - (saturation * f))) / 100);
+      int t = (int)(brightness * (100 - (saturation * (1.0 - f)))) / 100;
+      switch ((int)h) {
+      case 0:
+        r = brightness;
+        g = t;
+        b = p;
+        break;
+      case 1:
+        r = q;
+        g = brightness;
+        b = p;
+        break;
+      case 2:
+        r = p;
+        g = brightness;
+        b = t;
+        break;
+      case 3:
+        r = p;
+        g = q;
+        b = brightness;
+        break;
+      case 4:
+        r = t;
+        g = p;
+        b = brightness;
+        break;
+      case 5:
+        r = brightness;
+        g = p;
+        b = q;
+        break;
+      }
+    }
+    return new Color(r, g, b);
+  }
+
+  private final int red;
+  private final int green;
+  private final int blue;
+
+  /**
+   * Creates an opaque sRGB color with the specified red, green, and blue values
+   * in the range (0 - 255).
+   *
+   * @param r the red component
+   * @param g the green component
+   * @param b the blue component
+   */
+  public Color(int r, int g, int b) {
+    this.red = r;
+    this.green = g;
+    this.blue = b;
+  }
+
+  /**
+   * Returns the blue component in the range 0-255 in the default sRGB space.
+   *
+   * @return the blue component
+   */
+  public int getBlue() {
+    return blue;
+  }
+
+  /**
+   * Returns the green component in the range 0-255 in the default sRGB space.
+   *
+   * @return the green component
+   */
+  public int getGreen() {
+    return green;
+  }
+
+  /**
+   * Returns the red component in the range 0-255 in the default sRGB space.
+   *
+   * @return the red component
+   */
+  public int getRed() {
+    return red;
+  }
+
+  public String toHexString() {
+    return Color.toHexString(red, green, blue);
+  }
+
+  public String toRGBString() {
+    return Color.toRGBString(red, green, blue);
+  }
 }
