@@ -1,23 +1,23 @@
 /*
  * Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
- * 
- * This class is based on the W3C document 'Cascading Style Sheets Level 2 
- * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July 
- * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology, 
- * European Research Consortium for Informatics and Mathematics, Keio 
- * University), All Rights Reserved. 
+ *
+ * This class is based on the W3C document 'Cascading Style Sheets Level 2
+ * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July
+ * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology,
+ * European Research Consortium for Informatics and Mathematics, Keio
+ * University), All Rights Reserved.
  * <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">
  *     Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
  */
@@ -31,24 +31,24 @@ import org.cobogw.gwt.user.client.impl.CSSImpl;
 
 /**
  * <p>Defines a set of
- * <a href="http://www.w3.org/TR/CSS21/">CSS attributes, values</a> and 
- * colors as a typesafe enumeration.  
- * 
- * <p>All static identifiers will be in-lined by the GWT compiler and unused 
+ * <a href="http://www.w3.org/TR/CSS21/">CSS attributes, values</a> and
+ * colors as a typesafe enumeration.
+ *
+ * <p>All static identifiers will be in-lined by the GWT compiler and unused
  * identifiers will be ignored. Which means no overhead is created by using
  * this class.
- * 
+ *
  * <p>This class takes care of browser incompatibilities where possible, like
  * {@link CSS.A#FLOAT} or otherwise provides information regarding other
- * solutions. 
- * 
+ * solutions.
+ *
  * <p>The support for browser incompatibilities is probably not complete, if
- * you find any issue please report. 
- * 
- * <p>This class is based on the W3C document 'Cascading Style Sheets Level 2 
- * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July 
- * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology, 
- * European Research Consortium for Informatics and Mathematics, Keio 
+ * you find any issue please report.
+ *
+ * <p>This class is based on the W3C document 'Cascading Style Sheets Level 2
+ * Revision 1 (CSS 2.1) Specification, W3C Candidate Recommendation 19 July
+ * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology,
+ * European Research Consortium for Informatics and Mathematics, Keio
  * University), All Rights Reserved.
  * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">
  *     Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
@@ -60,15 +60,15 @@ public class CSS {
   private static final CSSImpl impl = GWT.create(CSSImpl.class);
 
   /**
-   * This class contains all CSS Attributes. 
+   * This class contains all CSS Attributes.
    */
   public static final class A {
 
     /**
      * AZIMUTH
      * <p>CSS: 'azimuth', javaScript: 'azimuth'
-     * <br>Values: &lt;angle&gt; | [[ left-side | far-left | left | center-left 
-     * | center | center-right | right | far-right | right-side ] || behind ] | 
+     * <br>Values: &lt;angle&gt; | [[ left-side | far-left | left | center-left
+     * | center | center-right | right | far-right | right-side ] || behind ] |
      * leftwards | rightwards | inherit
      * <br>Initial value: center
      * <br>Applies to: all
@@ -113,8 +113,8 @@ public class CSS {
     /**
      * BACKGROUND_POSITION
      * <p>CSS: 'background-position', javaScript: 'backgroundPosition'
-     * <br>Values: [ [ &lt;percentage&gt; | &lt;length&gt; | left | center | 
-     * right ] [ &lt;percentage&gt; | &lt;length&gt; | top | center | bottom ]? 
+     * <br>Values: [ [ &lt;percentage&gt; | &lt;length&gt; | left | center |
+     * right ] [ &lt;percentage&gt; | &lt;length&gt; | top | center | bottom ]?
      * ] | [ [ left | center | right ] || [ top | center | bottom ] ] | inherit
      * <br>Initial value: 0% 0%
      * <br>Applies to: all
@@ -138,7 +138,7 @@ public class CSS {
     /**
      * BACKGROUND
      * <p>CSS: 'background', javaScript: 'background'
-     * <br>Values: ['background-color' || 'background-image' || 
+     * <br>Values: ['background-color' || 'background-image' ||
      * 'background-repeat' || 'background-attachment' || 'background-position']
      *  | inherit
      * <br>Initial value: see individual properties
@@ -185,7 +185,7 @@ public class CSS {
     /**
      * BORDER_STYLE
      * <p>CSS: 'border-style', javaScript: 'borderStyle'
-     * <br>Values: [{none | hidden | dotted | dashed | solid | double | groove | 
+     * <br>Values: [{none | hidden | dotted | dashed | solid | double | groove |
      * ridge | inset | outset]{1,4} | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -197,7 +197,7 @@ public class CSS {
     /**
      * BORDER_TOP
      * <p>CSS: 'border-top', javaScript: 'borderTop'
-     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; || 
+     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; ||
      * 'border-top-color' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -209,7 +209,7 @@ public class CSS {
     /**
      * BORDER_RIGHT
      * <p>CSS: 'border-right', javaScript: 'borderRight'
-     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; || 
+     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; ||
      * 'border-top-color' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -221,7 +221,7 @@ public class CSS {
     /**
      * BORDER_BOTTOM
      * <p>CSS: 'border-bottom', javaScript: 'borderBottom'
-     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; || 
+     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; ||
      * 'border-top-color' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -233,7 +233,7 @@ public class CSS {
     /**
      * BORDER_LEFT
      * <p>CSS: 'border-left', javaScript: 'borderLeft'
-     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; || 
+     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; ||
      * 'border-top-color' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -388,7 +388,7 @@ public class CSS {
     /**
      * BORDER
      * <p>CSS: 'border', javaScript: 'border'
-     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; || 
+     * <br>Values: [ &lt;border-width&gt; || &lt;border-style&gt; ||
      * 'border-top-color' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -456,7 +456,7 @@ public class CSS {
     /**
      * CONTENT
      * <p>CSS: 'content', javaScript: 'content'
-     * <br>Values: normal | none | [ &lt;string&gt; | &lt;uri&gt; | 
+     * <br>Values: normal | none | [ &lt;string&gt; | &lt;uri&gt; |
      * &lt;counter&gt; | attr(&lt;identifier&gt;) | open-quote | close-quote |
      *  no-open-quote | no-close-quote ]+ | inherit
      * <br>Initial value: normal
@@ -524,18 +524,18 @@ public class CSS {
     /**
      * CURSOR
      * <p>CSS: 'cursor', javaScript: 'cursor'
-     * <br>Values: [ [&lt;uri&gt; ,]* [ auto | crosshair | default | pointer | 
-     * move | e-resize | ne-resize | nw-resize | n-resize | se-resize | 
-     * sw-resize | s-resize | w-resize | text | wait | help | progress ] ] | 
-     * inherit. Microsoft specific extensions: [ all-scroll | col-resize | 
+     * <br>Values: [ [&lt;uri&gt; ,]* [ auto | crosshair | default | pointer |
+     * move | e-resize | ne-resize | nw-resize | n-resize | se-resize |
+     * sw-resize | s-resize | w-resize | text | wait | help | progress ] ] |
+     * inherit. Microsoft specific extensions: [ all-scroll | col-resize |
      * no-drop | not-allowed | row-resize | url | vertical-text ].
      * IE 5 and IE 5.5 only no hand, is the equivalent of pointer, which should
-     * be used instead of hand. 
+     * be used instead of hand.
      * <br>Initial value: auto
      * <br>Applies to: all
      * <br>Inherited?: yes
      * <br>Media groups: visual, interactive
-     * 
+     *
      * @see <a href=http://www.quirksmode.org/css/cursor.html">
      *     http://www.quirksmode.org/css/cursor.html</a>
      */
@@ -556,17 +556,17 @@ public class CSS {
      * DISPLAY
      * <p>Four display values are consistently supported on all browsers. block,
      *  inline, none and list-item are safe the others work partly or not.
-     * 
+     *
      * <p>CSS: 'display', javaScript: 'display'
      * <br>Values: inline | block | list-item | run-in | inline-block | table |
-     * inline-table | table-row-group | table-header-group | table-footer-group 
+     * inline-table | table-row-group | table-header-group | table-footer-group
      * | table-row | table-column-group | table-column | table-cell |
      * table-caption | none | inherit
      * <br>Initial value: inline
      * <br>Applies to: all
      * <br>Inherited?: no
      * <br>Media groups: all
-     * 
+     *
      * @see <a href="http://www.quirksmode.org/css/display.html">
      *     http://www.quirksmode.org/css/display.html</a>
      */
@@ -575,7 +575,7 @@ public class CSS {
     /**
      * ELEVATION
      * <p>CSS: 'elevation', javaScript: 'elevation'
-     * <br>Values: &lt;angle&gt;  | below | level | above | higher | lower | 
+     * <br>Values: &lt;angle&gt;  | below | level | above | higher | lower |
      * inherit
      * <br>Initial value: level
      * <br>Applies to: all
@@ -599,9 +599,9 @@ public class CSS {
      * FLOAT
      * <p>'float' is a reserved keyword in javaScript. Therefore the name can't
      * be used. So the value 'cssFloat' is defined. However, in IE this name
-     * is called 'styleFloat'. This implementation takes care of that. 
-     *  
-     * <p>CSS: 'float', javaScript IE:'styleFloat', other: 'cssFloat' 
+     * is called 'styleFloat'. This implementation takes care of that.
+     *
+     * <p>CSS: 'float', javaScript IE:'styleFloat', other: 'cssFloat'
      * <br>Values: left | right | none | inherit
      * <br>Initial value: none
      * <br>Applies to: all, but see 9.7
@@ -613,7 +613,7 @@ public class CSS {
     /**
      * FONT_FAMILY
      * <p>CSS: 'font-family', javaScript: 'fontFamily'
-     * <br>Values: [[ &lt;family-name&gt; | &lt;generic-family&gt; ] 
+     * <br>Values: [[ &lt;family-name&gt; | &lt;generic-family&gt; ]
      * [, &lt;family-name&gt;| &lt;generic-family&gt;]* ] | inherit
      * <br>Initial value: depends on user agent
      * <br>Applies to: all
@@ -625,7 +625,7 @@ public class CSS {
     /**
      * FONT_SIZE
      * <p>CSS: 'font-size', javaScript: 'fontSize'
-     * <br>Values: &lt;absolute-size&gt; | &lt;relative-size&gt; | 
+     * <br>Values: &lt;absolute-size&gt; | &lt;relative-size&gt; |
      * &lt;length&gt; | &lt;percentage&gt; | inherit
      * <br>Initial value: medium
      * <br>Applies to: all
@@ -660,7 +660,7 @@ public class CSS {
     /**
      * FONT_WEIGHT
      * <p>CSS: 'font-weight', javaScript: 'fontWeight'
-     * <br>Values: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 | 
+     * <br>Values: normal | bold | bolder | lighter | 100 | 200 | 300 | 400 |
      * 500 | 600 | 700 | 800 | 900 | inherit
      * <br>Initial value: normal
      * <br>Applies to: all
@@ -672,7 +672,7 @@ public class CSS {
     /**
      * FONT
      * <p>CSS: 'font', javaScript: 'font'
-     * <br>Values: [ [ 'font-style' || 'font-variant' || 'font-weight' ]? 
+     * <br>Values: [ [ 'font-style' || 'font-variant' || 'font-weight' ]?
      * 'font-size' [ / 'line-height' ]? 'font-family' ] | caption | icon |
      *  menu | message-box | small-caption | status-bar | inherit
      * <br>Initial value: see individual properties
@@ -688,7 +688,7 @@ public class CSS {
      * <p>CSS: 'height', javaScript: 'height'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | auto | inherit
      * <br>Initial value: auto
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * columns, and column groups
      * <br>Inherited?: no
      * Percentages: see prose
@@ -757,8 +757,8 @@ public class CSS {
     /**
      * LIST_STYLE_TYPE
      * <p>CSS: 'list-style-type', javaScript: 'listStyleType'
-     * <br>Values: disc | circle | square | decimal | decimal-leading-zero | 
-     * lower-roman | upper-roman | lower-greek |  lower-latin | upper-latin | 
+     * <br>Values: disc | circle | square | decimal | decimal-leading-zero |
+     * lower-roman | upper-roman | lower-greek |  lower-latin | upper-latin |
      * armenian | georgian |  lower-alpha | upper-alpha |  none | inherit
      * <br>Initial value: disc
      * <br>Applies to: elements with 'display: list-item'
@@ -770,7 +770,7 @@ public class CSS {
     /**
      * LIST_STYLE
      * <p>CSS: 'list-style', javaScript: 'listStyle'
-     * <br>Values: [ 'list-style-type' || 'list-style-position' || 
+     * <br>Values: [ 'list-style-type' || 'list-style-position' ||
      * 'list-style-image' ] | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: elements with 'display: list-item'
@@ -784,7 +784,7 @@ public class CSS {
      * <p>CSS: 'margin-right', javaScript: 'marginRight'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements except elements with table display types 
+     * <br>Applies to: all elements except elements with table display types
      * other than table-caption, table and inline-table
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -797,7 +797,7 @@ public class CSS {
      * <p>CSS: 'margin-left', javaScript: 'marginLeft'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements except elements with table display types 
+     * <br>Applies to: all elements except elements with table display types
      * other than table-caption, table and inline-table
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -810,7 +810,7 @@ public class CSS {
      * <p>CSS: 'margin-top', javaScript: 'marginTop'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements except elements with table display types 
+     * <br>Applies to: all elements except elements with table display types
      * other than table-caption, table and inline-table
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -823,7 +823,7 @@ public class CSS {
      * <p>CSS: 'margin-bottom', javaScript: 'marginBottom'
      * <br>Values: &lt;margin-width&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements except elements with table display types 
+     * <br>Applies to: all elements except elements with table display types
      * other than table-caption, table and inline-table
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -836,7 +836,7 @@ public class CSS {
      * <p>CSS: 'margin', javaScript: 'margin'
      * <br>Values: &lt;margin-width&gt;{1,4} | inherit
      * <br>Initial value: see individual properties
-     * <br>Applies to: all elements except elements with table display types 
+     * <br>Applies to: all elements except elements with table display types
      * other than table-caption, table and inline-table
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -849,7 +849,7 @@ public class CSS {
      * <p>CSS: 'max-height', javaScript: 'maxHeight'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | none | inherit
      * <br>Initial value: none
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * columns, and column groups
      * <br>Inherited?: no
      * Percentages: see prose
@@ -862,7 +862,7 @@ public class CSS {
      * <p>CSS: 'max-width', javaScript: 'maxWidth'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | none | inherit
      * <br>Initial value: none
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * rows, and row groups
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -875,7 +875,7 @@ public class CSS {
      * <p>CSS: 'min-height', javaScript: 'minHeight'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * columns, and column groups
      * <br>Inherited?: no
      * Percentages: see prose
@@ -888,7 +888,7 @@ public class CSS {
      * <p>CSS: 'min-width', javaScript: 'minWidth'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * rows, and row groups
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -912,7 +912,7 @@ public class CSS {
      * <p>
      * <p>Supported: Not supported by IE6 & 7.
      * <p>CSS: 'outline', javaScript: 'outline'
-     * <br>Values: [ 'outline-color' || 'outline-style' || 'outline-width' ] 
+     * <br>Values: [ 'outline-color' || 'outline-style' || 'outline-width' ]
      * | inherit
      * <br>Initial value: see individual properties
      * <br>Applies to: all
@@ -959,7 +959,7 @@ public class CSS {
      * <p>CSS: 'overflow', javaScript: 'overflow'
      * <br>Values: visible | hidden | scroll | auto | inherit
      * <br>Initial value: visible
-     * <br>Applies to: non-replaced block-level elements, table cells, and 
+     * <br>Applies to: non-replaced block-level elements, table cells, and
      * inline-block elements
      * <br>Inherited?: no
      * <br>Media groups: visual
@@ -1010,7 +1010,7 @@ public class CSS {
      * <p>CSS: 'padding-left', javaScript: 'paddingLeft'
      * <br>Values: &lt;padding-width&gt; | inherit
      * <br>Initial value: 0
-     * <br>Applies to: all elements except table-row-group, table-header-group, 
+     * <br>Applies to: all elements except table-row-group, table-header-group,
      * table-footer-group, table-row, table-column-group and table-column
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -1023,7 +1023,7 @@ public class CSS {
      * <p>CSS: 'padding', javaScript: 'padding'
      * <br>Values: &lt;padding-width&gt;{1,4} | inherit
      * <br>Initial value: see individual properties
-     * <br>Applies to: all elements except table-row-group, table-header-group, 
+     * <br>Applies to: all elements except table-row-group, table-header-group,
      * table-footer-group, table-row, table-column-group and table-column
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -1114,7 +1114,7 @@ public class CSS {
     /**
      * PITCH
      * <p>CSS: 'pitch', javaScript: 'pitch'
-     * <br>Values: &lt;frequency&gt; | x-low | low | medium | high | x-high | 
+     * <br>Values: &lt;frequency&gt; | x-low | low | medium | high | x-high |
      * inherit
      * <br>Initial value: medium
      * <br>Applies to: all
@@ -1226,7 +1226,7 @@ public class CSS {
     /**
      * SPEECH_RATE
      * <p>CSS: 'speech-rate', javaScript: 'speechRate'
-     * <br>Values: &lt;number&gt;  | x-slow | slow | medium | fast | x-fast | 
+     * <br>Values: &lt;number&gt;  | x-slow | slow | medium | fast | x-fast |
      * faster | slower | inherit
      * <br>Initial value: medium
      * <br>Applies to: all
@@ -1261,7 +1261,7 @@ public class CSS {
      * TEXT_ALIGN
      * <p>CSS: 'text-align', javaScript: 'textAlign'
      * <br>Values: left | right | center | justify | inherit
-     * <br>Initial value: a nameless value that acts as 'left' if 'direction' 
+     * <br>Initial value: a nameless value that acts as 'left' if 'direction'
      * is 'ltr', 'right' if 'direction' is 'rtl'
      * <br>Applies to: block-level elements, table cells and inline blocks
      * <br>Inherited?: yes
@@ -1272,7 +1272,7 @@ public class CSS {
     /**
      * TEXT_DECORATION
      * <p>CSS: 'text-decoration', javaScript: 'textDecoration'
-     * <br>Values: none | [ underline || overline || line-through || blink ] 
+     * <br>Values: none | [ underline || overline || line-through || blink ]
      * | inherit
      * <br>Initial value: none
      * <br>Applies to: all
@@ -1330,7 +1330,7 @@ public class CSS {
     /**
      * VERTICAL_ALIGN
      * <p>CSS: 'vertical-align', javaScript: 'verticalAlign'
-     * <br>Values: baseline | sub | super | top | text-top | middle | bottom | 
+     * <br>Values: baseline | sub | super | top | text-top | middle | bottom |
      * text-bottom | &lt;percentage&gt; | &lt;length&gt; | inherit
      * <br>Initial value: baseline
      * <br>Applies to: inline-level and 'table-cell' elements
@@ -1354,7 +1354,7 @@ public class CSS {
     /**
      * VOICE_FAMILY
      * <p>CSS: 'voice-family', javaScript: 'voiceFamily'
-     * <br>Values: [[&lt;specific-voice&gt;  | &lt;generic-voice&gt; ],]* 
+     * <br>Values: [[&lt;specific-voice&gt;  | &lt;generic-voice&gt; ],]*
      * [&lt;specific-voice&gt;  | &lt;generic-voice&gt; ] | inherit
      * <br>Initial value: depends on user agent
      * <br>Applies to: all
@@ -1366,7 +1366,7 @@ public class CSS {
     /**
      * VOLUME
      * <p>CSS: 'volume', javaScript: 'volume'
-     * <br>Values: &lt;number&gt; | &lt;percentage&gt; | silent | x-soft | soft 
+     * <br>Values: &lt;number&gt; | &lt;percentage&gt; | silent | x-soft | soft
      * | medium | loud | x-loud | inherit
      * <br>Initial value: medium
      * <br>Applies to: all
@@ -1403,7 +1403,7 @@ public class CSS {
      * <p>CSS: 'width', javaScript: 'width'
      * <br>Values: &lt;length&gt; | &lt;percentage&gt; | auto | inherit
      * <br>Initial value: auto
-     * <br>Applies to: all elements but non-replaced inline elements, table 
+     * <br>Applies to: all elements but non-replaced inline elements, table
      * rows, and row groups
      * <br>Inherited?: no
      * Percentages: refer to width of containing block
@@ -1438,8 +1438,8 @@ public class CSS {
   /**
    * This class contains all named (i.e. String) values grouped by the
    * property. The values {@link V#AUTO}, {@link V#NONE} and {@link V#INHERIT}
-   * are supported on multiple properties and are not separately put in a 
-   * class when only the property and other numeric property values are valid.    
+   * are supported on multiple properties and are not separately put in a
+   * class when only the property and other numeric property values are valid.
    */
   public static final class V {
 
@@ -1546,7 +1546,7 @@ public class CSS {
       public static final String NONE = "none";
 
       /**
-       * Same as 'none', except in terms of border conflict resolution for 
+       * Same as 'none', except in terms of border conflict resolution for
        * table elements.
        */
       public static final String HIDDEN = "hidden";
@@ -1578,7 +1578,7 @@ public class CSS {
       public static final String GROOVE = "groove";
 
       /**
-       * The opposite of 'groove': the border looks as though it were coming 
+       * The opposite of 'groove': the border looks as though it were coming
        * out of the canvas.
        */
       public static final String RIDGE = "ridge";
@@ -1589,7 +1589,7 @@ public class CSS {
       public static final String INSET = "inset";
 
       /**
-       * The opposite of 'inset': the border makes the box look as though it 
+       * The opposite of 'inset': the border makes the box look as though it
        * were coming out of the canvas.
        */
       public static final String OUTSET = "outset";
@@ -1672,7 +1672,7 @@ public class CSS {
       /**
        * Default value for {@link A#CURSOR}.
        */
-      
+
       /**
        * Microsoft specific, preferable avoid.
        */
@@ -1688,7 +1688,7 @@ public class CSS {
 
       /**
        * @deprecated Microsoft specific, required for IE 5 and IE 5.5, but both
-       * browsers are not supported by GWT. Use {@link #POINTER} which is the 
+       * browsers are not supported by GWT. Use {@link #POINTER} which is the
        * equivalent of <code>hand</code> and works in all browsers.
        */
       public static final String HAND = "hand";
@@ -1777,14 +1777,14 @@ public class CSS {
        * NOTE: The property 'inline-block' is not fully supported by
        * Internet Explorer 6 and 7. To obtain the effect the static method
        * {@link CSS#setInlineBlock(Element)} should be used. This method sets
-       * the property in a browser dependent way. For more background
-       * information on this issue see:
-       * {@link http://www.brunildo.org/test/InlineBlockLayout.html}
+       * the property in a browser dependent way.
        *
        * <p>This value causes an element to generate a block box, which itself
        * is flowed as a single inline box, similar to a replaced element. The
        * inside of an inline-block is formatted as a block box, and the element
        * itself is formatted as an inline replaced element.
+       *
+       * @see http://www.brunildo.org/test/InlineBlockLayout.html
        */
       public static final String INLINE_BLOCK = "inline-block";
 
@@ -1795,13 +1795,13 @@ public class CSS {
       public static final String LIST_ITEM = "list-item";
 
       /**
-       * This value causes an element to generate no boxes in the formatting 
-       * structure (i.e., the element has no effect on layout). Descendant 
-       * elements do not generate any boxes either; this behavior cannot be 
+       * This value causes an element to generate no boxes in the formatting
+       * structure (i.e., the element has no effect on layout). Descendant
+       * elements do not generate any boxes either; this behavior cannot be
        * overridden by setting the 'display' property on the descendants.
-       * <p>Please note that a display of 'none' does not create an invisible 
+       * <p>Please note that a display of 'none' does not create an invisible
        * box; it creates no box at all. CSS includes mechanisms that enable an
-       * element to generate boxes in the formatting structure that affect 
+       * element to generate boxes in the formatting structure that affect
        * formatting but are not visible themselves. Please consult the section
        * on visibility for details.
        */
@@ -1878,7 +1878,7 @@ public class CSS {
 
     /**
      * CSS property {@link A#FONT_SIZE} values.
-     * 
+     *
      * <p>Avoid using font size set as named values, like the ones present in
      * this class, e.g. small, etc., better should be avoided because different
      * browsers will display font's in different sizes. In other words small in
@@ -2045,7 +2045,7 @@ public class CSS {
       /**
        * Default value for {@link A#LIST_STYLE_TYPE}.
        */
-      
+
       /**
        *
        */
@@ -2331,13 +2331,13 @@ public class CSS {
       public static final String JUSTIFY = "justify";
 
       /**
-       * Implicit (i.e. real value is empty) default value for 
+       * Implicit (i.e. real value is empty) default value for
        * {@link A#TEXT_ALIGN} if 'direction' is 'ltr'
        */
       public static final String LEFT = "left";
 
       /**
-       * Implicit (i.e. real value is empty) default value for 
+       * Implicit (i.e. real value is empty) default value for
        * {@link A#TEXT_ALIGN} if 'direction' is 'rtl'.
        */
       public static final String RIGHT = "right";
@@ -2463,10 +2463,10 @@ public class CSS {
 
   /**
    * Convenience method to set a style property on an element.
-   * 
+   *
    * <p>The GWT compiler will optimize this method away, meaning there are no
    * additional costs of an extra method call when using method.
-   * 
+   *
    * @param element Element to set the property on
    * @param name Name of the property
    * @param value Value of the property
@@ -2474,13 +2474,13 @@ public class CSS {
   public static void setProperty(Element element, String name, String value) {
     element.getStyle().setProperty(name, value);
   }
-  
+
   /**
    * Convenience method to set a style property on a widget.
-   * 
+   *
    * <p>The GWT compiler will optimize this method away, meaning there are no
    * additional costs of an extra method call when using method.
-   * 
+   *
    * @param widget Widget to set the property on
    * @param name Name of the property
    * @param value Value of the property
@@ -2488,13 +2488,13 @@ public class CSS {
   public static void setProperty(Widget widget, String name, String value) {
     widget.getElement().getStyle().setProperty(name, value);
   }
-  
+
   /**
    * Convenience method to set a style pixel property on an element.
-   * 
+   *
    * <p>The GWT compiler will optimize this method away, meaning there are no
    * additional costs of an extra method call when using method.
-   * 
+   *
    * @param element Element to set the property on
    * @param name Name of the property
    * @param value Value of the property in pixels
@@ -2505,10 +2505,10 @@ public class CSS {
 
   /**
    * Convenience method to set a style pixel property on an element.
-   * 
+   *
    * <p>The GWT compiler will optimize this method away, meaning there are no
    * additional costs of an extra method call when using method.
-   * 
+   *
    * @param widget Widget to set the property on
    * @param name Name of the property
    * @param value Value of the property in pixels
@@ -2523,14 +2523,14 @@ public class CSS {
    * background information on the browser issues related to this property:
    * @see http://www.brunildo.org/test/InlineBlockLayout.html
    * @see http://www.tanfa.co.uk/archives/show.asp?var=300
-   * @see http://www.brunildo.org/test/inline-block.html 
+   * @see http://www.brunildo.org/test/inline-block.html
    *
    * @param element Element to set the display property inline-block on
    */
   public static void setInlineBlock(Element element) {
     impl.setInlineBlock(element);
   }
-  
+
   /**
    * Set the Opacity on an element taking care of browser specific
    * implementations.
@@ -2545,11 +2545,11 @@ public class CSS {
   /**
    * Make an element unselectable by the user and takes care of the browser
    * specific implementations.
-   *     
+   *
    * <p>This method will <i>not</i> protect you from people who want to copy
    * content and the technique should preferable only be used on specific
-   * elements like a button. 
-   * 
+   * elements like a button.
+   *
    * @param element Element to make unselectable
    * @param selectable If <code>true</code> elements becomes unselectable,
    *                   if <code>false</code> it becomes selectable.
