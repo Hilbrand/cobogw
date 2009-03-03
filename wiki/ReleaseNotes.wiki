@@ -1,5 +1,11 @@
 #summary Release Notes Cobogw library
 
+==Release notes 1.2, March 3, 2009==
+  * New widgets: Button and !ButtonBar, CSS styled buttons.
+  * New String helper class: JSString, provides access to several !JavaScript String functions.
+  * Additional methods in CSS and Event2 to work around browser incompatibilities.
+  * Fixed issue 2.
+
 ==Release notes 1.1.1, Aug 15, 2008==
   * Added default constructors to all widgets to better support IDE introspection.
 
@@ -10,6 +16,6 @@
 ==Release notes 1.0, Aug 13, 2008==
   * First packaged version of cobogw library with new widgets.
   * Rating - Widget to let users set a rating.
-  * RoundedLinePanel - Rounded corners with single pixel line around it.
-  * Span and TextNode - Widgets to easily work with span and textnode elements as widgets.
+  * !RoundedLinePanel - Rounded corners with single pixel line around it.
+  * Span and !TextNode - Widgets to easily work with span and textnode elements as widgets.
   * CSS - Helper class with all CSS properties.
