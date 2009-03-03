@@ -15,10 +15,6 @@
  */
 package org.cobogw.gwt.user.client;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.RootPanel;
-
 /**
  * This class defines a set of color keywords as a typesafe enumeration as
  * defined in the CSS 2.1 Specification.
