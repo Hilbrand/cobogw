@@ -1,3 +1,4 @@
+org.cobogw.gwt.event.client
 org.cobogw.gwt.user.client
 org.cobogw.gwt.user.client.rpc
 org.cobogw.gwt.user.client.ui
