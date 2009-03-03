@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
- Copyright 2007-2008 Hilbrand Bouwkamp, hs@bouwkamp.com
- 
+ Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
+
  Licensed under the Apache License, Version 2.0 (the "License"); you may not
  use this file except in compliance with the License. You may obtain a copy of
  the License at
- 
+
  http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing, software
  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -16,15 +16,16 @@
 -->
 <project name="cobogw" default="all" basedir=".">
   <description>
-    cobogw build file. This ant build file creates the file org.cobogw.gwt.jar
-  	and packs jar, source and javadoc into a zip file.
-    
+    cobogw build file. This ant build file creates the file
+    org.cobogw.gwt-${version}.jar and packs jar, source and javadoc into a zip
+    file.
+
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar.
   </description>
-  <property name="version" value="1.1.1" />
+  <property name="version" value="1.2" />
   <property name="packagefile" value="org.cobogw.gwt" />
-  <property name="jarfile" value="${packagefile}.jar" />
+  <property name="jarfile" value="${packagefile}-${version}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
   <property name="zipfile" value="${zipprefix}.zip" />
   <property name="gwt.path" location="${GWT_HOME}" />
@@ -34,21 +35,6 @@
     <pathelement path="${java.class.path}/"/>
     <pathelement path="${gwt.path}/gwt-user.jar"/>
   </path>
-
-  <target name="compile" description="Compile src to bin">
-    <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin" includes="**" source="1.5">
-      <classpath refid="project.class.path"/>
-    </javac>
-  </target>
-
-  <target name="compile.debug" description="Compile src to bin in debug mode">
-    <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin" includes="**" 
-         debug="on" debuglevel="lines,vars,source" source="1.5">
-      <classpath refid="project.class.path"/>
-    </javac>
-  </target>
 
   <target name="clean.all" depends="clean.build"
       description="Clean all genererated files">
@@ -65,27 +51,65 @@
     </delete>
   </target>
 
-  <target name="javadoc" depends="compile" description="Generate Javadoc">
-    <javadoc packagenames="org.cobogw.gwt.*" 
+  <target name="compile.debug" depends="clean.build"
+      description="Compile src to bin in debug mode">
+    <mkdir dir="bin"/>
+    <javac srcdir="src" destdir="bin" includes="**/*.java"
+         debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
+      <classpath refid="project.class.path"/>
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+
+  <target name="javadoc" depends="compile.debug" description="Generate Javadoc">
+    <javadoc packagenames="org.cobogw.gwt.*"
       destdir="doc/javadoc"
       author="true"
       version="true"
-      use="true">          
+      use="true">
       <fileset dir="src" defaultexcludes="yes">
         <include name="org/cobogw/gwt/**/*.java"/>
         <exclude name="org/cobogw/gwt/**/impl/**"/>
       </fileset>
-      <tag name="gwt.key" description="GWT i18n key in properties file"/>       
-      <tag name="gwt.typeArgs" description="GWT serialization type helper"/>       
       <doctitle><![CDATA[<h1>ORG.COBOGW.GWT package</h1>]]></doctitle>
-      <bottom><![CDATA[<i>Copyright &#169; 2007-2008 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>    
+      <bottom><![CDATA[<i>Copyright &copy; 2007-2009 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>
       <classpath refid="project.class.path"/>
     </javadoc>
   </target>
-  
+
   <target name="package" depends="clean.build, compile.debug"
       description="Package up the project as a jar">
     <jar destfile="${jarfile}">
+      <manifest>
+        <attribute name="Built-By" value="org.cobogw"/>
+        <section name="org/cobogw/gwt/user/client/ui/Button.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/ButtonBar.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Link.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Rating.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/RoundedLinePanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/RoundedPanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Span.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/TextNode.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/VerticalTabPanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+      </manifest>
       <fileset dir="bin">
         <include name="**/*.class"/>
       </fileset>
@@ -96,16 +120,16 @@
     </jar>
   </target>
 
-  <target name="zip" depends="clean.all, package, javadoc" 
+  <target name="zip" depends="clean.all, package, javadoc"
     description="Put jar, source and javadoc in zip file">
     <zip destfile="${zipfile}">
       <zipfileset dir="src/" prefix="${zipprefix}/src/" />
       <zipfileset dir="doc/" prefix="${zipprefix}/doc/" />
       <zipfileset file="COPYING" prefix="${zipprefix}" />
-      <zipfileset file="org.cobogw.gwt.jar" prefix="${zipprefix}" />
+      <zipfileset file="${jarfile}" prefix="${zipprefix}" />
     </zip>
   </target>
 
-  <target name="all" depends="package, javadoc"/>
+  <target name="all" depends="zip"/>
 
 </project>
