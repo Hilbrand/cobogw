@@ -347,7 +347,7 @@ public class Button extends FocusWidget implements HasHTML {
     colorBorder =
         Color.HSBtoRGB(hue, saturation, 74/*187*/-satof).toRGBString();
     colorContentTop =
-        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toRGBString();
     colorContentMid =
         Color.HSBtoRGB(hue, saturation, 93/*238*/-3/*7*/*satof).toRGBString();
     colorContentBottom =

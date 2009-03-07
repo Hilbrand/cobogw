@@ -23,7 +23,7 @@
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar.
   </description>
-  <property name="version" value="1.2" />
+  <property name="version" value="1.2.1" />
   <property name="packagefile" value="org.cobogw.gwt" />
   <property name="jarfile" value="${packagefile}-${version}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
@@ -126,6 +126,7 @@
       <zipfileset dir="src/" prefix="${zipprefix}/src/" />
       <zipfileset dir="doc/" prefix="${zipprefix}/doc/" />
       <zipfileset file="COPYING" prefix="${zipprefix}" />
+      <zipfileset file="README.TXT" prefix="${zipprefix}" />
       <zipfileset file="${jarfile}" prefix="${zipprefix}" />
     </zip>
   </target>
