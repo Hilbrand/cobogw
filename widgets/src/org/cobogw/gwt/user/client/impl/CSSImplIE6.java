@@ -16,6 +16,8 @@
 package org.cobogw.gwt.user.client.impl;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Internet Explorer 6 implementation of
@@ -30,6 +32,10 @@ public class CSSImplIE6 extends CSSImpl {
   /**
    * This method takes care of the browser specific implementation requirements
    * for the property value 'inline-block' of the property 'display'.
+   * 
+   * For Internet Explorer 8 running in IE8 mode the inline-block problem has
+   * been fixed. For that version the method simply sets <code>display</code>
+   * to <code>inline-block</code>.
    *
    * @see http://www.brunildo.org/test/InlineBlockLayout.html
    * @see http://www.tanfa.co.uk/archives/show.asp?var=300
@@ -39,8 +45,12 @@ public class CSSImplIE6 extends CSSImpl {
    */
   @Override
   public void setInlineBlock(Element element) {
-    element.getStyle().setProperty("display", "inline");
-    element.getStyle().setProperty("zoom", "1");
+    if (detectIEVersion() >= 8) {
+      element.getStyle().setProperty("display", "inline-block");
+    } else {
+      element.getStyle().setProperty("display", "inline");
+      element.getStyle().setProperty("zoom", "1");
+    }
   }
 
   @Override
@@ -53,4 +63,15 @@ public class CSSImplIE6 extends CSSImpl {
     e.getStyle().setProperty("userSelect", selectable ? "" : "none");
     e.setPropertyString("unselectable", selectable ? "" : "on");
   }
+
+  /**
+   * Returns the version of Internet Explorer
+   *
+   * @return Version of Internet Explorer
+   */
+  private native float detectIEVersion() /*-{
+    var index = navigator.userAgent.indexOf("MSIE") + 5;
+    if (index == -1) return 6.0; // assume IE 6 in this case
+    return parseFloat(navigator.userAgent.substring(index));
+  }-*/;
 }
