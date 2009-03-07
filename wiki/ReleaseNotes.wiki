@@ -1,5 +1,8 @@
 #summary Release Notes Cobogw library
 
+==Release notes 1.2.1 March 7, 2009==
+  * Fixed Button widget related to Internet Explorer 8 support.
+
 ==Release notes 1.2, March 3, 2009==
   * New widgets: Button and !ButtonBar, CSS styled buttons.
   * New String helper class: JSString, provides access to several !JavaScript String functions.
