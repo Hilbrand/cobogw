@@ -19,6 +19,24 @@ import com.google.gwt.dom.client.Element;
 
 public class CSSImplMozilla extends CSSImpl {
 
+  /**
+   * This method takes care of the browser specific implementation requirements
+   * for the property value 'inline-block' of the property 'display'.
+   *
+   * In Firefox versions 2 and earlier (Gecko engine 1.8 and earlier) the
+   * equivalent of the 'inline-block' is '-moz-inline-box'. This method sets
+   * this value for those Firefox versions.
+   *
+   * GWT supports two user agents gecko1_8 (1.8 and later) and gecko (< 1.8).
+   * However since the 'inline-block' has been supported after 1.8 we can't
+   * use these user agent feature to generate the correct code.
+   *
+   *  Possible (not tested) '-moz-inline-box' will work for later versions of
+   *  gecko (> 1.8) as well, but since 'inline-block' is preferred that value is
+   *  set for those versions.
+   *
+   * @see http://reference.sitepoint.com/css/moz-inline-box
+   */
   @Override
   public void setInlineBlock(Element element) {
     if (detectFirefoxVersion() >= 3) {
@@ -34,9 +52,9 @@ public class CSSImplMozilla extends CSSImpl {
   }
 
   /**
-   * Returns the version of Internet Explorer
+   * Returns the version of Firefox. If this would fail version 3.0 is returned.
    *
-   * @return Version of Internet Explorer
+   * @return Version of Firefox
    */
   private native float detectFirefoxVersion() /*-{
     var index = navigator.userAgent.indexOf("Firefox") + 8;
