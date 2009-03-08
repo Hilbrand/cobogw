@@ -16,6 +16,8 @@
 package org.cobogw.gwt.user.client.impl;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 
 public class CSSImplMozilla extends CSSImpl {
 
@@ -39,7 +41,7 @@ public class CSSImplMozilla extends CSSImpl {
    */
   @Override
   public void setInlineBlock(Element element) {
-    if (detectFirefoxVersion() >= 3) {
+    if (detectGeckoVersion() >= 1.9) {
       element.getStyle().setProperty("display", "inline-block");
     } else {
       element.getStyle().setProperty("display", "-moz-inline-box");
@@ -52,13 +54,15 @@ public class CSSImplMozilla extends CSSImpl {
   }
 
   /**
-   * Returns the version of Firefox. If this would fail version 3.0 is returned.
+   * Returns the version of Gecko. If this would fail version 1.9 (which
+   * Corresponds with Firefox 3.0) is returned. The version number returned is
+   * only one dot, thus 1.9, while the actual version number might be 1.9.0.7.
    *
-   * @return Version of Firefox
+   * @return Version of Gecko engine
    */
-  private native float detectFirefoxVersion() /*-{
-    var index = navigator.userAgent.indexOf("Firefox") + 8;
-    if (index == -1) return 3.0;
+  private native float detectGeckoVersion() /*-{
+    var index = navigator.userAgent.indexOf("rv:") + 3;
+    if (index == -1) return 1.9;
     return parseFloat(navigator.userAgent.substring(index));
   }-*/;
 }
