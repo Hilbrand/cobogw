@@ -1,6 +1,9 @@
 #summary Release Notes Cobogw library
 
-==Release notes 1.2.1 March 7, 2009==
+==Release notes 1.2.2 March 8, 2009==
+  * Fixed Button widget related to Firefox 2 support.
+
+==Release notes 1.2.1, March 7, 2009==
   * Fixed Button widget related to Internet Explorer 8 support.
 
 ==Release notes 1.2, March 3, 2009==
