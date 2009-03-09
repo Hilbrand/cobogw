@@ -16,14 +16,25 @@
 package org.cobogw.gwt.user.client.impl;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Internet Explorer 6 implementation of
  * {@link org.cobogw.gwt.user.client.impl.CSSImpl}.
  */
 public class CSSImplIE6 extends CSSImpl {
+
+  private final static float ieVersion = detectIEVersion();
+
+  /**
+   * Returns the version of Internet Explorer
+   *
+   * @return Version of Internet Explorer
+   */
+  private static native float detectIEVersion() /*-{
+    var index = navigator.userAgent.indexOf("MSIE") + 5;
+    if (index == -1) return 6.0; // assume IE 6 in this case
+    return parseFloat(navigator.userAgent.substring(index));
+  }-*/;
 
   @Override
   public String getFloatAttribute() {
@@ -45,7 +56,7 @@ public class CSSImplIE6 extends CSSImpl {
    */
   @Override
   public void setInlineBlock(Element element) {
-    if (detectIEVersion() >= 8) {
+    if (ieVersion >= 8) {
       element.getStyle().setProperty("display", "inline-block");
     } else {
       element.getStyle().setProperty("display", "inline");
@@ -63,15 +74,4 @@ public class CSSImplIE6 extends CSSImpl {
     e.getStyle().setProperty("userSelect", selectable ? "" : "none");
     e.setPropertyString("unselectable", selectable ? "" : "on");
   }
-
-  /**
-   * Returns the version of Internet Explorer
-   *
-   * @return Version of Internet Explorer
-   */
-  private native float detectIEVersion() /*-{
-    var index = navigator.userAgent.indexOf("MSIE") + 5;
-    if (index == -1) return 6.0; // assume IE 6 in this case
-    return parseFloat(navigator.userAgent.substring(index));
-  }-*/;
 }
