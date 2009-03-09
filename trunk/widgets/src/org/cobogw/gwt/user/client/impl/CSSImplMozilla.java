@@ -16,10 +16,23 @@
 package org.cobogw.gwt.user.client.impl;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.RootPanel;
 
 public class CSSImplMozilla extends CSSImpl {
+
+  private static final float geckoVersion = detectGeckoVersion();
+    
+  /**
+   * Returns the version of Gecko. If this would fail version 1.9 (which
+   * Corresponds with Firefox 3.0) is returned. The version number returned is
+   * only one dot, thus 1.9, while the actual version number might be 1.9.0.7.
+   *
+   * @return Version of Gecko engine
+   */
+  private static native float detectGeckoVersion() /*-{
+    var index = navigator.userAgent.indexOf("rv:") + 3;
+    if (index == -1) return 1.9;
+    return parseFloat(navigator.userAgent.substring(index));
+  }-*/;
 
   /**
    * This method takes care of the browser specific implementation requirements
@@ -41,7 +54,7 @@ public class CSSImplMozilla extends CSSImpl {
    */
   @Override
   public void setInlineBlock(Element element) {
-    if (detectGeckoVersion() >= 1.9) {
+    if (geckoVersion >= 1.9) {
       element.getStyle().setProperty("display", "inline-block");
     } else {
       element.getStyle().setProperty("display", "-moz-inline-box");
@@ -53,16 +66,4 @@ public class CSSImplMozilla extends CSSImpl {
     e.getStyle().setProperty("MozUserSelect", selectable ? "" : "none");
   }
 
-  /**
-   * Returns the version of Gecko. If this would fail version 1.9 (which
-   * Corresponds with Firefox 3.0) is returned. The version number returned is
-   * only one dot, thus 1.9, while the actual version number might be 1.9.0.7.
-   *
-   * @return Version of Gecko engine
-   */
-  private native float detectGeckoVersion() /*-{
-    var index = navigator.userAgent.indexOf("rv:") + 3;
-    if (index == -1) return 1.9;
-    return parseFloat(navigator.userAgent.substring(index));
-  }-*/;
 }
