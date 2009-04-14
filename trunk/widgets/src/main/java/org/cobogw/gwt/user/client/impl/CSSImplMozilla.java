@@ -19,8 +19,8 @@ import com.google.gwt.dom.client.Element;
 
 public class CSSImplMozilla extends CSSImpl {
 
-  private static final float geckoVersion = detectGeckoVersion();
-    
+  private final static float geckoVersion = detectGeckoVersion();
+
   /**
    * Returns the version of Gecko. If this would fail version 1.9 (which
    * Corresponds with Firefox 3.0) is returned. The version number returned is
@@ -53,12 +53,9 @@ public class CSSImplMozilla extends CSSImpl {
    * @see http://reference.sitepoint.com/css/moz-inline-box
    */
   @Override
-  public void setInlineBlock(Element element) {
-    if (geckoVersion >= 1.9) {
-      element.getStyle().setProperty("display", "inline-block");
-    } else {
-      element.getStyle().setProperty("display", "-moz-inline-box");
-    }
+  public void setInlineBlock(Element e) {
+    e.getStyle().setProperty("display",
+        geckoVersion >= 1.9 ? "inline-block" : "-moz-inline-box");
   }
 
   @Override
