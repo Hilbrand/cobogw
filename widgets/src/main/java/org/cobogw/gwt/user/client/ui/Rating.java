@@ -28,6 +28,8 @@ import org.cobogw.gwt.user.client.CSS;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 /**
  * The Rating Widget provides an intuitive rating experience that allows users
  * to select the number of stars (or other custom images) that represents their
@@ -38,15 +40,11 @@ import java.util.Iterator;
  * set. Rating also supports event handling that allows custom code to run after
  * the user has rated something.
  *
- * <h3>CSS Style Rules</h3>
- * <ul class='css'>
- * <li>.cbg-Rating { the Rating Widget itself } </li>
- * <li>.cbg-RatingItem { the image item, e.g. the star}</li>
- * </ul>
+ * <h3>CSS Style Rules</h3> <ul class='css'> <li>.cbg-Rating { the Rating Widget
+ * itself }</li> <li>.cbg-RatingItem { the image item, e.g. the star}</li> </ul>
  *
- * <h3>Default Rating Images</h3>
- * When no custom image is used the default images are used. The base image
- * (original name star.png) is from Silk Icons,
+ * <h3>Default Rating Images</h3> When no custom image is used the default
+ * images are used. The base image (original name star.png) is from Silk Icons,
  * <a href="http://www.famfamfam.com/lab/icons/silk/">
  * http://www.famfamfam.com/lab/icons/silk/</a> a great set of icons licensed
  * under a Creative Commons Attribution 2.5 License. Available images:
@@ -61,8 +59,8 @@ import java.util.Iterator;
  */
 public class Rating extends Composite {
   /**
-   * Orientation of Rating widget Horizontal from Left to Right (default).
-   * With lowest rating left and highest rating right.
+   * Orientation of Rating widget Horizontal from Left to Right (default). With
+   * lowest rating left and highest rating right.
    */
   public final static int LTR = 1;
   /**
@@ -170,7 +168,7 @@ public class Rating extends Composite {
    * Default constructor. Creates a 5 star LTR rating widget.
    */
   public Rating() {
-   this(0, 5);
+    this(0, 5);
   }
 
   /**
@@ -178,50 +176,63 @@ public class Rating extends Composite {
    * of selections <code>maxRating</code> with initial value
    * <code>initRating</code> and uses the default rating icons.
    *
-   * @param initRating Initial value of the rating
-   * @param maxRating Maximum rating value
+   * @param initRating
+   *          Initial value of the rating
+   * @param maxRating
+   *          Maximum rating value
    */
   public Rating(int initRating, int maxRating) {
     this(initRating, maxRating, LTR);
   }
 
   /**
-   * Creates a custom oriented rating widget which contains the number
-   * of selections <code>maxRating</code> with initial value
+   * Creates a custom oriented rating widget which contains the number of
+   * selections <code>maxRating</code> with initial value
    * <code>initRating</code> and uses the default rating icons.
    *
-   * @param initRating Initial value of the rating
-   * @param maxRating Maximum rating value
-   * @param orientation Orientation of widget: {@link #LTR}, {@link #RTL},
-   *        {@link #TTB} or {@link #TTB}.
+   * @param initRating
+   *          Initial value of the rating
+   * @param maxRating
+   *          Maximum rating value
+   * @param orientation
+   *          Orientation of widget: {@link #LTR}, {@link #RTL}, {@link #TTB} or
+   *          {@link #TTB}.
    */
   public Rating(int initRating, int maxRating, int orientation) {
     this(initRating, maxRating, orientation, "cbg-star.png",
-        "cbg-stardeselected.png", "cbg-starhover.png", 16, 16);
+            "cbg-stardeselected.png", "cbg-starhover.png", 16, 16);
   }
 
   /**
-   * Creates a custom oriented rating widget which contains the number
-   * of selections <code>maxRating</code> with initial value
+   * Creates a custom oriented rating widget which contains the number of
+   * selections <code>maxRating</code> with initial value
    * <code>initRating</code> and uses the specified images as indicators, with
    * the given <code>width</code> and <code>height</code>, which should apply
    * for all three images.
    *
-   * @param initRating Initial value of the rating
-   * @param maxRating Maximum rating value
-   * @param orientation Orientation of widget: {@link #LTR}, {@link #RTL},
-   *        {@link #TTB} or {@link #TTB}.
-   * @param selectedImg Image on Rating item when selected
-   * @param deselectedImg Image on Rating item when not selected
-   * @param hoverImg Image on selected Rating item when hovered, when an empty
-   *        string <code>""</code> is passed the behavior of the widget is to
-   *        hide the selection on hover and follow the hovering over the widget
-   * @param width Width of image in px (applies to all three images)
-   * @param height Height of image  in px (applies to all three images)
+   * @param initRating
+   *          Initial value of the rating
+   * @param maxRating
+   *          Maximum rating value
+   * @param orientation
+   *          Orientation of widget: {@link #LTR}, {@link #RTL}, {@link #TTB} or
+   *          {@link #TTB}.
+   * @param selectedImg
+   *          Image on Rating item when selected
+   * @param deselectedImg
+   *          Image on Rating item when not selected
+   * @param hoverImg
+   *          Image on selected Rating item when hovered, when an empty string
+   *          <code>""</code> is passed the behavior of the widget is to hide
+   *          the selection on hover and follow the hovering over the widget
+   * @param width
+   *          Width of image in px (applies to all three images)
+   * @param height
+   *          Height of image in px (applies to all three images)
    */
   public Rating(int initRating, int maxRating, int orientation,
-      String selectedImg, String deselectedImg, String hoverImg, int width,
-      int height) {
+          String selectedImg, String deselectedImg, String hoverImg, int width,
+          int height) {
     initWidget(panel);
     currentRating = initRating;
     selectedVisible = !"".equals(hoverImg);
@@ -231,20 +242,20 @@ public class Rating extends Composite {
     final int mlt = (orientation & (LTR | TTB)) > 0 ? 1 : -1;
 
     for (int i = 0; i < maxRating; ++i) {
-      panel.add(
-          new RatingItem(offset + (mlt * i), orientation, selectedImg,
-          deselectedImg, hoverImg, width, height));
+      panel.add(new RatingItem(offset + (mlt * i), orientation, selectedImg,
+              deselectedImg, hoverImg, width, height));
     }
     setItemsState(-1);
   }
 
   /**
    * Adds a hidden <code>input</code> tag to this widget with the attribute
-   * <code>name</code>. Adding an input tag makes it possible to use this
-   * widget in a <code>form</code> context. The <code>name</code> is the
-   * name as visible within the <code>form</code> context.
+   * <code>name</code>. Adding an input tag makes it possible to use this widget
+   * in a <code>form</code> context. The <code>name</code> is the name as
+   * visible within the <code>form</code> context.
    *
-   * @param name Name for the input property
+   * @param name
+   *          Name for the input property
    */
   public void addInputTag(String name) {
     input = new Hidden(name, "" + currentRating);
@@ -254,7 +265,8 @@ public class Rating extends Composite {
   /**
    * Adds a listener to the widget
    *
-   * @param listener {@link RatingListener}
+   * @param listener
+   *          {@link RatingListener}
    */
   public void addRatingListerner(RatingListener listener) {
     if (null == ratingListeners) {
@@ -284,7 +296,8 @@ public class Rating extends Composite {
   /**
    * Removes the listener.
    *
-   * @param listener Removes the {@link RatingListener}
+   * @param listener
+   *          Removes the {@link RatingListener}
    */
   public void removeRatingListerner(RatingListener listener) {
     if (null != ratingListeners) {
@@ -293,10 +306,28 @@ public class Rating extends Composite {
   }
 
   /**
+   * Sets the rating, also when the widget is read only. If the rating set is
+   * out of range the widget will still use that value but show or empty (if the
+   * rating set is below zero) or full (if the rating set is above total number
+   * of items).
+   *
+   * @param rating
+   *          New rating value to set
+   */
+  public void setRating(int rating) {
+    currentRating = rating;
+    if (null != input) {
+      input.setValue("" + rating);
+    }
+    setItemsState(-1);
+  }
+
+  /**
    * Sets the rating selection to read only if argument is <code>true</code>,
    * and if <code>false</code> enable setting the rating.
    *
-   * @param readOnly If <code>true</code> make read only
+   * @param readOnly
+   *          If <code>true</code> make read only
    */
   public void setReadOnly(boolean readOnly) {
     this.readOnly = readOnly;
@@ -304,7 +335,7 @@ public class Rating extends Composite {
       setItemsState(-1);
     }
     getElement().getStyle().setProperty(CSS.A.CURSOR,
-        readOnly ? "" : CSS.V.CURSOR.POINTER);
+            readOnly ? "" : CSS.V.CURSOR.POINTER);
   }
 
   /**
@@ -317,10 +348,11 @@ public class Rating extends Composite {
    * over the widget, instead the selection follows the hover. If a hover image
    * is set this image is shown when hovering else the selection image is shown.
    *
-   * @param visible If <code>true</code> current selection remains visible when
-   *        user hovers over widget
+   * @param visible
+   *          If <code>true</code> current selection remains visible when user
+   *          hovers over widget
    */
-  public void setSelectedVisibileOnHover (boolean visible) {
+  public void setSelectedVisibileOnHover(boolean visible) {
     this.selectedVisible = visible;
   }
 
@@ -329,7 +361,8 @@ public class Rating extends Composite {
    * when the user hovers over a particular selection item. The String array
    * must contain as many values as the number of possible ratings.
    *
-   * @param titles Array of titles
+   * @param titles
+   *          Array of titles
    */
   public void setTitles(String[] titles) {
     Iterator<Widget> i = panel.iterator();
@@ -346,17 +379,18 @@ public class Rating extends Composite {
   }
 
   /**
-   * Private method fires
-   * {@link RatingListener#onHover(Rating, int)} if not read only.
+   * Private method fires {@link RatingListener#onHover(Rating, int)} if not
+   * read only.
    *
-   * @param index Hovered item
+   * @param index
+   *          Hovered item
    */
   private void onHover(int index) {
     if (!readOnly) {
       setItemsState(index);
       if (null != ratingListeners) {
-        for (Iterator<RatingListener> it = ratingListeners.iterator();
-            it.hasNext();) {
+        for (Iterator<RatingListener> it = ratingListeners.iterator(); it
+                .hasNext();) {
           it.next().onHover(this, index);
         }
       }
@@ -364,21 +398,18 @@ public class Rating extends Composite {
   }
 
   /**
-   * Private method fires
-   * {@link RatingListener#onSelect(Rating, int)} if not read only.
+   * Private method fires {@link RatingListener#onSelect(Rating, int)} if not
+   * read only.
    *
-   * @param index Selected item
+   * @param index
+   *          Selected item
    */
   private void onSelect(int index) {
     if (!readOnly) {
-      currentRating = index;
-      if (null != input) {
-        input.setValue("" + index);
-      }
-      setItemsState(-1);
+      setRating(index);
       if (null != ratingListeners) {
-        for (Iterator<RatingListener> it = ratingListeners.iterator();
-            it.hasNext();) {
+        for (Iterator<RatingListener> it = ratingListeners.iterator(); it
+                .hasNext();) {
           it.next().onSelect(this, index);
         }
       }
@@ -390,7 +421,8 @@ public class Rating extends Composite {
    * is the item the user hovers over. In case the value is <code>-1</code> the
    * hover state will not be shown. This is used to reset the hover state.
    *
-   * @param hoverIndex Current item hovered or <code>-1</code> if no hover
+   * @param hoverIndex
+   *          Current item hovered or <code>-1</code> if no hover
    */
   private void setItemsState(int hoverIndex) {
     Iterator<Widget> i = panel.iterator();
