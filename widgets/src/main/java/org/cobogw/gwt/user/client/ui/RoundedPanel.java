@@ -67,14 +67,14 @@ import com.google.gwt.user.client.ui.Widget;
  * </pre>
  *
  * There are 2 ways to set the color on the border programmatically. First via
- * {@link #setCornerColor(String)} and second via 
- * {@link #setBorderColor(String)}. The second method will also add a solid 
+ * {@link #setCornerColor(String)} and second via
+ * {@link #setBorderColor(String)}. The second method will also add a solid
  * border style in the given color on the left and/or right of the widget. The
  * first method doesn't set a border style. Use the first method when you don't
  * want to have a border or when the background color of your widget is the same
- * as the background color of the rounded corners or if you wan to have the 
+ * as the background color of the rounded corners or if you wan to have the
  * flexibility to set the border via CSS.
- * 
+ *
  * Example to set the color of the corners with {@link #setCornerColor(String)}:
  *
  * <pre>
@@ -85,13 +85,13 @@ import com.google.gwt.user.client.ui.Widget;
  *
  * To add also a solid border style to the left and/or right of the widget use
  * {@link #setBorderColor(String)}:
- * 
+ *
  * <pre>
- * // all 4 corners are rounded and solid border style left and right of widget 
+ * // all 4 corners are rounded and solid border style left and right of widget
  * RoundedPanel rp = new RoundedPanel(yourWidget);
  * rp.setBorderColor(&quot;red&quot;);
  * </pre>
- * 
+ *
  * Default the CSS style name of the rounded corner divs is
  * <code>cbg-RP</code>. Use it to set the colors of the corner. For example:
  *
@@ -217,7 +217,7 @@ public class RoundedPanel extends SimplePanel {
   /**
    * Lookup table for corner border width
    */
-  
+
   private final static int[][] CORNERBORDER = {
     { 1 }, { 1, 1}, { 1, 1, 1},
     { 1, 1, 1, 1 }, { 1, 1, 1, 2, 1 },
@@ -374,27 +374,27 @@ public class RoundedPanel extends SimplePanel {
   }
 
   /**
-   * Set the colors on the rounded borders and adds a border style on the 
+   * Set the colors on the rounded borders and adds a border style on the
    * element wrapped around the widget. The width of the border (left and/or
    * right) is the same as the height of the rounding.
-   * 
-   * <p>If NO border style (e.g. lines on the left and/or right side) for the 
+   *
+   * <p>If NO border style (e.g. lines on the left and/or right side) for the
    * wrapped widget is desired use {@link #setCornerColor(String)}.
-   * 
+   *
    * @param borderColor color of the border
    */
   public void setBorderColor(String borderColor) {
     setCornerColor(borderColor);
-    setBorderContainer(borderColor, 
+    setBorderContainer(borderColor,
         CORNERMARGIN[cornerHeight-1][cornerHeight-1]);
   }
-  
+
   /**
    * Set the color on the rounded corners. When a different background color for
-   * the widget is used, this will display as a block with rounded corners at 
-   * the top or bottom (depending on the rounding) in the given borderColor. 
+   * the widget is used, this will display as a block with rounded corners at
+   * the top or bottom (depending on the rounding) in the given borderColor.
    *
-   * <p>If border style (e.g. lines on the left and/or right side) for the 
+   * <p>If border style (e.g. lines on the left and/or right side) for the
    * wrapped widget IS desired use {@link #setBorderColor(String)}.
    *
    * @param borderColor border color
@@ -414,11 +414,11 @@ public class RoundedPanel extends SimplePanel {
 
   /**
    * Set the CSS style name of the rounded corners div's. Default the CSS style
-   * name is <code>cbg-RP</code>. Use it to set the colors of the corner. For 
+   * name is <code>cbg-RP</code>. Use it to set the colors of the corner. For
    * example: <code>.cbg-RP { background-color:#c3d9ff; }</code>.
    *
-   * A custom style might be needed when the corners are visible only when a 
-   * panel is selected. Use this method to set the custom style name and add 
+   * A custom style might be needed when the corners are visible only when a
+   * panel is selected. Use this method to set the custom style name and add
    * something like the following to the style sheet:
    *
    * <code>.selected .cbg-RP { background-color:#c3d9ff; }</code>
@@ -462,11 +462,11 @@ public class RoundedPanel extends SimplePanel {
 
   /**
    * Set the left and/or right border on the container element.
-   * 
+   *
    * @param borderColor color of the border
    * @param borderWidth width of the border
    */
-  protected void setBorderContainer(String borderColor, int borderWidth) { 
+  protected void setBorderContainer(String borderColor, int borderWidth) {
     setBorder(getContainerElement(), corners, borderColor);
     getContainerElement().getStyle().setProperty(
         "borderWidth", "0 " + borderWidth + "px");
@@ -474,13 +474,13 @@ public class RoundedPanel extends SimplePanel {
 
   /**
    * Set the border left and or right style and color attributes on the element.
-   * 
+   *
    * @param elem element to set the style attributes
    * @param corners corners to set the style attributes
    * @param borderColor color of the border
    */
   protected void setBorder(Element elem, int corners, String borderColor) {
-    if (inMask(corners, LEFT)) {      
+    if (inMask(corners, LEFT)) {
       elem.getStyle().setProperty("borderLeftStyle", "solid");
       elem.getStyle().setProperty("borderLeftColor", borderColor);
     }
@@ -489,7 +489,7 @@ public class RoundedPanel extends SimplePanel {
       elem.getStyle().setProperty("borderRightColor", borderColor);
     }
   }
-  
+
   /**
    * Creates div element representing part of the rounded corner.
    *
@@ -498,21 +498,20 @@ public class RoundedPanel extends SimplePanel {
    */
   private DivElement addLine(int corner, int heightIndex) {
     // margin 4 fields : top right bottom left  => "0 <width>px 0 <width>px"
-    String mw = CORNERMARGIN[cornerHeight - 1][heightIndex] + "px ";
-    String margin =
+    final String mw = CORNERMARGIN[cornerHeight - 1][heightIndex] + "px ";
+    final String margin =
         "0 " + (inMask(corner, RIGHT) ? mw : "0 ") +
         "0 " + (inMask(corner, LEFT) ? mw : "0");
-    DivElement div = Document.get().createDivElement();
+    final DivElement div = Document.get().createDivElement();
 
-    div.getStyle().setPropertyPx("fontSize", 0);
     div.getStyle().setPropertyPx("height",
         CORNERHEIGHT[cornerHeight - 1][heightIndex]);
     div.getStyle().setProperty("borderWidth",
         "0 " + CORNERBORDER[cornerHeight - 1][heightIndex] + "px");
-    div.getStyle().setPropertyPx("lineHeight",
-        CORNERHEIGHT[cornerHeight - 1][heightIndex]);
     div.getStyle().setProperty("margin", margin);
-    div.setInnerHTML("&nbsp;");
+    //Font size set to work around IE's default minimal element height.
+    div.getStyle().setPropertyPx("fontSize", 0);
+    div.getStyle().setProperty("overflow", "hidden");
     body.appendChild(div);
     return div;
   }
