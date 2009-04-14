@@ -28,8 +28,6 @@ import org.cobogw.gwt.user.client.CSS;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
-
 /**
  * The Rating Widget provides an intuitive rating experience that allows users
  * to select the number of stars (or other custom images) that represents their
