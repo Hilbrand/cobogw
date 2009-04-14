@@ -17,13 +17,13 @@
 <project name="cobogw" default="all" basedir=".">
   <description>
     cobogw build file. This ant build file creates the file
-    org.cobogw.gwt-${version}.jar and packs jar, source and javadoc into a zip
+  	org.cobogw.gwt-${version}.jar and packs jar, source and javadoc into a zip
     file.
 
     To run set the environment variable GWT_HOME to the home directory of your
     GWT libraries, e.g. gwt-user.jar.
   </description>
-  <property name="version" value="1.2.1" />
+  <property name="version" value="1.2.3" />
   <property name="packagefile" value="org.cobogw.gwt" />
   <property name="jarfile" value="${packagefile}-${version}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
@@ -47,14 +47,14 @@
 
   <target name="clean.build" description="Clean the compiled classes">
     <delete failonerror="false" >
-      <fileset dir="bin" includes="**/*.class"/>
+      <fileset dir="target/classes" includes="**/*.class"/>
     </delete>
   </target>
 
   <target name="compile.debug" depends="clean.build"
-      description="Compile src to bin in debug mode">
-    <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin" includes="**/*.java"
+      description="Compile src to target/classes in debug mode">
+    <mkdir dir="target/classes"/>
+    <javac srcdir="src/main/java" destdir="target/classes" includes="**/*.java"
          debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
       <classpath refid="project.class.path"/>
       <compilerarg value="-Xlint:unchecked"/>
@@ -63,11 +63,8 @@
 
   <target name="javadoc" depends="compile.debug" description="Generate Javadoc">
     <javadoc packagenames="org.cobogw.gwt.*"
-      destdir="doc/javadoc"
-      author="true"
-      version="true"
-      use="true">
-      <fileset dir="src" defaultexcludes="yes">
+      destdir="doc/javadoc" author="true" version="true" use="true">
+      <fileset dir="src/main/java" defaultexcludes="yes">
         <include name="org/cobogw/gwt/**/*.java"/>
         <exclude name="org/cobogw/gwt/**/impl/**"/>
       </fileset>
@@ -75,8 +72,9 @@
       <bottom><![CDATA[<i>Copyright &copy; 2007-2009 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>
       <classpath refid="project.class.path"/>
     </javadoc>
+    <fixcrlf srcdir="doc/javadoc" includes="**/*.html"/>
   </target>
-
+	
   <target name="package" depends="clean.build, compile.debug"
       description="Package up the project as a jar">
     <jar destfile="${jarfile}">
@@ -110,12 +108,15 @@
           <attribute name="Java-Bean" value="True"/>
         </section>
       </manifest>
-      <fileset dir="bin">
+      <fileset dir="target/classes">
         <include name="**/*.class"/>
       </fileset>
       <!-- Get everything; source, modules, html files -->
-      <fileset dir="src">
-        <include name="**"/>
+      <fileset dir="src/main/java">
+        <include name="**/*.java"/>
+      </fileset>
+      <fileset dir="src/main/resources">
+        <include name="**/*"/>
       </fileset>
     </jar>
   </target>
@@ -127,6 +128,7 @@
       <zipfileset dir="doc/" prefix="${zipprefix}/doc/" />
       <zipfileset file="COPYING" prefix="${zipprefix}" />
       <zipfileset file="README.TXT" prefix="${zipprefix}" />
+      <zipfileset file="cobogw.ant.xml" prefix="${zipprefix}" />
       <zipfileset file="${jarfile}" prefix="${zipprefix}" />
     </zip>
   </target>
