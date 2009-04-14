@@ -18,12 +18,15 @@ package org.cobogw.gwt.user.client.impl;
 import com.google.gwt.dom.client.Element;
 
 /**
- * Internet Explorer 6 implementation of
+ * Internet Explorer 6, 7 and 8 implementation of
  * {@link org.cobogw.gwt.user.client.impl.CSSImpl}.
  */
 public class CSSImplIE6 extends CSSImpl {
 
-  private final static float ieVersion = detectIEVersion();
+  private final static float documentMode = documentMode();
+//  private final static float ieVersion = detectIEVersion();
+//  private final static boolean inQuiksMode = inQuirksMode();
+//  private final static boolean isTridentEngine = isTridentEngine();
 
   /**
    * Returns the version of Internet Explorer
@@ -36,17 +39,54 @@ public class CSSImplIE6 extends CSSImpl {
     return parseFloat(navigator.userAgent.substring(index));
   }-*/;
 
+  private static native boolean inQuirksMode() /*-{
+    return $doc.compatMode == 'BackCompat';
+  }-*/;
+  
+  //Trident is the IE 8 JavaScript Engine.
+  private static native boolean isTridentEngine() /*-{
+    return navigator.userAgent.indexOf("Trident") != -1;
+  }-*/;
+  
+  /**
+   * From http://www.howtocreate.co.uk/emails/AlexeiWhite.html:
+   * The document.documentMode property gives the version mode it is operating
+   * in (currently 5, 7 or 8). This is a floating point number and will increase
+   * for new versions, perhaps 8.5 or 9 or 10.35 etc. It is a new property in IE
+   * 8, so you can use it to see if it is IE 8+ in IE 7 mode, but it will not be
+   * possible to use its existence to check for IE 9 operating in IE 8 mode. It
+   * would be more useful if there were some property like document.maximumMode
+   * so you could see if it is really version 9 in version 8 mode, but I guess
+   * we will have to wait and see what new stuff appears in IE 9.
+   * 
+   * Note that this property is non-standard, so it will not exist at all in
+   * other browsers, and it is very important that you do not display silly
+   * messages in other browsers because it does now exist and is therefore
+   * smaller than 8.
+   * 
+   * @return Returns the documentMode
+   * @see http://www.howtocreate.co.uk/emails/AlexeiWhite.html
+   */
+  private static native float documentMode() /*-{
+    return $doc.documentMode || 5.0;
+  }-*/;
+
   @Override
   public String getFloatAttribute() {
     return "styleFloat";
   }
+  
   /**
    * This method takes care of the browser specific implementation requirements
    * for the property value 'inline-block' of the property 'display'.
    * 
-   * For Internet Explorer 8 running in IE8 mode the inline-block problem has
-   * been fixed. For that version the method simply sets <code>display</code>
-   * to <code>inline-block</code>.
+   * For Internet Explorer 8 running in IE8 Standards mode the inline-block
+   * problem has been fixed. For that version the method simply sets
+   * <code>display</code> to <code>inline-block</code>. To detect what mode of
+   * IE* is running the <code>document.documentMode</code> is queried. When
+   * running in Quirks Mode this is not set and only for IE8 and IE8
+   * Compatibility View when running in IE 8 Standards mode it return 8. These
+   * are also the only conditions in which we want the inline-block. 
    *
    * @see http://www.brunildo.org/test/InlineBlockLayout.html
    * @see http://www.tanfa.co.uk/archives/show.asp?var=300
@@ -56,7 +96,7 @@ public class CSSImplIE6 extends CSSImpl {
    */
   @Override
   public void setInlineBlock(Element element) {
-    if (ieVersion >= 8) {
+    if (documentMode >= 8) {
       element.getStyle().setProperty("display", "inline-block");
     } else {
       element.getStyle().setProperty("display", "inline");

@@ -36,15 +36,10 @@ import com.google.gwt.user.client.ui.KeyboardListener;
  * The button is based on the technique used in several Google&trade;
  * applications and described on the web site stopdesign.com.
  *
- * <h2>Usage requirements:</h2>
- * <p>To be able to correctly use this Widget in different browsers the
- * following two requirements must be met.
- * <ol>
- * <li>A <code>DOCTYPE</code> must be set at the top of the HTML page, otherwise
- * the coloring will not work correctly in Internet Explorer.</li>
- * <li>For the best user experience in Opera add the following CSS to the main
- * style sheet. Unfortunally there is no way to set this via JavaScript. The CSS
- * code is needed to override the Opera effect that an element when it gets
+ * <p>
+ * For the best user experience in Opera add the following CSS to the main
+ * style sheet. Unfortunately there is no way to set this via JavaScript. The
+ * CSS code is needed to override the Opera effect that an element when it gets
  * focus will get a different background color. This CSS will remove that
  * background color, but won't affect any of the other widgets.</li>
  * <pre>
@@ -52,7 +47,6 @@ import com.google.gwt.user.client.ui.KeyboardListener;
  *     background-color:transparent;
  * }
  * </pre>
- * </ol>
  *
  * <h2>Difference with HTML button element</h2>
  * <p>While this widget tries to act as much as a button there are still
@@ -122,6 +116,7 @@ public class Button extends FocusWidget implements HasHTML {
   private int tabIndex = 0;
   private boolean hasFocus = false;
   private boolean active = false;
+  private boolean customColor = false;
 
   /**
    * Creates a button with no caption.
@@ -130,6 +125,7 @@ public class Button extends FocusWidget implements HasHTML {
     super(Document.get().createDivElement());
     sinkEvents(
         Event.ONCLICK|Event.FOCUSEVENTS|Event.MOUSEEVENTS|Event.KEYEVENTS);
+    setStyleName(CBG_BUTTON);
     CSS.setInlineBlock(getElement());
     CSS.setProperty(this, CSS.A.OUTLINE, CSS.V.NONE);
     CSS.setPropertyPx(this, CSS.A.PADDING, 0);
@@ -138,41 +134,48 @@ public class Button extends FocusWidget implements HasHTML {
     CSS.setProperty(this, CSS.A.VERTICAL_ALIGN,
         CSS.V.VERTICAL_ALIGN.MIDDLE);
     CSS.setSelectable(getElement(), false);
-    setStyleName(CBG_BUTTON);
     Accessibility.setRole(getElement(), Accessibility.ROLE_BUTTON);
     //outer
     outer = Document.get().createDivElement();
     getElement().appendChild(outer);
     setStyleName(outer, CBG_BUTTON_OUTER);
+    CSS.setInlineBlock(outer);
     CSS.setProperty(outer, CSS.A.BORDER_STYLE, CSS.V.BORDER_STYLE.SOLID);
     CSS.setProperty(outer, CSS.A.BORDER_WIDTH, "1px 0");
-    CSS.setInlineBlock(outer);
     CSS.setPropertyPx(outer, CSS.A.LINE_HEIGHT, 0);
     CSS.setPropertyPx(outer, CSS.A.MARGIN, 0);
     CSS.setPropertyPx(outer, CSS.A.PADDING, 0);
     CSS.setProperty(outer, CSS.A.POSITION, CSS.V.POSITION.RELATIVE);
     CSS.setSelectable(outer, false);
-    inner = Document.get().createDivElement();
     //inner
+    inner = Document.get().createDivElement();
     outer.appendChild(inner);
     setStyleName(inner, CBG_BUTTON_INNER);
-    CSS.setProperty(inner, CSS.A.DISPLAY, CSS.V.DISPLAY.INLINE_BLOCK);
+    CSS.setInlineBlock(inner);
+    //Hack for IE Transitional mode to fix negative margin:
+    CSS.setProperty(inner, CSS.A.FLOAT, CSS.V.FLOAT.LEFT);
     CSS.setProperty(inner, CSS.A.BORDER_STYLE, CSS.V.BORDER_STYLE.SOLID);
     CSS.setProperty(inner, CSS.A.BORDER_WIDTH, "0 1px");
     CSS.setProperty(inner, CSS.A.LINE_HEIGHT, CSS.V.LINE_HEIGHT.NORMAL);
     CSS.setProperty(inner, CSS.A.MARGIN, "0 -1px");
+    //Hack for IE6 strict mode to not overflow the buttonTop width, because
+    //IE6 doesn't understand width 100% correctly.
+    CSS.setProperty(inner, CSS.A.OVERFLOW, CSS.V.OVERFLOW.HIDDEN);
     CSS.setProperty(inner, CSS.A.POSITION, CSS.V.POSITION.RELATIVE);
     CSS.setSelectable(inner, false);
     /* The following div was in the original design, but could be omitted
      * without negative consequences on the layout as far as known.
-      button = Document.get().createDivElement();
+      DivElement button = Document.get().createDivElement();
       inner.appendChild(button);
       CSS.setProperty(button, CSS.A.HEIGHT, "100%");
       CSS.setProperty(button, CSS.A.POSITION, CSS.V.POSITION.RELATIVE);
-    */
+     */
     //buttonTop
     buttonTop = Document.get().createDivElement();
     inner.appendChild(buttonTop);
+    //Hack for IE6 and IE7 Transitional mode to give buttonTop correct width,
+    //otherwise it will show the width of the content.:
+    CSS.setProperty(buttonTop, CSS.A.WIDTH, "100%");
     setStyleName(buttonTop, CBG_BUTTON_TOP);
     CSS.setProperty(
         buttonTop, CSS.A.BORDER_BOTTOM_STYLE, CSS.V.BORDER_STYLE.SOLID);
@@ -308,10 +311,10 @@ public class Button extends FocusWidget implements HasHTML {
   }
 
   /**
-   * @deprecated Unfortunally the attribute <code>accessKey</code> only works on
-   * certain HTML elements. It's not supported on div elements as used in this
-   * implementation. Therefore setting an access key has no effect. This method
-   * has been added to provide interface compatibility with the
+   * @deprecated Unfortunately the attribute <code>accessKey</code> only works
+   * on certain HTML elements. It's not supported on div elements as used in
+   * this implementation. Therefore setting an access key has no effect. This
+   * method has been added to provide interface compatibility with the
    * {@link com.google.gwt.user.client.ui.Button} class and made deprecated to
    * indicate it should not be used.
    */
@@ -324,7 +327,7 @@ public class Button extends FocusWidget implements HasHTML {
   /**
    * Sets the color of the Button using hue and saturation. The specific effect
    * of shading is created using a fixed set of brightness parameters to
-   * calculate the rgb values from hue, saturation and brightness.
+   * calculate the RGB values from hue, saturation and brightness.
    *
    * <p>The text color is based on the saturation level. If it's higher then
    * 50 the text color will be white, otherwise it will be black. The color for
@@ -336,6 +339,7 @@ public class Button extends FocusWidget implements HasHTML {
    * @param saturation the saturation component of the color, between 0-100
    */
   public void setColor(int hue, int saturation) {
+    customColor  = true;
     // Arbitrary factor applied to brightness to get better coloring.
     final int satof = (int) ((float)saturation * 0.03 /*=8.0/255*/);
     // numbers in comment represent a brightness range of 0-255 as used in
@@ -401,7 +405,9 @@ public class Button extends FocusWidget implements HasHTML {
     CSS.setProperty(this, CSS.A.CURSOR,
         enabled ? CSS.V.CURSOR.POINTER : CSS.V.CURSOR.DEFAULT);
     setTabIndex(enabled ? tabIndex : -1);
-    setColorText();
+    if (customColor) {
+      setColorText();
+    }
     if (enabled) {
       Accessibility.removeState(getElement(), "aria-disabled");
     } else {
@@ -472,7 +478,9 @@ public class Button extends FocusWidget implements HasHTML {
   protected void onActive(boolean active) {
     if (!this.active || !active) {
       setStyleName(getElement(), CBG_ACTIVE, active);
-      setColorActive(active);
+      if (customColor) {
+        setColorActive(active);
+      }
       Accessibility.setState(getElement(), "aria-pressed",
           active ? "true" : "false");
       this.active = active;
@@ -517,12 +525,14 @@ public class Button extends FocusWidget implements HasHTML {
    *        border
    */
   void setInnerBorderColor(boolean set, boolean leftBorder) {
-    if (leftBorder) {
-      colorBorderLeft = set ? Color.WHITE : null;
-      CSS.setProperty(inner, CSS.A.BORDER_LEFT_COLOR,
-          set ? colorBorderLeft : colorBorder);
-    } else {
-      colorBorderRight = set ? colorBorder : null;
+    if (customColor) {
+      if (leftBorder) {
+	      colorBorderLeft = set ? Color.WHITE : null;
+        CSS.setProperty(inner, CSS.A.BORDER_LEFT_COLOR,
+            set ? colorBorderLeft : colorBorder);
+      } else {
+        colorBorderRight = set ? colorBorder : null;
+      }
     }
     CSS.setPropertyPx(inner,
         leftBorder ? CSS.A.MARGIN_LEFT : CSS.A.MARGIN_RIGHT, set ? 0 : -1);
@@ -538,13 +548,15 @@ public class Button extends FocusWidget implements HasHTML {
    */
   private void onFocus(boolean set, String style, String color) {
     setStyleName(getElement(), style, set);
-    CSS.setProperty(outer, CSS.A.BORDER_COLOR, set ? color : colorBorder);
-    CSS.setProperty(inner, CSS.A.BORDER_COLOR, set ? color : colorBorder);
-    if (colorBorderLeft != null) {
-      CSS.setProperty(inner, CSS.A.BORDER_LEFT_COLOR, colorBorderLeft);
-    }
-    if (colorBorderRight != null) {
-      CSS.setProperty(inner, CSS.A.BORDER_RIGHT_COLOR, colorBorderRight);
+    if (customColor) {
+      CSS.setProperty(outer, CSS.A.BORDER_COLOR, set ? color : colorBorder);
+      CSS.setProperty(inner, CSS.A.BORDER_COLOR, set ? color : colorBorder);
+      if (colorBorderLeft != null && !set) {
+        CSS.setProperty(inner, CSS.A.BORDER_LEFT_COLOR, colorBorderLeft);
+      }
+      if (colorBorderRight != null && !set) {
+        CSS.setProperty(inner, CSS.A.BORDER_RIGHT_COLOR, colorBorderRight);
+      }
     }
     if (!set) {
       onActive(false);
