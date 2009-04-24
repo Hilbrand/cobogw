@@ -210,7 +210,7 @@ public class RoundedPanel extends SimplePanel {
   public final static int ALL = TOP | BOTTOM;
 
   /**
-   * Default border style
+   * Default style name of the border elements.
    */
   private final static String RPSTYLE = "cbg-RP";
 
