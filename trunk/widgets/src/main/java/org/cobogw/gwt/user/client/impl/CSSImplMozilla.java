@@ -46,9 +46,9 @@ public class CSSImplMozilla extends CSSImpl {
    * However since the 'inline-block' has been supported after 1.8 we can't
    * use these user agent feature to generate the correct code.
    *
-   *  Possible (not tested) '-moz-inline-box' will work for later versions of
-   *  gecko (> 1.8) as well, but since 'inline-block' is preferred that value is
-   *  set for those versions.
+   * For gecko < 1.8 the '-moz-inline-box' works buggy. For example children of
+   * a element with this property may not set it to, this will result in
+   * broken layouts.
    *
    * @see http://reference.sitepoint.com/css/moz-inline-box
    */
