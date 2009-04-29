@@ -23,7 +23,7 @@ import com.google.gwt.dom.client.Element;
  */
 public class CSSImplIE6 extends CSSImpl {
 
-  private final static float documentMode = documentMode();
+  public final static float documentMode = documentMode();
 //  private final static float ieVersion = detectIEVersion();
 //  private final static boolean inQuiksMode = inQuirksMode();
 //  private final static boolean isTridentEngine = isTridentEngine();
@@ -39,7 +39,7 @@ public class CSSImplIE6 extends CSSImpl {
     return parseFloat(navigator.userAgent.substring(index));
   }-*/;
 
-  private static native boolean inQuirksMode() /*-{
+  public static native boolean inQuirksMode() /*-{
     return $doc.compatMode == 'BackCompat';
   }-*/;
   

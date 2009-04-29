@@ -102,6 +102,7 @@ public class ButtonBar extends FlowPanel {
             ((Button) right).setInnerBorderColor(false, true);
           }
           setStyleName(right.getElement(), CBG_BUTTON_COLLAPSE_LEFT, false);
+          setStyleName(right.getElement(), CBG_BUTTON_COLLAPSE_RIGHT, false);
         } else if (index == cnt) {
           // correct the new last button, since the last button was removed.
           final Widget left = getWidget(index-1);
@@ -109,7 +110,7 @@ public class ButtonBar extends FlowPanel {
           if (left instanceof Button) {
             ((Button) left).setInnerBorderColor(false, false);
           }
-          setStyleName(left.getElement(), CBG_BUTTON_COLLAPSE_LEFT, false);
+          setStyleName(left.getElement(), CBG_BUTTON_COLLAPSE_RIGHT, false);
         } // else button removed in between other buttons, so nothing to do
       }
     }
