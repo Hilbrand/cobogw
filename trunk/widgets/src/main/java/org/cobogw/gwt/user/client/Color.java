@@ -784,7 +784,7 @@ public class Color {
   public static final String YELLOWGREEN = "#9acd32";
 
   /**
-   * Creates a hex string representation of the RGB arguments, like "#0DFFAA".
+   * Creates a hex string representation of the RGB arguments, like "#0dffaa".
    *
    * @param red the red component
    * @param green the green component
