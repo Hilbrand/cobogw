@@ -1,8 +1,8 @@
 #summary Release Notes Cobogw library
 
 ==Release notes 1.2.4 April 30, 2009==
-  * Improved support for using CSS with Button, (includes #11).
-  * Fixed issues #13, #14, and #15.
+  * Improved support for using CSS with Button, (includes issue 11).
+  * Fixed issues issue 13, issue 14, and issue 15.
 
 ==Release notes 1.2.3 April 4, 2009==
   * Fixed Button widget Internet Explorer 6 and 7 support, (fixes issue 8).
