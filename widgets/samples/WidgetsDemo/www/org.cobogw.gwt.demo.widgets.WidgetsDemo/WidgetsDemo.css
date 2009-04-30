@@ -1,13 +1,66 @@
 body {
   background-color:#fafafa;
-  font:normal 16px Arial, Helvetica, sans-serif;
+  font:normal 12px Arial, Helvetica, sans-serif;
   padding:0;
 }
-td,a,div,.p{font-family:arial,sans-serif}
-div,td{color:#000000}
-a:link,.w,.w a:link{color:#0000cc}
-a:visited{color:#551a8b}
-a:active{color:#ff0000}
+
+.gwt-TabBarItem {
+  font-size:12px;
+  margin:2px 0;
+  width:120px;
+  cursor: pointer;
+}
+.gwt-TabBarItem .gwt-Label{
+  padding: 0 5px;
+}
+
+.gwt-TabBarItem-selected {
+  font-weight:bold;
+}
+
+.gwt-TabBarItem-selected .cbg-RP {
+  background-color:#FF8C00;
+}
+.gwt-TabBarItem-selected .gwt-Label {
+  background-color:#FF8C00;
+}
+
+.gwt-TabPanelBottom  .cbg-RP {
+  background-color:#FF8C00;
+}
+
+.demo-TP {
+  border-left:2px solid #FF8C00;
+  border-right:2px solid #FF8C00;
+  background-color:#FFFAF7;
+	padding: 8px;
+	font:normal 16px Arial, Helvetica, sans-serif;
+}
+
+.demo-FP-2 {
+	font:normal 16px Arial, Helvetica, sans-serif;
+}
+.demo-enableCB {
+	padding-right:40px;
+}
+.demo-FP-3 {
+	padding: 5px;
+}
+
+.demo-FP-3 .cbg-Button {
+	font-size:70%;
+	margin-right: 10px;
+}
+
+.demo-FP-CSS {
+	border: 1px solid orange;
+	background-color: #FFF7F7;
+	font-size:12px;
+	font-family: monospace;
+	white-space: pre;
+	padding: 10px;
+	width: 35em;
+}
 
 .cbg-TabBarItem{
   padding:0 8px;
@@ -96,4 +149,83 @@ background-color:maroon;
 }
 .cbg-ratingwithtext {
 	font-size: 8pt;
+}
+
+/* Button Style */
+
+/* specific for Opera */
+.cbg-ButtonContent::selection {
+  background-color:transparent;
+}
+
+.cbg-Button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70%; /*relative to inherit 16px font-size*/
+}
+
+.cbg-Button .cbg-ButtonOuter {
+  border-color: #bcbcbc;
+}
+
+.cbg-Button .cbg-ButtonInner {
+  background-color: #e2e2e2;
+  border-color: #bcbcbc;
+}
+
+.cbg-Button .cbg-ButtonTop {
+  background-color: #f9f9f9;
+  border-bottom-color: #ededed;
+  border-bottom-width: 0.2em;
+  height: 0.9em;
+}
+
+.cbg-Button .cbg-ButtonContent {
+  color: black;
+  line-height: 1.8em;
+  padding: 0 8px;
+}
+
+.cbg-Button-active .cbg-ButtonInner {
+  background-color: #f9f9f9;
+}
+
+.cbg-Button-active  .cbg-ButtonTop {
+  background-color: #e2e2e2;
+}
+
+.cbg-Button-disabled .cbg-ButtonContent {
+  color: #878787;
+}
+
+.cbg-Button-hover .cbg-ButtonOuter {
+  border-color: #939393;
+}
+
+.cbg-Button-hover .cbg-ButtonInner {
+  border-color: #939393;
+}
+
+.cbg-Button-focus .cbg-ButtonOuter {
+  border-color: #444444;
+}
+
+.cbg-Button-focus .cbg-ButtonInner {
+  border-color: #444444;
+}
+
+/* ButtonBar specific style */
+.cbg-ButtonBar .cbg-BCLeft .cbg-ButtonInner {
+  border-left-color: white;
+}
+
+.cbg-ButtonBar .cbg-Button-hover .cbg-ButtonInner {
+  border-color: #939393;
+}
+
+.cbg-ButtonBar .cbg-Button-focus .cbg-ButtonInner {
+  border-color: #444444;
+}
+
+.cbg-ButtonBar .cbg-BCRight .cbg-ButtonInner {
+  border-right-color: #bcbcbc;
 }
