@@ -33,6 +33,7 @@ public class CSSImplIE6 extends CSSImpl {
    *
    * @return Version of Internet Explorer
    */
+  @SuppressWarnings("unused")
   private static native float detectIEVersion() /*-{
     var index = navigator.userAgent.indexOf("MSIE") + 5;
     if (index == -1) return 6.0; // assume IE 6 in this case
@@ -44,6 +45,7 @@ public class CSSImplIE6 extends CSSImpl {
   }-*/;
   
   //Trident is the IE 8 JavaScript Engine.
+  @SuppressWarnings("unused")
   private static native boolean isTridentEngine() /*-{
     return navigator.userAgent.indexOf("Trident") != -1;
   }-*/;

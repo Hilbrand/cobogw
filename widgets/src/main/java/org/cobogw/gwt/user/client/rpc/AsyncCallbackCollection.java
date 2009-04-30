@@ -24,6 +24,7 @@ import java.util.Iterator;
  * A helper class for implementers of the AsynCallback interface. This class
  * assumes that all objects added to it will be of type {@link AsyncCallback}.
  */
+@SuppressWarnings("serial")
 public class AsyncCallbackCollection<T> extends ArrayList<AsyncCallback<T>>
     implements AsyncCallback<T> {
 
