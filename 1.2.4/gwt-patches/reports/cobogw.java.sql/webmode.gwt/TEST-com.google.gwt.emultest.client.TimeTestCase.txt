@@ -1,0 +1,44 @@
+Testsuite: com.google.gwt.emultest.client.TimeTestCase
+Tests run: 10, Failures: 0, Errors: 0, Time elapsed: 20,172 sec
+------------- Standard Output ---------------
+Scanning for additional dependencies: jar:file:/E:/libraries/gwt-windows-1.5.3/gwt-user.jar!/com/google/gwt/junit/translatable/com/google/gwt/junit/client/impl/GWTRunner.java
+   Computing all possible rebind results for 'com.google.gwt.junit.client.impl.JUnitHost'
+      Rebinding com.google.gwt.junit.client.impl.JUnitHost
+         Invoking <generate-with class='com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator'/>
+            Generating client proxy for remote service interface 'com.google.gwt.junit.client.impl.JUnitHost'
+               Analyzing 'com.google.gwt.junit.client.impl.JUnitHost' for serializable types
+                  Analyzing methods:
+                     public abstract com.google.gwt.junit.client.impl.JUnitHost.TestInfo reportResultsAndGetNextMethod(com.google.gwt.junit.client.impl.JUnitHost.TestInfo testInfo, com.google.gwt.junit.client.impl.JUnitResult result) throws com.google.gwt.junit.client.TimeoutException
+                        Parameter: com.google.gwt.junit.client.impl.JUnitResult result
+                           com.google.gwt.junit.client.impl.JUnitResult
+                              Verifying instantiability
+                                 com.google.gwt.benchmarks.client.impl.BenchmarkResults
+                                    Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.BenchmarkResults' that qualify for serialization
+                                       private java.util.List<com.google.gwt.benchmarks.client.impl.Trial> trials
+                                          java.util.List<com.google.gwt.benchmarks.client.impl.Trial>
+                                             Verifying instantiability
+                                                java.util.Stack<com.google.gwt.benchmarks.client.impl.Trial>
+                                                   Checking parameters of 'java.util.Stack<com.google.gwt.benchmarks.client.impl.Trial>'
+                                                      Checking type argument 0 of type 'java.util.Stack<E>' because it is directly exposed in this type or in one of its subtypes
+                                                         com.google.gwt.benchmarks.client.impl.Trial
+                                                            Verifying instantiability
+                                                               com.google.gwt.benchmarks.client.impl.Trial
+                                                                  Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.Trial' that qualify for serialization
+                                                                     private java.util.Map<java.lang.String, java.lang.String> variables
+                                                                        java.util.Map<java.lang.String, java.lang.String>
+                                                                           Verifying instantiability
+                                                                              com.google.gwt.i18n.client.impl.ConstantMap
+                                                                                 Analyzing the fields of type 'com.google.gwt.i18n.client.impl.ConstantMap' that qualify for serialization
+                                                                                    [WARN] Field 'private final com.google.gwt.i18n.client.impl.ConstantMap.OrderedConstantSet<java.lang.String> keys' will not be serialized because it is final
+------------- ---------------- ---------------
+
+Testcase: testValueOf1 took 19,234 sec
+Testcase: testValueOf2 took 0,047 sec
+Testcase: testValueOf3 took 0,062 sec
+Testcase: testValueOf4 took 0,062 sec
+Testcase: testTime1 took 0,063 sec
+Testcase: testTime2 took 0,063 sec
+Testcase: testSetTime took 0,063 sec
+Testcase: testToString1 took 0,063 sec
+Testcase: testToString2 took 0,062 sec
+Testcase: testToString3 took 0,062 sec
