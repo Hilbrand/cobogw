@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ Copyright 2007-2009 Hilbrand Bouwkamp, hs@bouwkamp.com
+
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ use this file except in compliance with the License. You may obtain a copy of
+ the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ License for the specific language governing permissions and limitations under
+ the License.
+-->
+<project name="cobogw" default="all" basedir=".">
+  <description>
+    cobogw build file. This ant build file creates the file
+  	org.cobogw.gwt-${version}.jar and packs jar, source and javadoc into a zip
+    file.
+
+    To run set the environment variable GWT_HOME to the home directory of your
+    GWT libraries, e.g. gwt-user.jar.
+  </description>
+  <property name="version" value="1.2.4" />
+  <property name="packagefile" value="org.cobogw.gwt" />
+  <property name="jarfile" value="${packagefile}-${version}.jar" />
+  <property name="zipprefix" value="${packagefile}-${version}" />
+  <property name="zipfile" value="${zipprefix}.zip" />
+  <property name="gwt.path" location="${GWT_HOME}" />
+
+  <!-- set classpath -->
+  <path id="project.class.path">
+    <pathelement path="${java.class.path}/"/>
+    <pathelement path="${gwt.path}/gwt-user.jar"/>
+  </path>
+
+  <target name="clean.all" depends="clean.build"
+      description="Clean all genererated files">
+    <delete failonerror="false" file="${zipfile}"/>
+    <delete failonerror="false" file="${jarfile}"/>
+    <delete failonerror="false">
+      <fileset dir="doc/javadoc" includes="**"/>
+    </delete>
+  </target>
+
+  <target name="clean.build" description="Clean the compiled classes">
+    <delete failonerror="false" >
+      <fileset dir="target/classes" includes="**/*.class"/>
+    </delete>
+  </target>
+
+  <target name="compile.debug" depends="clean.build"
+      description="Compile src to target/classes in debug mode">
+    <mkdir dir="target/classes"/>
+    <javac srcdir="src/main/java" destdir="target/classes" includes="**/*.java"
+         debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
+      <classpath refid="project.class.path"/>
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+
+  <target name="javadoc" depends="compile.debug" description="Generate Javadoc">
+    <javadoc packagenames="org.cobogw.gwt.*"
+      destdir="doc/javadoc" author="true" version="true" use="true">
+      <fileset dir="src/main/java" defaultexcludes="yes">
+        <include name="org/cobogw/gwt/**/*.java"/>
+        <exclude name="org/cobogw/gwt/**/impl/**"/>
+      </fileset>
+      <doctitle><![CDATA[<h1>ORG.COBOGW.GWT package</h1>]]></doctitle>
+      <bottom><![CDATA[<i>Copyright &copy; 2007-2009 Hilbrand Bouwkamp. All Rights Reserved.</i>]]></bottom>
+      <classpath refid="project.class.path"/>
+    </javadoc>
+    <fixcrlf srcdir="doc/javadoc" includes="**/*.html"/>
+  </target>
+	
+  <target name="package" depends="clean.build, compile.debug"
+      description="Package up the project as a jar">
+    <jar destfile="${jarfile}">
+      <manifest>
+        <attribute name="Built-By" value="org.cobogw"/>
+        <section name="org/cobogw/gwt/user/client/ui/Button.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/ButtonBar.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Link.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Rating.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/RoundedLinePanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/RoundedPanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/Span.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/TextNode.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+        <section name="org/cobogw/gwt/user/client/ui/VerticalTabPanel.class">
+          <attribute name="Java-Bean" value="True"/>
+        </section>
+      </manifest>
+      <fileset dir="target/classes">
+        <include name="**/*.class"/>
+      </fileset>
+      <!-- Get everything; source, modules, html files -->
+      <fileset dir="src/main/java">
+        <include name="**/*.java"/>
+      </fileset>
+      <fileset dir="src/main/resources">
+        <include name="**/*"/>
+      </fileset>
+    </jar>
+  </target>
+
+  <target name="zip" depends="clean.all, package, javadoc"
+    description="Put jar, source and javadoc in zip file">
+    <zip destfile="${zipfile}">
+      <zipfileset dir="src/" prefix="${zipprefix}/src/" />
+      <zipfileset dir="doc/" prefix="${zipprefix}/doc/" />
+      <zipfileset file="COPYING" prefix="${zipprefix}" />
+      <zipfileset file="README.TXT" prefix="${zipprefix}" />
+      <zipfileset file="cobogw.ant.xml" prefix="${zipprefix}" />
+      <zipfileset file="${jarfile}" prefix="${zipprefix}" />
+    </zip>
+  </target>
+
+  <target name="all" depends="zip"/>
+
+</project>
