@@ -16,6 +16,7 @@
 <module>
   <inherits name='com.google.gwt.user.User'/>
 
+  <inherits name='org.cobogw.gwt.event.Event'/>
   <inherits name='org.cobogw.gwt.user.ButtonCSS'/>
   <inherits name='org.cobogw.gwt.user.CSS'/>
 
