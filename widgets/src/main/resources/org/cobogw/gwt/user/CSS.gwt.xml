@@ -22,6 +22,10 @@
   <replace-with class="org.cobogw.gwt.user.client.impl.CSSImplIE6">
     <when-type-is class="org.cobogw.gwt.user.client.impl.CSSImpl"/>
     <when-property-is name="user.agent" value="ie6"/>
+  </replace-with>
+
+  <replace-with class="org.cobogw.gwt.user.client.impl.CSSImplIE6">
+    <when-type-is class="org.cobogw.gwt.user.client.impl.CSSImpl"/>
     <when-property-is name="user.agent" value="ie8"/>
   </replace-with>
 

@@ -23,6 +23,10 @@
   <replace-with class="org.cobogw.gwt.user.client.ui.impl.ButtonImplIE6">
     <when-type-is class="org.cobogw.gwt.user.client.ui.impl.ButtonImpl"/>
     <when-property-is name="user.agent" value="ie6"/>
+  </replace-with>
+
+  <replace-with class="org.cobogw.gwt.user.client.ui.impl.ButtonImplIE6">
+    <when-type-is class="org.cobogw.gwt.user.client.ui.impl.ButtonImpl"/>
     <when-property-is name="user.agent" value="ie8"/>
   </replace-with>
 
