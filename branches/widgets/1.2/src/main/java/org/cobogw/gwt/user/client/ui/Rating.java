@@ -15,6 +15,7 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.SpanElement;
 import com.google.gwt.user.client.Event;
@@ -110,10 +111,10 @@ public class Rating extends Composite {
       setElement(star);
       sinkEvents(Event.MOUSEEVENTS | Event.ONCLICK);
       this.index = index;
-      this.deselectedImg = "url(" + deselectedImg + ")";
-      this.selectedImg = "url(" + selectedImg + ")";
+      this.deselectedImg = getImageUrl(deselectedImg);
+      this.selectedImg = getImageUrl(selectedImg);
       this.hoverImg =
-          "".equals(hoverImg) ? this.selectedImg : "url(" + hoverImg + ")";
+          "".equals(hoverImg) ? this.selectedImg : getImageUrl(hoverImg);
       if ((orientation & (LTR | RTL)) > 0) {
         star.getStyle().setProperty(CSS.A.FLOAT, CSS.V.FLOAT.LEFT);
       }
@@ -375,6 +376,18 @@ public class Rating extends Composite {
 
       sw.setTitle(titles[idx++]);
     }
+  }
+
+  /**
+   * Creates the background url for an rating image. In case the image not
+   * starts with http it's prepended with the module base url.
+   *
+   * @param image Name of the image file
+   * @return complete style string with url
+   */
+  private String getImageUrl(String image) {
+    return "url(" + (image.startsWith("http") ? "" : GWT.getModuleBaseURL()) +
+      image + ")";
   }
 
   /**
