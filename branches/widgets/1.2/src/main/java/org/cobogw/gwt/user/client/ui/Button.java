@@ -27,7 +27,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Accessibility;
 import com.google.gwt.user.client.ui.ClickListener;
-import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.KeyboardListener;
 
@@ -68,7 +68,7 @@ import com.google.gwt.user.client.ui.KeyboardListener;
  *
  * @see http://stopdesign.com/archive/2009/02/04/recreating-the-button.html
  */
-public class Button extends FocusWidget implements HasHTML {
+public class Button extends FocusPanel implements HasHTML {
 
   //class style names.
   public static String CBG_BUTTON = "cbg-Button";
@@ -121,7 +121,7 @@ public class Button extends FocusWidget implements HasHTML {
    * Creates a button with no caption.
    */
   public Button() {
-    super(Document.get().createDivElement());
+    super();
     sinkEvents(
         Event.ONCLICK|Event.FOCUSEVENTS|Event.MOUSEEVENTS|Event.KEYEVENTS);
     setStyleName(CBG_BUTTON);
@@ -287,8 +287,7 @@ public class Button extends FocusWidget implements HasHTML {
       case Event.ONMOUSEDOWN:
         if (Event.BUTTON_LEFT == DOM.eventGetButton(event)) {
           // Also set focus when clicked with mouse
-          // In try-catch for FF1.0 focus() trouble...
-          try { setFocus(true); } catch (Exception e) {}
+          setFocus(true);
           onActive(true);
         }
         DOM.eventPreventDefault(event);
