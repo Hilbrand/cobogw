@@ -23,13 +23,14 @@ import org.cobogw.gwt.user.client.ui.impl.ButtonImpl;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Accessibility;
 import com.google.gwt.user.client.ui.ClickListener;
-import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.HasHTML;
-import com.google.gwt.user.client.ui.KeyboardListener;
 
 /**
  * A push-button widget build with div elements using only CSS to create
@@ -68,7 +69,8 @@ import com.google.gwt.user.client.ui.KeyboardListener;
  *
  * @see http://stopdesign.com/archive/2009/02/04/recreating-the-button.html
  */
-public class Button extends FocusWidget implements HasHTML {
+@SuppressWarnings("deprecation")
+public class Button extends FocusPanel implements HasHTML {
 
   //class style names.
   public static String CBG_BUTTON = "cbg-Button";
@@ -121,7 +123,7 @@ public class Button extends FocusWidget implements HasHTML {
    * Creates a button with no caption.
    */
   public Button() {
-    super(Document.get().createDivElement());
+    super();
     sinkEvents(
         Event.ONCLICK|Event.FOCUSEVENTS|Event.MOUSEEVENTS|Event.KEYEVENTS);
     setStyleName(CBG_BUTTON);
@@ -212,11 +214,23 @@ public class Button extends FocusWidget implements HasHTML {
    * @param html the HTML caption
    * @param listener the click listener
    */
+  @Deprecated
   public Button(String html, ClickListener listener) {
     this(html);
     addClickListener(listener);
   }
 
+  /**
+   * Creates a button with the given HTML caption and click listener.
+   * 
+   * @param html the HTML caption
+   * @param handler the click handler
+   */
+  public Button(String html, ClickHandler handler) {
+    this(html);
+    addClickHandler(handler);
+  }
+  
   /**
    * Programmatic equivalent of the user clicking the button. To fire the click
    * event the button must be attached to the DOM. 
@@ -255,7 +269,7 @@ public class Button extends FocusWidget implements HasHTML {
   @Override
   public void onBrowserEvent(Event event) {
     if (!enabled) {
-      DOM.eventPreventDefault(event);
+      event.preventDefault();
       return;
     }
     switch (DOM.eventGetType(event)) {
@@ -269,29 +283,28 @@ public class Button extends FocusWidget implements HasHTML {
         onFocus(true);
         break;
       case Event.ONKEYDOWN:
-        final int kd = DOM.eventGetKeyCode(event);
-        if (kd == 32 /*spacebar*/ || kd == KeyboardListener.KEY_ENTER) {
+        final int kd = event.getKeyCode();
+        if (kd == 32 /*spacebar*/ || kd == KeyCodes.KEY_ENTER) {
           keyFired  = true;
           onActive(true);
         }
         break;
       case Event.ONKEYUP:
-        final int ku = DOM.eventGetKeyCode(event);
+        final int ku = event.getKeyCode();
         onActive(false);
-        if (keyFired && (ku == 32 /*spacebar*/ || ku == KeyboardListener.KEY_ENTER)) {
+        if (keyFired && (ku == 32 /*spacebar*/ || ku == KeyCodes.KEY_ENTER)) {
           keyFired = false;
           click();
         }
         keyFired = false;
         break;
       case Event.ONMOUSEDOWN:
-        if (Event.BUTTON_LEFT == DOM.eventGetButton(event)) {
+        if (Event.BUTTON_LEFT == event.getButton()) {
           // Also set focus when clicked with mouse
-          // In try-catch for FF1.0 focus() trouble...
-          try { setFocus(true); } catch (Exception e) {}
+          setFocus(true);
           onActive(true);
         }
-        DOM.eventPreventDefault(event);
+        event.preventDefault();
         return;
       case Event.ONMOUSEOUT:
         // on mouse out remove all styles, except focus
