@@ -1,0 +1,107 @@
+Testsuite: com.google.gwt.user.client.rpc.RPCJavaSqlTestCase
+Tests run: 12, Failures: 1, Errors: 1, Time elapsed: 15,266 sec
+------------- Standard Output ---------------
+Scanning for additional dependencies: jar:file:/G:/libs/gwt-windows-1.5.3/gwt-user.jar!/com/google/gwt/junit/translatable/com/google/gwt/junit/client/impl/GWTRunner.java
+   Computing all possible rebind results for 'com.google.gwt.junit.client.impl.JUnitHost'
+      Rebinding com.google.gwt.junit.client.impl.JUnitHost
+         Invoking <generate-with class='com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator'/>
+            Generating client proxy for remote service interface 'com.google.gwt.junit.client.impl.JUnitHost'
+               Analyzing 'com.google.gwt.junit.client.impl.JUnitHost' for serializable types
+                  Analyzing methods:
+                     public abstract com.google.gwt.junit.client.impl.JUnitHost.TestInfo reportResultsAndGetNextMethod(com.google.gwt.junit.client.impl.JUnitHost.TestInfo testInfo, com.google.gwt.junit.client.impl.JUnitResult result) throws com.google.gwt.junit.client.TimeoutException
+                        Parameter: com.google.gwt.junit.client.impl.JUnitResult result
+                           com.google.gwt.junit.client.impl.JUnitResult
+                              Verifying instantiability
+                                 com.google.gwt.benchmarks.client.impl.BenchmarkResults
+                                    Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.BenchmarkResults' that qualify for serialization
+                                       private java.util.List<com.google.gwt.benchmarks.client.impl.Trial> trials
+                                          java.util.List<com.google.gwt.benchmarks.client.impl.Trial>
+                                             Verifying instantiability
+                                                java.util.LinkedList<com.google.gwt.benchmarks.client.impl.Trial>
+                                                   Checking parameters of 'java.util.LinkedList<com.google.gwt.benchmarks.client.impl.Trial>'
+                                                      Checking type argument 0 of type 'java.util.LinkedList<E>' because it is directly exposed in this type or in one of its subtypes
+                                                         com.google.gwt.benchmarks.client.impl.Trial
+                                                            Verifying instantiability
+                                                               com.google.gwt.benchmarks.client.impl.Trial
+                                                                  Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.Trial' that qualify for serialization
+                                                                     private java.util.Map<java.lang.String, java.lang.String> variables
+                                                                        java.util.Map<java.lang.String, java.lang.String>
+                                                                           Verifying instantiability
+                                                                              com.google.gwt.i18n.client.impl.ConstantMap
+                                                                                 Analyzing the fields of type 'com.google.gwt.i18n.client.impl.ConstantMap' that qualify for serialization
+                                                                                    [WARN] Field 'private final com.google.gwt.i18n.client.impl.ConstantMap.OrderedConstantSet<java.lang.String> keys' will not be serialized because it is final
+[WARN] StandardContext[]An IncompatibleRemoteServiceException was thrown while processing this call.
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException: java.lang.reflect.InvocationTargetException
+	at com.google.gwt.user.server.rpc.RPC.decodeRequest(RPC.java:298)
+	at com.google.gwt.user.server.rpc.RemoteServiceServlet.processCall(RemoteServiceServlet.java:163)
+	at com.google.gwt.user.server.rpc.RemoteServiceServlet.doPost(RemoteServiceServlet.java:86)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:709)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+	at com.google.gwt.dev.shell.GWTShellServlet.service(GWTShellServlet.java:289)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:802)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:237)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:157)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:214)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardContextValve.invokeInternal(StandardContextValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:152)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:137)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:118)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:102)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.core.StandardValveContext.invokeNext(StandardValveContext.java:104)
+	at org.apache.catalina.core.StandardPipeline.invoke(StandardPipeline.java:520)
+	at org.apache.catalina.core.ContainerBase.invoke(ContainerBase.java:929)
+	at org.apache.coyote.tomcat5.CoyoteAdapter.service(CoyoteAdapter.java:160)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:799)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.processConnection(Http11Protocol.java:705)
+	at org.apache.tomcat.util.net.TcpWorkerThread.runIt(PoolTcpEndpoint.java:577)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:683)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: com.google.gwt.user.client.rpc.SerializationException: java.lang.reflect.InvocationTargetException
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader.deserialize(ServerSerializationStreamReader.java:527)
+	at com.google.gwt.user.client.rpc.impl.AbstractSerializationStreamReader.readObject(AbstractSerializationStreamReader.java:61)
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader$ValueReader$8.readValue(ServerSerializationStreamReader.java:131)
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader.deserializeValue(ServerSerializationStreamReader.java:372)
+	at com.google.gwt.user.server.rpc.RPC.decodeRequest(RPC.java:287)
+	... 30 more
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader.deserializeWithCustomFieldDeserializer(ServerSerializationStreamReader.java:681)
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader.deserializeImpl(ServerSerializationStreamReader.java:601)
+	at com.google.gwt.user.server.rpc.impl.ServerSerializationStreamReader.deserialize(ServerSerializationStreamReader.java:502)
+	... 34 more
+Caused by: java.lang.IllegalArgumentException: nanos > 999999999 or < 0
+	at java.sql.Timestamp.setNanos(Timestamp.java:383)
+	at com.google.gwt.user.client.rpc.core.java.sql.Timestamp_CustomFieldSerializer.deserialize(Timestamp_CustomFieldSerializer.java:31)
+	... 41 more
+------------- ---------------- ---------------
+
+Testcase: testDate1 took 14,25 sec
+Testcase: testDate2 took 0,031 sec
+Testcase: testDate3 took 0,015 sec
+Testcase: testTime1 took 0,062 sec
+Testcase: testTime2 took 0,016 sec
+Testcase: testTime3 took 0,032 sec
+Testcase: testTime4 took 0,031 sec
+Testcase: testTimestamp1 took 0,078 sec
+Testcase: testTimestamp2 took 0,031 sec
+Testcase: testTimestamp3 took 0,078 sec
+	FAILED
+java.lang.reflect.InvocationTargetException
+junit.framework.AssertionFailedError: java.lang.reflect.InvocationTargetException
+
+Testcase: testTimestamp4 took 0,063 sec
+	Caused an ERROR
+Invalid escape format: 2007-01-01 0:0:0.0
+java.lang.IllegalArgumentException: Invalid escape format: 2007-01-01 0:0:0.0
+
+Testcase: testTimestamp5 took 0,062 sec
