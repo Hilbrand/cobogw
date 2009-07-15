@@ -1,0 +1,247 @@
+body {
+  background-color:#fafafa;
+  font:normal 12px Arial, Helvetica, sans-serif;
+  padding:0;
+}
+
+.gwt-TabBarItem {
+  font-size:12px;
+  margin:2px 0;
+  width:120px;
+  cursor: pointer;
+}
+.gwt-TabBarItem .gwt-Label{
+  padding: 0 5px;
+}
+
+.gwt-TabBarItem-selected {
+  font-weight:bold;
+}
+
+.gwt-TabBarItem-selected .cbg-RP {
+  background-color:#FF8C00;
+}
+.gwt-TabBarItem-selected .gwt-Label {
+  background-color:#FF8C00;
+}
+
+.gwt-TabPanelBottom  .cbg-RP {
+  background-color:#FF8C00;
+}
+
+.demo-TP {
+  border-left:2px solid #FF8C00;
+  border-right:2px solid #FF8C00;
+  background-color:#FFFAF7;
+	padding: 8px;
+	font:normal 16px Arial, Helvetica, sans-serif;
+}
+
+.demo-FP-2 {
+	font:normal 16px Arial, Helvetica, sans-serif;
+}
+.demo-enableCB {
+	padding-right:40px;
+}
+.demo-FP-3 {
+	padding: 5px;
+}
+
+.demo-FP-3 .cbg-Button {
+	font-size:70%;
+	margin-right: 10px;
+}
+
+.demo-FP-CSS {
+	border: 1px solid orange;
+	background-color: #FFF7F7;
+	font-size:12px;
+	font-family: monospace;
+	white-space: pre;
+	padding: 10px;
+	width: 35em;
+}
+
+.cbg-TabBarItem{
+  padding:0 8px;
+}
+
+.cbg-TabBarItem .gwt-Label {
+	background-color:#D3D3D3;
+/*  border-bottom: solid 2px lightblue;*/ 
+}
+.cbg-TabBarItem .cbg-RP {
+  background-color:#D3D3D3;
+}
+
+.cbg-TabBarItem-selected .gwt-Label { 
+background-color:maroon;
+  /* 
+  border-bottom: none; 
+  border-bottom: solid 2px maroon;
+  */ 
+}
+
+
+.cbg-TabbedPanel {
+  background-color:yellow;
+}
+
+.cbg-TabbedPanelTab {
+}
+
+.cbg-TabbedPanelContent {
+  background-color:maroon;
+  padding:10px;
+
+}
+.cbg-RatingWidgetItem {
+   margin-left:1px;
+}
+.gwt-SliderBar-shell {
+  border: 2px solid #faf9f7;
+  border-right: 2px solid #848280;
+  border-bottom: 2px solid #848280;
+  background-color: #efebe7;
+  height: 34pt;
+  width: 50%;
+}
+.gwt-SliderBar-shell .gwt-SliderBar-line {
+  border: 1px solid black;
+  background-color: white;
+  height: 4px;
+  width: 95%;
+  top: 22pt;
+  overflow: hidden;
+}
+.gwt-SliderBar-shell .gwt-SliderBar-knob {
+  top: 14pt;
+  width: 11px;
+  height: 21px;
+  z-index: 1;
+  cursor: pointer;
+}
+.gwt-SliderBar-shell .gwt-SliderBar-tick {
+  top: 12pt;
+  width: 1px;
+  height: 8pt;
+  background: black;
+  overflow: hidden;
+}
+.gwt-SliderBar-shell .gwt-SliderBar-label {
+  top: 2pt;
+  font-size: 8pt;
+  cursor: default;
+}
+.gwt-SliderBar-shell-focused {
+}
+.gwt-SliderBar-shell .gwt-SliderBar-line-sliding {
+  background-color: #DDDDDD;
+  cursor: pointer;
+}
+
+.cbg-ButtonContent::selection {
+  background-color:transparent;
+}
+
+.widerButton .cbg-ButtonInner {
+  padding: 0 20px;
+}
+.cbg-ratingwithtext {
+	font-size: 8pt;
+}
+
+/* Button Style */
+
+/* specific for Opera */
+.cbg-ButtonContent::selection {
+  background-color:transparent;
+}
+
+.cbg-Button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 70%; /*relative to inherit 16px font-size*/
+}
+
+.cbg-Button .cbg-ButtonOuter {
+  border-color: #bcbcbc;
+}
+
+.cbg-Button .cbg-ButtonInner {
+  background-color: #e2e2e2;
+  border-color: #bcbcbc;
+}
+
+.cbg-Button .cbg-ButtonTop {
+  background-color: #f9f9f9;
+  border-bottom-color: #ededed;
+  border-bottom-width: 0.2em;
+  height: 0.9em;
+}
+
+.cbg-Button .cbg-ButtonContent {
+  color: black;
+  line-height: 1.8em;
+  padding: 0 8px;
+}
+
+.cbg-Button-active .cbg-ButtonInner {
+  background-color: #f9f9f9;
+}
+
+.cbg-Button-active  .cbg-ButtonTop {
+  background-color: #e2e2e2;
+}
+
+.cbg-Button-disabled .cbg-ButtonContent {
+  color: #878787;
+}
+
+.cbg-Button-hover .cbg-ButtonOuter {
+  border-color: #939393;
+}
+
+.cbg-Button-hover .cbg-ButtonInner {
+  border-color: #939393;
+}
+
+.cbg-Button-focus .cbg-ButtonOuter {
+  border-color: #444444;
+}
+
+.cbg-Button-focus .cbg-ButtonInner {
+  border-color: #444444;
+}
+
+/* ButtonBar specific style */
+.cbg-ButtonBar .cbg-BCLeft .cbg-ButtonInner {
+  border-left-color: white;
+}
+
+.cbg-ButtonBar .cbg-Button-hover .cbg-ButtonInner {
+  border-color: #939393;
+}
+
+.cbg-ButtonBar .cbg-Button-focus .cbg-ButtonInner {
+  border-color: #444444;
+}
+
+.cbg-ButtonBar .cbg-BCRight .cbg-ButtonInner {
+  border-right-color: #bcbcbc;
+}
+
+.cbg-triangle {
+}
+
+.cbg-triangle .cbg-RP {
+	background-color: red;
+}
+
+.cbg-triangle .gwt-HTML {
+  font:normal 9px Arial, Helvetica, sans-serif;
+	background-color: red;
+	padding: 1px 2px 0 2px;
+	color: white;
+	width:9px;
+	cursor: pointer;
+}
