@@ -1,5 +1,12 @@
 #summary Release Notes Cobogw library
 
+==Release notes 1.3 July 15, 2009==
+  * Added GWT 1.6.4 and GWT 1.7 support (issue 12)
+  * Fixed issues issue 18, issue 22, issue 23.
+
+==Release notes 1.2.5 July 15, 2009==
+  * Fixed issues issue 18, issue 22, issue 23.
+
 ==Release notes 1.2.4 April 30, 2009==
   * Improved support for using CSS with Button, (includes issue 11).
   * Fixed issues issue 13, issue 14, and issue 15.
