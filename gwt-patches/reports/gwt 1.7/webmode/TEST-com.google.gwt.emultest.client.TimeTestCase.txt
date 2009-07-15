@@ -1,0 +1,15 @@
+Testsuite: com.google.gwt.emultest.client.TimeTestCase
+Tests run: 12, Failures: 0, Errors: 0, Time elapsed: 13,032 sec
+
+Testcase: testValueOf1 took 12,063 sec
+Testcase: testValueOf2 took 0,016 sec
+Testcase: testValueOf2a took 0,015 sec
+Testcase: testValueOf3 took 0,016 sec
+Testcase: testValueOf3a took 0,016 sec
+Testcase: testValueOf4 took 0,016 sec
+Testcase: testTime1 took 0,031 sec
+Testcase: testTime2 took 0,016 sec
+Testcase: testSetTime took 0,031 sec
+Testcase: testToString1 took 0,016 sec
+Testcase: testToString2 took 0,031 sec
+Testcase: testToString3 took 0,032 sec

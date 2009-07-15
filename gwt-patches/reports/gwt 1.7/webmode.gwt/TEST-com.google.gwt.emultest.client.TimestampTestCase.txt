@@ -1,0 +1,80 @@
+Testsuite: com.google.gwt.emultest.client.TimestampTestCase
+Tests run: 37, Failures: 7, Errors: 3, Time elapsed: 14,094 sec
+
+Testcase: testValueOf1 took 11,828 sec
+Testcase: testValueOf2 took 0,062 sec
+	Caused an ERROR
+Invalid escape format: 2007-01-01 00:00:00
+java.lang.IllegalArgumentException: Invalid escape format: 2007-01-01 00:00:00
+
+Testcase: testValueOf3 took 0,062 sec
+Testcase: testValueOf4 took 0,016 sec
+Testcase: testValueOf5 took 0,016 sec
+Testcase: testValueOf5a took 0,016 sec
+Testcase: testValueOf5b took 0,015 sec
+Testcase: testValueOf6 took 0,016 sec
+Testcase: testValueOf7 took 0,016 sec
+	Caused an ERROR
+Invalid escape format: 2007-08-09 08:09:08.009
+java.lang.IllegalArgumentException: Invalid escape format: 2007-08-09 08:09:08.009
+
+Testcase: testTimestamp1 took 0,016 sec
+Testcase: testTimestamp2 took 0,015 sec
+	FAILED
+ expected=877000000 actual=-123000000
+junit.framework.AssertionFailedError:  expected=877000000 actual=-123000000
+
+Testcase: testTimestamp3 took 0,016 sec
+Testcase: testTimestamp4 took 0,031 sec
+	FAILED
+ expected=1970-01-01 00:00:00.0 actual=1970-01-01 00:00:00.000000000
+junit.framework.AssertionFailedError:  expected=1970-01-01 00:00:00.0 actual=1970-01-01 00:00:00.000000000
+
+Testcase: testAfter1 took 0,063 sec
+Testcase: testAfter2 took 0,063 sec
+Testcase: testAfter3 took 0,063 sec
+Testcase: testBefore1 took 0,063 sec
+Testcase: testBefore2 took 0,062 sec
+Testcase: testBefore3 took 0,109 sec
+Testcase: testCompareTo1 took 0,062 sec
+	FAILED
+ expected=-1 actual=-100
+junit.framework.AssertionFailedError:  expected=-1 actual=-100
+
+Testcase: testCompareTo2 took 0,062 sec
+Testcase: testCompareTo3 took 0,016 sec
+	FAILED
+ expected=1 actual=100
+junit.framework.AssertionFailedError:  expected=1 actual=100
+
+Testcase: testCompareTo4 took 0,031 sec
+	Caused an ERROR
+null
+java.lang.ClassCastException
+
+Testcase: testEquals1 took 0,063 sec
+Testcase: testEquals2 took 0,063 sec
+Testcase: testEquals3 took 0,016 sec
+Testcase: testGetNanos1 took 0,031 sec
+Testcase: testGetNanos2 took 0,016 sec
+Testcase: testGetNanos3 took 0,031 sec
+Testcase: testGetNanos4 took 0,062 sec
+Testcase: testGetNanos5 took 0,062 sec
+	FAILED
+ expected=1000000 actual=-999000000
+junit.framework.AssertionFailedError:  expected=1000000 actual=-999000000
+
+Testcase: testGetNanos6 took 0,062 sec
+	FAILED
+ expected=211000000 actual=-789000000
+junit.framework.AssertionFailedError:  expected=211000000 actual=-789000000
+
+Testcase: testSetTime1 took 0,016 sec
+Testcase: testToString1 took 0,031 sec
+Testcase: testToString2 took 0,063 sec
+Testcase: testToString3 took 0,063 sec
+Testcase: testToString4 took 0,063 sec
+	FAILED
+ expected=2007-01-01 13:02:03.0 actual=2007-01-01 13:02:03.000000000
+junit.framework.AssertionFailedError:  expected=2007-01-01 13:02:03.0 actual=2007-01-01 13:02:03.000000000
+

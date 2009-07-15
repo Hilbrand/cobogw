@@ -1,0 +1,49 @@
+Testsuite: com.google.gwt.emultest.client.DateTestCase
+Tests run: 11, Failures: 0, Errors: 1, Time elapsed: 14,781 sec
+------------- Standard Output ---------------
+Scanning for additional dependencies: jar:file:/G:/libs/gwt-windows-1.5.3/gwt-user.jar!/com/google/gwt/junit/translatable/com/google/gwt/junit/client/impl/GWTRunner.java
+   Computing all possible rebind results for 'com.google.gwt.junit.client.impl.JUnitHost'
+      Rebinding com.google.gwt.junit.client.impl.JUnitHost
+         Invoking <generate-with class='com.google.gwt.user.rebind.rpc.ServiceInterfaceProxyGenerator'/>
+            Generating client proxy for remote service interface 'com.google.gwt.junit.client.impl.JUnitHost'
+               Analyzing 'com.google.gwt.junit.client.impl.JUnitHost' for serializable types
+                  Analyzing methods:
+                     public abstract com.google.gwt.junit.client.impl.JUnitHost.TestInfo reportResultsAndGetNextMethod(com.google.gwt.junit.client.impl.JUnitHost.TestInfo testInfo, com.google.gwt.junit.client.impl.JUnitResult result) throws com.google.gwt.junit.client.TimeoutException
+                        Parameter: com.google.gwt.junit.client.impl.JUnitResult result
+                           com.google.gwt.junit.client.impl.JUnitResult
+                              Verifying instantiability
+                                 com.google.gwt.benchmarks.client.impl.BenchmarkResults
+                                    Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.BenchmarkResults' that qualify for serialization
+                                       private java.util.List<com.google.gwt.benchmarks.client.impl.Trial> trials
+                                          java.util.List<com.google.gwt.benchmarks.client.impl.Trial>
+                                             Verifying instantiability
+                                                java.util.Vector<com.google.gwt.benchmarks.client.impl.Trial>
+                                                   Checking parameters of 'java.util.Vector<com.google.gwt.benchmarks.client.impl.Trial>'
+                                                      Checking type argument 0 of type 'java.util.Vector<E>' because it is directly exposed in this type or in one of its subtypes
+                                                         com.google.gwt.benchmarks.client.impl.Trial
+                                                            Verifying instantiability
+                                                               com.google.gwt.benchmarks.client.impl.Trial
+                                                                  Analyzing the fields of type 'com.google.gwt.benchmarks.client.impl.Trial' that qualify for serialization
+                                                                     private java.util.Map<java.lang.String, java.lang.String> variables
+                                                                        java.util.Map<java.lang.String, java.lang.String>
+                                                                           Verifying instantiability
+                                                                              com.google.gwt.i18n.client.impl.ConstantMap
+                                                                                 Analyzing the fields of type 'com.google.gwt.i18n.client.impl.ConstantMap' that qualify for serialization
+                                                                                    [WARN] Field 'private final com.google.gwt.i18n.client.impl.ConstantMap.OrderedConstantSet<java.lang.String> keys' will not be serialized because it is final
+------------- ---------------- ---------------
+
+Testcase: testValueOf1 took 14,11 sec
+Testcase: testValueOf2 took 0,016 sec
+Testcase: testValueOf2a took 0,016 sec
+	Caused an ERROR
+Invalid escape format: 2007-09-09
+java.lang.IllegalArgumentException: Invalid escape format: 2007-09-09
+
+Testcase: testValueOf3 took 0,015 sec
+Testcase: testValueOf3a took 0,015 sec
+Testcase: testValueOf4 took 0,032 sec
+Testcase: testDate1 took 0,031 sec
+Testcase: testDate2 took 0,015 sec
+Testcase: testSetTime took 0,031 sec
+Testcase: testToString1 took 0,015 sec
+Testcase: testToString2 took 0,031 sec

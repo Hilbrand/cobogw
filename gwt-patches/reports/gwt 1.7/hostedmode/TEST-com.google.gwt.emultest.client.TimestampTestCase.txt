@@ -1,0 +1,40 @@
+Testsuite: com.google.gwt.emultest.client.TimestampTestCase
+Tests run: 37, Failures: 0, Errors: 0, Time elapsed: 12,5 sec
+
+Testcase: testValueOf1 took 8,765 sec
+Testcase: testValueOf2 took 0,062 sec
+Testcase: testValueOf3 took 0,062 sec
+Testcase: testValueOf4 took 0,125 sec
+Testcase: testValueOf5 took 0,062 sec
+Testcase: testValueOf5a took 0,062 sec
+Testcase: testValueOf5b took 0,062 sec
+Testcase: testValueOf6 took 0,063 sec
+Testcase: testValueOf7 took 0,063 sec
+Testcase: testTimestamp1 took 0,219 sec
+Testcase: testTimestamp2 took 0,062 sec
+Testcase: testTimestamp3 took 0,062 sec
+Testcase: testTimestamp4 took 0,016 sec
+Testcase: testAfter1 took 0,094 sec
+Testcase: testAfter2 took 0,062 sec
+Testcase: testAfter3 took 0,062 sec
+Testcase: testBefore1 took 0,062 sec
+Testcase: testBefore2 took 0,062 sec
+Testcase: testBefore3 took 0,063 sec
+Testcase: testCompareTo1 took 0,063 sec
+Testcase: testCompareTo2 took 0,063 sec
+Testcase: testCompareTo3 took 0,047 sec
+Testcase: testCompareTo4 took 0,125 sec
+Testcase: testEquals1 took 0,062 sec
+Testcase: testEquals2 took 0,062 sec
+Testcase: testEquals3 took 0,062 sec
+Testcase: testGetNanos1 took 0,125 sec
+Testcase: testGetNanos2 took 0,062 sec
+Testcase: testGetNanos3 took 0,047 sec
+Testcase: testGetNanos4 took 0,063 sec
+Testcase: testGetNanos5 took 0,063 sec
+Testcase: testGetNanos6 took 0,047 sec
+Testcase: testSetTime1 took 0,062 sec
+Testcase: testToString1 took 0,063 sec
+Testcase: testToString2 took 0,063 sec
+Testcase: testToString3 took 0,063 sec
+Testcase: testToString4 took 0,063 sec
