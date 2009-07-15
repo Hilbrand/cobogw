@@ -21,10 +21,11 @@
     to use those classes in client-server communication.
 
     To run set the environment variable GWT_HOME to the home directory of your
-    GWT libraries, e.g. gwt-user.jar and JUNIT_JAR to the junit.jar file.
+    GWT libraries, e.g. gwt-user.jar, JUNIT_JAR to the junit.jar file and 
+  	GWT_VERSION to the version you are using.
   </description>
-  <property name="version" value="1.1.1" />
-  <property name="packagefile" value="cobogw.java.sql" />
+  <property name="version" value="1.7" />
+  <property name="packagefile" value="cobogw-gwt-patch" />
   <property name="jarfile" value="${packagefile}-${version}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
   <property name="zipfile" value="${packagefile}-${version}.zip" />
@@ -34,7 +35,7 @@
   <property name="build.test" location="bin/test" />
   <property name="build.dir" location="bin/${packagefile}" />
   <property name="www.dir" location="www/${packagefile}" />
-  <property name="reports.tests" location="reports/${packagefile}" />
+  <property name="reports.tests" location="reports/gwt ${GWT_VERSION}" />
   <property name="junit3.jar" location="${JUNIT_JAR}" />
   <property name="gwt.path" location="${GWT_HOME}" />
 
@@ -46,7 +47,6 @@
     <pathelement location="${build.test}" />
     <pathelement location="${build.dir}" />
     <pathelement path="${gwt.path}/gwt-user.jar" />
-    <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
     <pathelement path="${junit3.jar}" />
   </path>
 
@@ -72,12 +72,12 @@
   	  description="Compile src to bin in debug mode">
     <mkdir dir="${build.dir}" />
     <javac srcdir="src" destdir="${build.dir}" includes="**/*.java"
-    	  debug="on" debuglevel="lines,vars,source" source="1.4" target="1.4">
+    	  debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
       <classpath refid="project.class.path" />
     </javac>
     <mkdir dir="${build.test}" />
     <javac srcdir="test" destdir="${build.test}" includes="**/*.java"
-        debug="on" debuglevel="lines,vars,source" source="1.4" target="1.4">
+        debug="on" debuglevel="lines,vars,source" source="1.5" target="1.5">
       <classpath refid="project.class.path" />
     </javac>
   </target>
@@ -96,10 +96,11 @@
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
         <pathelement location="${build.dir}" />
-        <pathelement path="${gwt.path}/gwt-user.jar" />
-        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
         <pathelement path="${junit3.jar}" />
-      </classpath>
+      	<pathelement path="${gwt.path}/gwt-user.jar" />
+        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
+      </classpath>      
+      <jvmarg value="-Xmx512m" />
       <jvmarg value="-Dgwt.args=-out ${www.dir}/hostedmode" />
       <formatter type="plain" />
 
@@ -125,12 +126,12 @@
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
         <pathelement location="${build.dir}" />
-        <pathelement path="${gwt.path}/gwt-user.jar" />
-        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
         <pathelement path="${junit3.jar}" />
+      	<pathelement path="${gwt.path}/gwt-user.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
       </classpath>
-      <jvmarg
-      	  value="-Dgwt.args=-web -out ${www.dir}/webmode -style pretty" />
+      <jvmarg value="-Xmx512m" />
+      <jvmarg value="-Dgwt.args=-web -out ${www.dir}/webmode" />
       <formatter type="plain" />
       <batchtest fork="yes" todir="${webmode.dir}">
         <fileset dir="${src.test}">
@@ -151,10 +152,11 @@
       <classpath>
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
-        <pathelement path="${gwt.path}/gwt-user.jar" />
-        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
         <pathelement path="${junit3.jar}" />
+      	<pathelement path="${gwt.path}/gwt-user.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
       </classpath>
+      <jvmarg value="-Xmx512m" />
       <jvmarg value="-Dgwt.args=-out ${www.dir}/hostedmode.gwt" />
       <formatter type="plain" />
 
@@ -177,12 +179,12 @@
       <classpath>
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
-        <pathelement path="${gwt.path}/gwt-user.jar" />
-        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
         <pathelement path="${junit3.jar}" />
+        <pathelement path="${gwt.path}/gwt-user.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
       </classpath>
-      <jvmarg
-          value="-Dgwt.args=-web -out ${www.dir}/webmode.gwt -style pretty" />
+      <jvmarg value="-Xmx512m" />
+      <jvmarg value="-Dgwt.args=-web -out ${www.dir}/webmode.gwt" />
       <formatter type="plain" />
       <batchtest fork="yes" todir="${webmode.gwt.dir}">
         <fileset dir="${src.test}">
@@ -218,7 +220,12 @@
   	  description="Put jar and readme.txt in zip file">
     <zip destfile="${zipfile}">
       <zipfileset file="COPYING" prefix="${zipprefix}" />
+      <zipfileset file="javasql.ant.xml" prefix="${zipprefix}" />
       <zipfileset file="${jarfile}" prefix="${zipprefix}" />
+      <zipfileset dir="src/" prefix="${zipprefix}/src/" />
+      <zipfileset dir="reports/" prefix="${zipprefix}/reports/" />
+      <zipfileset dir="super/" prefix="${zipprefix}/super/" />
+      <zipfileset dir="test/" prefix="${zipprefix}/test/" />
     </zip>
   </target>
 
