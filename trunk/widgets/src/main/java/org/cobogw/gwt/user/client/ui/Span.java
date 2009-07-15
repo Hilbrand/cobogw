@@ -15,15 +15,17 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.InlineHTML;
 
 /**
  * A widget that contains arbitrary text, <i>not</i> interpreted as HTML. Acts
  * as a Label, except it uses a <code>span</code> tag instead of a <code>div
  * </code> tag to wrap the text in.
  *
+ * With GWT 1.6.4 a new widget {@link InlineHTML} was introduced. That widget is
+ * almost identical to this widget, with these exceptions: This widgets sinks
+ * the ONCLICK, and MOUSEVENTS and has an extra constructor to set wrapping. 
  *
  * <h3>CSS Style Rules</h3>
  * <ul class='css'>
@@ -31,13 +33,13 @@ import com.google.gwt.user.client.ui.HTML;
  * </ul>
  *
  */
-public class Span extends HTML {
+public class Span extends InlineHTML {
 
   /**
    * Creates an empty span.
    */
   public Span() {
-    super(Document.get().createSpanElement());
+    super();
     sinkEvents(Event.ONCLICK | Event.MOUSEEVENTS | Event.ONMOUSEWHEEL);
     setStyleName("cbg-Span");
   }
