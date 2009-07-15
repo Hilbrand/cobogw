@@ -24,6 +24,7 @@ import java.sql.Time;
  * Unit test for java.sql.Date GWT emulation class
  *
  */
+@SuppressWarnings("deprecation")
 public class TimeTestCase extends GWTTestCase {
 
   /* (non-Javadoc)
@@ -37,7 +38,7 @@ public class TimeTestCase extends GWTTestCase {
    * test {@link Time#valueOf(String)}
    */
   public void testValueOf1() {
-    Time t1 = Time.valueOf("23:40:20");
+    final Time t1 = Time.valueOf("23:40:20");
 
     assertEquals(23, t1.getHours());
     assertEquals(40, t1.getMinutes());
@@ -46,28 +47,52 @@ public class TimeTestCase extends GWTTestCase {
   }
 
   public void testValueOf2() {
-    Time t2 = Time.valueOf("1:2:3");
+    final Time t2 = Time.valueOf("1:2:3");
     assertEquals(1, t2.getHours());
     assertEquals(2, t2.getMinutes());
     assertEquals(3, t2.getSeconds());
     assertEquals(123000L, t2.getTime());
   }
 
+  public void testValueOf2a() {
+    final Time t2 = Time.valueOf("09:09:09");
+    assertEquals(9, t2.getHours());
+    assertEquals(9, t2.getMinutes());
+    assertEquals(9, t2.getSeconds());
+    assertEquals(29349000L, t2.getTime());
+  }
+
   public void testValueOf3() {
     try {
-      Time t3 = Time.valueOf("23:10x20");
+      final Time t3 = Time.valueOf("23:10x20");
 
-      throw new AssertionError("Invalid date: 23:10x20, got:" + t3);
+      throw new AssertionError("Invalid time: 23:10x20, got:" + t3);
     } catch (Exception e) {
       assertTrue(e instanceof IllegalArgumentException);
     }
   }
 
+  public void testValueOf3a() {
+    final String[] time = { "09", ":", "09", ":"};
+    String tst = "";
+
+    for (int i = 0; i < time.length; i++) {
+      tst += time[i];
+      try {
+        final Time t3 = Time.valueOf(tst);
+        
+        throw new AssertionError("Invalid time: " + tst + ", got:" + t3);
+      } catch (Exception e) {
+        assertTrue(e instanceof IllegalArgumentException);
+      }
+    }
+  }
+
   public void testValueOf4() {
     try {
-      Time t4 = Time.valueOf("23:xx:20");
+      final Time t4 = Time.valueOf("23:xx:20");
 
-      throw new AssertionError("Invalid date: 23:xx:20, got:" + t4);
+      throw new AssertionError("Invalid time: 23:xx:20, got:" + t4);
     } catch (Exception e) {
       assertTrue(e instanceof IllegalArgumentException);
     }
@@ -77,7 +102,7 @@ public class TimeTestCase extends GWTTestCase {
    * test {@link Time#Time(long)}
    */
   public void testTime1() {
-    Time t1 = new Time(1234567890123L);
+    final Time t1 = new Time(1234567890123L);
     assertEquals(1234567890123L, t1.getTime());
   }
 
@@ -85,7 +110,7 @@ public class TimeTestCase extends GWTTestCase {
    * test {@link Time#Time(int, int, int)}
    */
   public void testTime2() {
-    Time t2 = new Time(23, 59, 0);
+    final Time t2 = new Time(23, 59, 0);
 
     assertEquals("23:59:00", t2.toString());
     assertEquals(23, t2.getHours());
@@ -98,7 +123,7 @@ public class TimeTestCase extends GWTTestCase {
    * test {@link Time#setTime(long)}
    */
   public void testSetTime() {
-    Time t1 = new Time(0);
+    final Time t1 = new Time(0);
     t1.setTime(1234567890123L);
 
     assertEquals(1234567890123L, t1.getTime());
@@ -108,17 +133,17 @@ public class TimeTestCase extends GWTTestCase {
    * test {@link Time#toString()}
    */
   public void testToString1() {
-    Time t1 = new Time(23, 40, 20);
+    final Time t1 = new Time(23, 40, 20);
     assertEquals("23:40:20", t1.toString());
   }
 
   public void testToString2() {
-    Time t2 = new Time(1, 2, 3);
+    final Time t2 = new Time(1, 2, 3);
     assertEquals("01:02:03", t2.toString());
   }
 
   public void testToString3() {
-    Time t3 = new Time(13, 2, 3);
+    final Time t3 = new Time(13, 2, 3);
     assertEquals("13:02:03", t3.toString());
   }
 }
