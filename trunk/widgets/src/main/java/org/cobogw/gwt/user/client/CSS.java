@@ -1506,7 +1506,6 @@ public class CSS {
       public static final String TOP = "top";
     }
 
-
     /**
      * CSS property {@link A#BACKGROUND_REPEAT} values.
      */
