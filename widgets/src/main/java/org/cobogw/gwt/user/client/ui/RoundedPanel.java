@@ -15,6 +15,8 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
+import org.cobogw.gwt.user.client.CSS;
+
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -215,6 +217,11 @@ public class RoundedPanel extends SimplePanel {
   private final static String RPSTYLE = "cbg-RP";
 
   /**
+   * Default style name of the container element.
+   */
+  private final static String RPCONTAINERSTYLE = "cbg-RPContainer";
+
+  /**
    * Lookup table for corner border width
    */
 
@@ -327,6 +334,7 @@ public class RoundedPanel extends SimplePanel {
       }
     }
     divElement = Document.get().createDivElement();
+    divElement.setClassName(RPCONTAINERSTYLE);
     body.appendChild(divElement);
     if (inMask(corners, BOTTOM)) {
       final int cb = corners & BOTTOM;
@@ -374,6 +382,14 @@ public class RoundedPanel extends SimplePanel {
   }
 
   /**
+   * Adds a border style on the element wrapped around the widget. The width of
+   * the border (left and/or right) is the same as the height of the rounding.
+   */
+  public void setBorder() {
+    setBorderContainer(CORNERMARGIN[cornerHeight-1][cornerHeight-1]);
+  }
+
+  /**
    * Set the colors on the rounded borders and adds a border style on the
    * element wrapped around the widget. The width of the border (left and/or
    * right) is the same as the height of the rounding.
@@ -402,12 +418,12 @@ public class RoundedPanel extends SimplePanel {
   public void setCornerColor(String borderColor) {
     if (null != divt[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        divt[i].getStyle().setProperty("backgroundColor", borderColor);
+        CSS.setProperty(divt[i], CSS.A.BACKGROUND_COLOR, borderColor);
       }
     }
     if (null != divb[0]) {
       for (int i = 0; i < cornerHeight; ++i) {
-        divb[i].getStyle().setProperty("backgroundColor", borderColor);
+        CSS.setProperty(divb[i], CSS.A.BACKGROUND_COLOR, borderColor);
       }
     }
   }
@@ -463,14 +479,40 @@ public class RoundedPanel extends SimplePanel {
   /**
    * Set the left and/or right border on the container element.
    *
+   * @param borderWidth width of the border
+   */
+  protected void setBorderContainer(int borderWidth) {
+    setBorder(getContainerElement(), corners);
+    CSS.setProperty(getContainerElement(),
+        CSS.A.BORDER_WIDTH, "0 " + borderWidth + "px");
+  }
+
+  /**
+   * Set the left and/or right border and color on the container element.
+   *
    * @param borderColor color of the border
    * @param borderWidth width of the border
    */
   protected void setBorderContainer(String borderColor, int borderWidth) {
     setBorder(getContainerElement(), corners, borderColor);
-    getContainerElement().getStyle().setProperty(
-        "borderWidth", "0 " + borderWidth + "px");
- }
+    CSS.setProperty(getContainerElement(),
+            CSS.A.BORDER_WIDTH, "0 " + borderWidth + "px");
+  }
+
+  /**
+   * Set a solid border left and/or right on the element.
+   *
+   * @param elem element to set the style attributes
+   * @param corners corners to set the style attributes
+   */
+  protected void setBorder(Element elem, int corners) {
+    if (inMask(corners, LEFT)) {
+      CSS.setProperty(elem, CSS.A.BORDER_LEFT_STYLE, CSS.V.BORDER_STYLE.SOLID);
+    }
+    if (inMask(corners, RIGHT)) {
+      CSS.setProperty(elem, CSS.A.BORDER_RIGHT_STYLE, CSS.V.BORDER_STYLE.SOLID);
+    }
+  }
 
   /**
    * Set the border left and or right style and color attributes on the element.
@@ -481,12 +523,12 @@ public class RoundedPanel extends SimplePanel {
    */
   protected void setBorder(Element elem, int corners, String borderColor) {
     if (inMask(corners, LEFT)) {
-      elem.getStyle().setProperty("borderLeftStyle", "solid");
-      elem.getStyle().setProperty("borderLeftColor", borderColor);
+      CSS.setProperty(elem, CSS.A.BORDER_LEFT_STYLE, CSS.V.BORDER_STYLE.SOLID);
+      CSS.setProperty(elem, CSS.A.BORDER_LEFT_COLOR, borderColor);
     }
     if (inMask(corners, RIGHT)) {
-      elem.getStyle().setProperty("borderRightStyle", "solid");
-      elem.getStyle().setProperty("borderRightColor", borderColor);
+      CSS.setProperty(elem, CSS.A.BORDER_RIGHT_STYLE, CSS.V.BORDER_STYLE.SOLID);
+      CSS.setProperty(elem, CSS.A.BORDER_RIGHT_COLOR, borderColor);
     }
   }
 
@@ -504,14 +546,14 @@ public class RoundedPanel extends SimplePanel {
         "0 " + (inMask(corner, LEFT) ? mw : "0");
     final DivElement div = Document.get().createDivElement();
 
-    div.getStyle().setPropertyPx("height",
-        CORNERHEIGHT[cornerHeight - 1][heightIndex]);
-    div.getStyle().setProperty("borderWidth",
+    CSS.setPropertyPx(div, CSS.A.HEIGHT,
+            CORNERHEIGHT[cornerHeight - 1][heightIndex]);
+    CSS.setProperty(div, CSS.A.BORDER_WIDTH,
         "0 " + CORNERBORDER[cornerHeight - 1][heightIndex] + "px");
-    div.getStyle().setProperty("margin", margin);
+    CSS.setProperty(div, CSS.A.MARGIN, margin);
     //Font size set to work around IE's default minimal element height.
-    div.getStyle().setPropertyPx("fontSize", 0);
-    div.getStyle().setProperty("overflow", "hidden");
+    CSS.setPropertyPx(div, CSS.A.FONT_SIZE, 0);
+    CSS.setProperty(div, CSS.A.OVERFLOW, CSS.V.OVERFLOW.HIDDEN);
     body.appendChild(div);
     return div;
   }
