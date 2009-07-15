@@ -111,10 +111,10 @@ public class Rating extends Composite {
       setElement(star);
       sinkEvents(Event.MOUSEEVENTS | Event.ONCLICK);
       this.index = index;
-      this.deselectedImg = getImageUrl(deselectedImg);
-      this.selectedImg = getImageUrl(selectedImg);
+      this.deselectedImg = "url(" + deselectedImg + ")";
+      this.selectedImg = "url(" + selectedImg + ")";
       this.hoverImg =
-          "".equals(hoverImg) ? this.selectedImg : getImageUrl(hoverImg);
+          "".equals(hoverImg) ? this.selectedImg : "url(" + hoverImg + ")";
       if ((orientation & (LTR | RTL)) > 0) {
         star.getStyle().setProperty(CSS.A.FLOAT, CSS.V.FLOAT.LEFT);
       }
@@ -198,8 +198,9 @@ public class Rating extends Composite {
    *          {@link #TTB}.
    */
   public Rating(int initRating, int maxRating, int orientation) {
-    this(initRating, maxRating, orientation, "cbg-star.png",
-            "cbg-stardeselected.png", "cbg-starhover.png", 16, 16);
+    this(initRating, maxRating, orientation, GWT.getModuleBaseURL() +
+        "cbg-star.png", GWT.getModuleBaseURL() + "cbg-stardeselected.png",
+        GWT.getModuleBaseURL() + "cbg-starhover.png", 16, 16);
   }
 
   /**
@@ -376,18 +377,6 @@ public class Rating extends Composite {
 
       sw.setTitle(titles[idx++]);
     }
-  }
-
-  /**
-   * Creates the background url for an rating image. In case the image not
-   * starts with http it's prepended with the module base url.
-   *
-   * @param image Name of the image file
-   * @return complete style string with url
-   */
-  private String getImageUrl(String image) {
-    return "url(" + (image.startsWith("http") ? "" : GWT.getModuleBaseURL()) +
-      image + ")";
   }
 
   /**
