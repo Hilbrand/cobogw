@@ -15,10 +15,26 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
+import java.util.EventListener;
+
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+
 /**
+ * @deprecated Use the following handlers:
+ * For {@link #onSelect(Rating, int)} use {@link ValueChangeHandler}.
+ * For {@link #onHover(Rating, int)} use {@link MouseOverHandler} and
+ * {@link MouseOutHandler}.
+ * 
+ * No new Handler was introduced to replace the onHover method, instead it was
+ * implemented using 2 native mouse event handlers. This was just a design
+ * decision to limit the number of handlers. 
+ * 
  * Event listener interface for Rating widget events.
  */
-public interface RatingListener {
+@Deprecated
+public interface RatingListener extends EventListener {
 
   /**
    * Called when user hovers over a {@link Rating} item with the rating
@@ -29,6 +45,7 @@ public interface RatingListener {
    * @param sender {@link Rating} being hovered
    * @param index Index of hovered item or -1 if left {@link Rating}
    */
+  @Deprecated
   void onHover(Rating sender, int index);
   
   /**
@@ -38,6 +55,7 @@ public interface RatingListener {
    * @param sender {@link Rating} being selected
    * @param index Index of selected item
    */
+  @Deprecated
   void onSelect(Rating sender, int index);
   
 }
