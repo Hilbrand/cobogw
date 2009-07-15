@@ -15,18 +15,29 @@
  */
 package org.cobogw.gwt.user.client.ui;
 
-import com.google.gwt.dom.client.Document;
-import com.google.gwt.dom.client.SpanElement;
-import com.google.gwt.user.client.Event;
-import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Hidden;
-import com.google.gwt.user.client.ui.Widget;
+import java.util.Iterator;
 
 import org.cobogw.gwt.user.client.CSS;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.SpanElement;
+import com.google.gwt.event.dom.client.HasMouseOutHandlers;
+import com.google.gwt.event.dom.client.HasMouseOverHandlers;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.FocusPanel;
+import com.google.gwt.user.client.ui.HasValue;
+import com.google.gwt.user.client.ui.Hidden;
+import com.google.gwt.user.client.ui.ListenerWrapper;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * The Rating Widget provides an intuitive rating experience that allows users
@@ -55,7 +66,9 @@ import java.util.Iterator;
  * setting lightness to 80 and <code>cbg-starhover.png</code> was created by
  * setting lightness to -80.
  */
-public class Rating extends Composite {
+@SuppressWarnings("deprecation")
+public class Rating extends FocusPanel implements HasValue<Integer>,
+    HasMouseOutHandlers, HasMouseOverHandlers {
   /**
    * Orientation of Rating widget Horizontal from Left to Right (default). With
    * lowest rating left and highest rating right.
@@ -77,9 +90,7 @@ public class Rating extends Composite {
    */
   public final static int BTT = 8;
 
-  private final FlowPanel panel = new FlowPanel();
-
-  private ArrayList<RatingListener> ratingListeners;
+  private final FlowPanel panel;
 
   private Hidden input = null;
 
@@ -87,7 +98,10 @@ public class Rating extends Composite {
 
   private boolean selectedVisible;
 
-  private int currentRating;
+  private Integer currentRating;
+  
+  private Integer hoverValue = -1;
+
 
   /**
    * Class for the individual rating items. The image is placed as background
@@ -140,16 +154,26 @@ public class Rating extends Composite {
 
     @Override
     public void onBrowserEvent(Event event) {
-      switch (event.getTypeInt()) {
-      case Event.ONMOUSEOVER:
-        onHover(getIndex());
-        break;
-      case Event.ONMOUSEOUT:
-        onHover(-1);
-        break;
-      case Event.ONCLICK:
-        onSelect(getIndex());
-        break;
+      if (!readOnly) {
+        switch (event.getTypeInt()) {
+        case Event.ONMOUSEOVER:
+          hoverValue = getIndex();
+          setItemsState(hoverValue);
+          MouseOverEvent.fireNativeEvent(event, Rating.this);
+          break;
+        case Event.ONMOUSEOUT:
+          hoverValue = -1;
+          setItemsState(hoverValue);
+          MouseOutEvent.fireNativeEvent(event, Rating.this);
+          break;
+        case Event.ONCLICK:
+          setValue(getIndex());
+          break;
+        default:
+          super.onBrowserEvent(event);
+        }
+      } else {
+        event.stopPropagation();
       }
     }
 
@@ -157,8 +181,42 @@ public class Rating extends Composite {
       setImage(selectedImg);
     }
 
+    @Deprecated
+    private Rating getRatingWidget() {
+      return Rating.this;
+    }
+
     private void setImage(String img) {
       getElement().getStyle().setProperty(CSS.A.BACKGROUND_IMAGE, img);
+    }
+  }
+
+  @Deprecated
+  private static class WrappedRatingListener extends
+    ListenerWrapper<RatingListener> implements ValueChangeHandler<Integer>,
+    MouseOutHandler, MouseOverHandler {
+
+    @Deprecated
+    public static void remove(Widget eventSource, RatingListener listener) {
+      baseRemove(eventSource, listener, ValueChangeEvent.getType());
+    }
+
+    public WrappedRatingListener(RatingListener listener) {
+      super(listener);
+    }
+
+    public void onValueChange(ValueChangeEvent<Integer> event) {
+      final Rating rating = (Rating) getSource(event);
+      getListener().onSelect(rating, rating.currentRating.intValue());
+    }
+
+    public void onMouseOut(MouseOutEvent event) {
+      getListener().onHover((Rating) getSource(event), -1);
+    }
+
+    public void onMouseOver(MouseOverEvent event) {
+      final RatingItem ratingItem = (RatingItem) getSource(event);
+      getListener().onHover(ratingItem.getRatingWidget(), ratingItem.getIndex());
     }
   }
 
@@ -197,8 +255,9 @@ public class Rating extends Composite {
    *          {@link #TTB}.
    */
   public Rating(int initRating, int maxRating, int orientation) {
-    this(initRating, maxRating, orientation, "cbg-star.png",
-            "cbg-stardeselected.png", "cbg-starhover.png", 16, 16);
+    this(initRating, maxRating, orientation, GWT.getModuleBaseURL() +
+            "cbg-star.png", GWT.getModuleBaseURL() + "cbg-stardeselected.png",
+            GWT.getModuleBaseURL() + "cbg-starhover.png", 16, 16);
   }
 
   /**
@@ -231,11 +290,12 @@ public class Rating extends Composite {
   public Rating(int initRating, int maxRating, int orientation,
           String selectedImg, String deselectedImg, String hoverImg, int width,
           int height) {
-    initWidget(panel);
-    currentRating = initRating;
+    super(new FlowPanel());
+    panel = (FlowPanel) getWidget();
+    currentRating = new Integer(initRating);
     selectedVisible = !"".equals(hoverImg);
     setStyleName("cbg-Rating");
-    panel.setWidth(width*maxRating + "px");
+    panel.setWidth(width * maxRating + "px");
     getElement().getStyle().setProperty(CSS.A.CURSOR, CSS.V.CURSOR.POINTER);
     final int offset = (orientation & (LTR | TTB)) > 0 ? 1 : maxRating;
     final int mlt = (orientation & (LTR | TTB)) > 0 ? 1 : -1;
@@ -262,16 +322,37 @@ public class Rating extends Composite {
   }
 
   /**
-   * Adds a listener to the widget
-   *
-   * @param listener
-   *          {@link RatingListener}
+   * @deprecated Use {@link addValueChangeHandler} instead
    */
+  @Deprecated
   public void addRatingListerner(RatingListener listener) {
-    if (null == ratingListeners) {
-      ratingListeners = new ArrayList<RatingListener>();
-    }
-    ratingListeners.add(listener);
+    addValueChangeHandler(new WrappedRatingListener(listener));
+  }
+
+  public HandlerRegistration addValueChangeHandler(
+      ValueChangeHandler<Integer> handler) {
+    return addHandler(handler, ValueChangeEvent.getType());
+  }
+
+  /**
+   * @deprecated Use {@link #getValue()}.
+   * Returns the current rating.
+   *
+   * @return Current rating
+   */
+  @Deprecated
+  public int getRating() {
+    return currentRating.intValue();
+  }
+
+  /**
+   * Returns the rating corresponding with image the user hovers over. In case
+   * no hovering takes place -1 is returned.
+   *
+   * @return The rating corresponding with image the user hovers over
+   */
+  public Integer getHoverValue() {
+    return hoverValue; 
   }
 
   /**
@@ -279,7 +360,7 @@ public class Rating extends Composite {
    *
    * @return Current rating
    */
-  public int getRating() {
+  public Integer getValue() {
     return currentRating;
   }
 
@@ -293,32 +374,20 @@ public class Rating extends Composite {
   }
 
   /**
-   * Removes the listener.
-   *
-   * @param listener
-   *          Removes the {@link RatingListener}
+   * @deprecated Use the {@link HandlerRegistration#removeHandler} method on
+   * the object returned by {@link #addChangeHandler} instead
    */
+  @Deprecated
   public void removeRatingListerner(RatingListener listener) {
-    if (null != ratingListeners) {
-      ratingListeners.remove(listener);
-    }
+    WrappedRatingListener.remove(this, listener);
   }
 
   /**
-   * Sets the rating, also when the widget is read only. If the rating set is
-   * out of range the widget will still use that value but show or empty (if the
-   * rating set is below zero) or full (if the rating set is above total number
-   * of items).
-   *
-   * @param rating
-   *          New rating value to set
+   * @deprecated Use {@link #setValue(Integer)}
    */
+  @Deprecated
   public void setRating(int rating) {
-    currentRating = rating;
-    if (null != input) {
-      input.setValue("" + rating);
-    }
-    setItemsState(-1);
+    setValue(rating);
   }
 
   /**
@@ -378,40 +447,27 @@ public class Rating extends Composite {
   }
 
   /**
-   * Private method fires {@link RatingListener#onHover(Rating, int)} if not
-   * read only.
+   * Sets the rating, also when the widget is read only. If the rating set is
+   * out of range the widget will still use that value but show or empty (if the
+   * rating set is below zero) or full (if the rating set is above total number
+   * of items).
    *
-   * @param index
-   *          Hovered item
+   * @param rating
+   *          New rating value to set
    */
-  private void onHover(int index) {
-    if (!readOnly) {
-      setItemsState(index);
-      if (null != ratingListeners) {
-        for (Iterator<RatingListener> it = ratingListeners.iterator(); it
-                .hasNext();) {
-          it.next().onHover(this, index);
-        }
-      }
-    }
+  public void setValue(Integer value) {
+    setValue(value, true);
   }
 
-  /**
-   * Private method fires {@link RatingListener#onSelect(Rating, int)} if not
-   * read only.
-   *
-   * @param index
-   *          Selected item
-   */
-  private void onSelect(int index) {
-    if (!readOnly) {
-      setRating(index);
-      if (null != ratingListeners) {
-        for (Iterator<RatingListener> it = ratingListeners.iterator(); it
-                .hasNext();) {
-          it.next().onSelect(this, index);
-        }
-      }
+  public void setValue(Integer value, boolean fireEvents) {
+    final Integer oldValue = currentRating;
+    currentRating = value;
+    if (null != input) {
+      input.setValue("" + value);
+    }
+    setItemsState(-1);
+    if (fireEvents) {
+      ValueChangeEvent.fireIfNotEqual(this, oldValue, value);
     }
   }
 
