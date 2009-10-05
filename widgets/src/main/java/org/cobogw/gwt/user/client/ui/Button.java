@@ -25,7 +25,6 @@ import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.ui.Accessibility;
 import com.google.gwt.user.client.ui.ClickListener;
@@ -272,7 +271,7 @@ public class Button extends FocusPanel implements HasHTML {
       event.preventDefault();
       return;
     }
-    switch (DOM.eventGetType(event)) {
+    switch (event.getTypeInt()) {
       case Event.ONCLICK:
         onActive(false);
         break;
@@ -415,7 +414,7 @@ public class Button extends FocusPanel implements HasHTML {
     setStyleName(getElement(), style + CBG_DISABLED, !enabled);
     CSS.setProperty(this, CSS.A.CURSOR,
         enabled ? CSS.V.CURSOR.POINTER : CSS.V.CURSOR.DEFAULT);
-    setTabIndex(enabled ? tabIndex : -1);
+    super.setTabIndex(enabled ? tabIndex : -1);
     if (colorCalculated) {
       setColorText();
     }
