@@ -24,7 +24,7 @@
     GWT libraries, e.g. gwt-user.jar, JUNIT_JAR to the junit.jar file and 
   	GWT_VERSION to the version you are using.
   </description>
-  <property name="version" value="1.7" />
+  <property name="version" value="2.0" />
   <property name="packagefile" value="cobogw-gwt-patch" />
   <property name="jarfile" value="${packagefile}-${version}.jar" />
   <property name="zipprefix" value="${packagefile}-${version}" />
@@ -41,12 +41,12 @@
 
   <!-- set classpath -->
   <path id="project.class.path">
-    <pathelement location="${src}" />
     <pathelement location="${super}" />
     <pathelement location="${src.test}" />
     <pathelement location="${build.test}" />
     <pathelement location="${build.dir}" />
     <pathelement path="${gwt.path}/gwt-user.jar" />
+    <pathelement path="${gwt.path}/gwt-dev.jar" />
     <pathelement path="${junit3.jar}" />
   </path>
 
@@ -91,14 +91,13 @@
     </delete>
     <junit fork="yes">
       <classpath>
-        <pathelement location="${src}" />
         <pathelement location="${super}" />
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
         <pathelement location="${build.dir}" />
         <pathelement path="${junit3.jar}" />
       	<pathelement path="${gwt.path}/gwt-user.jar" />
-        <pathelement path="${gwt.path}/gwt-dev-windows.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev.jar" />
       </classpath>      
       <jvmarg value="-Xmx512m" />
       <jvmarg value="-Dgwt.args=-out ${www.dir}/hostedmode" />
@@ -121,17 +120,16 @@
     </delete>
     <junit fork="yes">
       <classpath>
-        <pathelement location="${src}" />
         <pathelement location="${super}" />
         <pathelement location="${src.test}" />
         <pathelement location="${build.test}" />
         <pathelement location="${build.dir}" />
         <pathelement path="${junit3.jar}" />
       	<pathelement path="${gwt.path}/gwt-user.jar" />
-      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev.jar" />
       </classpath>
       <jvmarg value="-Xmx512m" />
-      <jvmarg value="-Dgwt.args=-web -out ${www.dir}/webmode" />
+      <jvmarg value="-Dgwt.args=-prod -out ${www.dir}/webmode" />
       <formatter type="plain" />
       <batchtest fork="yes" todir="${webmode.dir}">
         <fileset dir="${src.test}">
@@ -154,7 +152,7 @@
         <pathelement location="${build.test}" />
         <pathelement path="${junit3.jar}" />
       	<pathelement path="${gwt.path}/gwt-user.jar" />
-      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev.jar" />
       </classpath>
       <jvmarg value="-Xmx512m" />
       <jvmarg value="-Dgwt.args=-out ${www.dir}/hostedmode.gwt" />
@@ -181,10 +179,10 @@
         <pathelement location="${build.test}" />
         <pathelement path="${junit3.jar}" />
         <pathelement path="${gwt.path}/gwt-user.jar" />
-      	<pathelement path="${gwt.path}/gwt-dev-windows.jar" />
+      	<pathelement path="${gwt.path}/gwt-dev.jar" />
       </classpath>
       <jvmarg value="-Xmx512m" />
-      <jvmarg value="-Dgwt.args=-web -out ${www.dir}/webmode.gwt" />
+      <jvmarg value="-Dgwt.args=-prod -out ${www.dir}/webmode.gwt" />
       <formatter type="plain" />
       <batchtest fork="yes" todir="${webmode.gwt.dir}">
         <fileset dir="${src.test}">
@@ -198,12 +196,6 @@
 	    depends="unittest.hosted, unittest.hosted.gwt, unittest.web, unittest.web.gwt, clean.build, compile.debug"
   	  description="Package up the project as a jar">
     <jar destfile="${jarfile}">
-      <fileset dir="${build.dir}">
-        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.class" />
-      </fileset>
-      <fileset dir="${src}">
-        <include name="com/google/gwt/user/client/rpc/core/java/sql/*.java" />
-      </fileset>
       <fileset dir="${build.test}">
         <include name="com/google/gwt/user/client/rpc/core/java/sql/*.class" />
       </fileset>
@@ -222,7 +214,6 @@
       <zipfileset file="COPYING" prefix="${zipprefix}" />
       <zipfileset file="javasql.ant.xml" prefix="${zipprefix}" />
       <zipfileset file="${jarfile}" prefix="${zipprefix}" />
-      <zipfileset dir="src/" prefix="${zipprefix}/src/" />
       <zipfileset dir="reports/" prefix="${zipprefix}/reports/" />
       <zipfileset dir="super/" prefix="${zipprefix}/super/" />
       <zipfileset dir="test/" prefix="${zipprefix}/test/" />
