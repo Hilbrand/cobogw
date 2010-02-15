@@ -127,19 +127,19 @@ public class Timestamp extends Date {
   }
 
   private native String nativeToString(int nanos) /*-{
-    var m = this.jsdate.getMonth()+1;
-    var d = this.jsdate.getDate();
-    var h = this.jsdate.getHours();
-    var i = this.jsdate.getMinutes();
-    var s = this.jsdate.getSeconds();
+    var m = this.@java.util.Date::jsdate.getMonth()+1;
+    var d = this.@java.util.Date::jsdate.getDate();
+    var h = this.@java.util.Date::jsdate.getHours();
+    var i = this.@java.util.Date::jsdate.getMinutes();
+    var s = this.@java.util.Date::jsdate.getSeconds();
 
-    return this.jsdate.getFullYear() + '-' + (m < 10 ? '0' + m : m) +
+    return this.@java.util.Date::jsdate.getFullYear() + '-' + (m < 10 ? '0' + m : m) +
         '-' + (d < 10 ? '0' + d : d) + ' ' + (h < 10 ? '0' + h : h) + ':' +
         (i < 10 ? '0' + i : i) + ':' + (s < 10 ? '0' + s : s) + '.' +
         (nanos ? ('000000000' + nanos).slice(-9) : 0);
   }-*/;
 
   private native void setMilliseconds(int millis) /*-{
-    this.jsdate.setMilliseconds(millis);
+    this.@java.util.Date::jsdate.setMilliseconds(millis);
   }-*/;
 }
