@@ -221,7 +221,7 @@ public class Button extends FocusPanel implements HasHTML {
 
   /**
    * Creates a button with the given HTML caption and click listener.
-   * 
+   *
    * @param html the HTML caption
    * @param handler the click handler
    */
@@ -229,10 +229,10 @@ public class Button extends FocusPanel implements HasHTML {
     this(html);
     addClickHandler(handler);
   }
-  
+
   /**
    * Programmatic equivalent of the user clicking the button. To fire the click
-   * event the button must be attached to the DOM. 
+   * event the button must be attached to the DOM.
    */
   public void click() {
     Event2.fireClickEvent(getElement());
@@ -355,17 +355,17 @@ public class Button extends FocusPanel implements HasHTML {
     // numbers in comment represent a brightness range of 0-255 as used in
     // the Firefox color picker add-on.
     colorBorderFocus =
-        Color.HSBtoRGB(hue, saturation, 27/*68*/-satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 27/*68*/-satof).toRGBString();
     colorBorderHover =
-        Color.HSBtoRGB(hue, saturation, 58/*147*/-satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 58/*147*/-satof).toRGBString();
     colorBorder =
-        Color.HSBtoRGB(hue, saturation, 74/*187*/-satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 74/*187*/-satof).toRGBString();
     colorContentTop =
-        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 98/*249*/-satof).toRGBString();
     colorContentMid =
-        Color.HSBtoRGB(hue, saturation, 93/*238*/-3/*7*/*satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 93/*238*/-3/*7*/*satof).toRGBString();
     colorContentBottom =
-        Color.HSBtoRGB(hue, saturation, 89/*227*/-6/*16*/*satof).toHexString();
+        Color.HSBtoRGB(hue, saturation, 89/*227*/-6/*16*/*satof).toRGBString();
     CSS.setProperty(outer, CSS.A.BORDER_COLOR, colorBorder);
     CSS.setProperty(inner, CSS.A.BORDER_COLOR, colorBorder);
     if (colorBorderLeft != null) {
@@ -380,7 +380,7 @@ public class Button extends FocusPanel implements HasHTML {
     colorText =  sg ? Color.WHITE : Color.BLACK;
     colorDisabled =
         Color.HSBtoRGB(hue, sg ? saturation / 2: saturation,
-            sg ? 94/*240*/ : 53/*136*/).toHexString();
+            sg ? 94/*240*/ : 53/*136*/).toRGBString();
     if (customColorText == null) {
       setColorText();
     }
@@ -516,6 +516,15 @@ public class Button extends FocusPanel implements HasHTML {
    */
   public void setText(String text) {
     buttonContent.setInnerText(text);
+  }
+
+  @Override
+  public void setVisible(boolean visible) {
+    if (visible) {
+      CSS.setInlineBlock(getElement());
+    } else {
+      super.setVisible(false);
+    }
   }
 
   /**
