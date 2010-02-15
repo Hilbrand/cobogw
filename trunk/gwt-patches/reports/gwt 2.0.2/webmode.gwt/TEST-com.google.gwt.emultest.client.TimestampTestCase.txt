@@ -1,0 +1,213 @@
+Testsuite: com.google.gwt.emultest.client.TimestampTestCase
+Tests run: 37, Failures: 7, Errors: 1, Time elapsed: 42 sec
+------------- Standard Output ---------------
+[WARN] com.google.gwt.emultest.Emul.JUnit:com.google.gwt.emultest.client.TimestampTestCase.testCompareTo4 is being retried, retry attempt = 1
+[WARN] com.google.gwt.emultest.Emul.JUnit:com.google.gwt.emultest.client.TimestampTestCase.testCompareTo4 is being retried, retry attempt = 2
+------------- ---------------- ---------------
+
+Testcase: testValueOf1 took 39,671 sec
+Testcase: testValueOf2 took 0,032 sec
+Testcase: testValueOf3 took 0,016 sec
+Testcase: testValueOf4 took 0,016 sec
+Testcase: testValueOf5 took 0,062 sec
+Testcase: testValueOf5a took 0,281 sec
+Testcase: testValueOf5b took 0,047 sec
+Testcase: testValueOf6 took 0,078 sec
+Testcase: testValueOf7 took 0,016 sec
+Testcase: testTimestamp1 took 0 sec
+Testcase: testTimestamp2 took 0,078 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=877000000 actual=-123000000
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=877000000 actual=-123000000
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Assert.java:43)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testTimestamp3 took 0,031 sec
+Testcase: testTimestamp4 took 0,047 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1970-01-01 00:00:00.0 actual=1970-01-01 00:00:00.000000000
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1970-01-01 00:00:00.0 actual=1970-01-01 00:00:00.000000000
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Timestamp.java:167)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testAfter1 took 0,016 sec
+Testcase: testAfter2 took 0,015 sec
+Testcase: testAfter3 took 0,015 sec
+Testcase: testBefore1 took 0,016 sec
+Testcase: testBefore2 took 0,016 sec
+Testcase: testBefore3 took 0,015 sec
+Testcase: testCompareTo1 took 0,047 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=-1 actual=-100
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=-1 actual=-100
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(TimestampTestCase.java:235)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testCompareTo2 took 0,016 sec
+Testcase: testCompareTo3 took 0,078 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1 actual=100
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1 actual=100
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at Unknown.anonymous(XMLHttpRequest.java:118)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(TimestampTestCase.java:247)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testCompareTo4 took 0,219 sec
+	Caused an ERROR
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+java.lang.RuntimeException: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+	at com.google.gwt.junit.JUnitShell.processTestResult(JUnitShell.java:1131)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1251)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1246)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1246)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1152)
+	at com.google.gwt.junit.JUnitShell.runTest(JUnitShell.java:541)
+	at com.google.gwt.junit.client.GWTTestCase.runTest(GWTTestCase.java:406)
+	at com.google.gwt.junit.client.GWTTestCase.run(GWTTestCase.java:282)
+Caused by: java.lang.ClassCastException
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at java.lang.ClassCastException.$ClassCastException(StackTraceCreator.java:366)
+	at com.google.gwt.lang.Cast.dynamicCast(Cast.java:49)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Timestamp.java:112)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testEquals1 took 0,015 sec
+Testcase: testEquals2 took 0,031 sec
+Testcase: testEquals3 took 0,015 sec
+Testcase: testGetNanos1 took 0,016 sec
+Testcase: testGetNanos2 took 0,016 sec
+Testcase: testGetNanos3 took 0,015 sec
+Testcase: testGetNanos4 took 0,015 sec
+Testcase: testGetNanos5 took 0,078 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1000000 actual=-999000000
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=1000000 actual=-999000000
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Assert.java:43)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testGetNanos6 took 0,062 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=211000000 actual=-789000000
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=211000000 actual=-789000000
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Assert.java:43)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
+Testcase: testSetTime1 took 0,016 sec
+Testcase: testToString1 took 0,031 sec
+Testcase: testToString2 took 0,016 sec
+Testcase: testToString3 took 0,016 sec
+Testcase: testToString4 took 0,078 sec
+	FAILED
+Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=2007-01-01 13:02:03.0 actual=2007-01-01 13:02:03.000000000
+junit.framework.AssertionFailedError: Remote test failed at 192.168.1.6 / Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.1) Gecko/2008070208 Firefox/3.0.1
+ expected=2007-01-01 13:02:03.0 actual=2007-01-01 13:02:03.000000000
+	at com.google.gwt.core.client.impl.StackTraceCreator$CollectorEmulated.$fillInStackTrace(JsArrayString.java:42)
+	at junit.framework.AssertionFailedError.$AssertionFailedError(StackTraceCreator.java:366)
+	at com.google.gwt.emultest.client.__TimestampTestCase_unitTestImpl.$doRunTest(Timestamp.java:167)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:366)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:295)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:105)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(com.google.gwt.dev.jjs.impl.GenerateJavaAST:0)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:216)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:287)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:393)
+	at Unknown.anonymous(XMLHttpRequest.java:258)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:146)
+	at Unknown.anonymous(Impl.java:56)
+
