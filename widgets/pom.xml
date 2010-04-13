@@ -34,11 +34,19 @@
     </developer>
   </developers>
 
-   <issueManagement>
-       <system>Google Code</system>
-       <url>http://code.google.com/p/cobogw/issues</url>
-   </issueManagement>
-   
+  <issueManagement>
+    <system>Google Code</system>
+    <url>http://code.google.com/p/cobogw/issues</url>
+  </issueManagement>
+  
+   <distributionManagement>
+    <repository>
+      <id>cobogw</id>
+      <name>Cobogw repository at googlecode</name>
+      <url>https://cobogw.googlecode.com/svn/maven2</url>
+    </repository>
+  </distributionManagement>
+
   <properties>
     <gwt.version>2.0.3</gwt.version>
   </properties>
