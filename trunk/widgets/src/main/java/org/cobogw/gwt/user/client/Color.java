@@ -33,9 +33,9 @@ package org.cobogw.gwt.user.client;
  * SVG 1.0 color keyword names</a>. These colors are defined in this class by
  * their respective numeric color value.
  *
- * @see http://www.w3.org/TR/2007/CR-CSS21-20070719
- * @see http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units
- * @see http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color
+ * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">http://www.w3.org/TR/2007/CR-CSS21-20070719</a>
+ * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units">http://www.w3.org/TR/2007/CR-CSS21-20070719/syndata.html#color-units</a>
+ * @see <a href="http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color">http://www.w3.org/TR/2003/CR-css3-color-20030514/#svg-color</a>
  */
 public class Color {
 

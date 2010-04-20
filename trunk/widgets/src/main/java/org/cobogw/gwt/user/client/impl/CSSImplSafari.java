@@ -25,7 +25,7 @@ public class CSSImplSafari extends CSSImpl {
    * <code>-webkit-user-select</code> in Safari 3.0 and later and 
    * <code>-khtml-user-select</code> in Safari 2.0.
    * 
-   * @see http://developer.apple.com/documentation/appleapplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266--webkit-user-select
+   * @see <a href="http://developer.apple.com/documentation/appleapplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266--webkit-user-select">http://developer.apple.com/documentation/appleapplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#//apple_ref/doc/uid/TP30001266--webkit-user-select</a>
    */
   @Override
   public void setSelectable(Element e, boolean selectable) {

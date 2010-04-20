@@ -50,10 +50,8 @@ import org.cobogw.gwt.user.client.impl.CSSImpl;
  * 2007'. Copyright &copy; 1994-2007 W3C (Massachusetts Institute of Technology,
  * European Research Consortium for Informatics and Mathematics, Keio
  * University), All Rights Reserved.
- * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">
- *     Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
- * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/propidx.html">
- *     W3C Appendix F. Full property table</a>
+ * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719">Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification</a>
+ * @see <a href="http://www.w3.org/TR/2007/CR-CSS21-20070719/propidx.html">W3C Appendix F. Full property table</a>
  */
 public class CSS {
 
@@ -536,8 +534,7 @@ public class CSS {
      * <br>Inherited?: yes
      * <br>Media groups: visual, interactive
      *
-     * @see <a href=http://www.quirksmode.org/css/cursor.html">
-     *     http://www.quirksmode.org/css/cursor.html</a>
+     * @see <a href=http://www.quirksmode.org/css/cursor.html">http://www.quirksmode.org/css/cursor.html</a>
      */
     public static final String CURSOR = "cursor";
 
@@ -567,8 +564,7 @@ public class CSS {
      * <br>Inherited?: no
      * <br>Media groups: all
      *
-     * @see <a href="http://www.quirksmode.org/css/display.html">
-     *     http://www.quirksmode.org/css/display.html</a>
+     * @see <a href="http://www.quirksmode.org/css/display.html">http://www.quirksmode.org/css/display.html</a>
      */
     public static final String DISPLAY = "display";
 
@@ -1783,7 +1779,7 @@ public class CSS {
        * inside of an inline-block is formatted as a block box, and the element
        * itself is formatted as an inline replaced element.
        *
-       * @see http://www.brunildo.org/test/InlineBlockLayout.html
+       * @see <a href="http://www.brunildo.org/test/InlineBlockLayout.html">http://www.brunildo.org/test/InlineBlockLayout.html</a>
        */
       public static final String INLINE_BLOCK = "inline-block";
 
@@ -2518,11 +2514,11 @@ public class CSS {
 
   /**
    * Method to handle the browser specific implementation requirements for the
-   * property value 'inline-block' of the property 'display'. For more
-   * background information on the browser issues related to this property:
-   * @see http://www.brunildo.org/test/InlineBlockLayout.html
-   * @see http://www.tanfa.co.uk/archives/show.asp?var=300
-   * @see http://www.brunildo.org/test/inline-block.html
+   * property value 'inline-block' of the property 'display'.
+   *
+   * @see <a href="http://www.brunildo.org/test/InlineBlockLayout.html">http://www.brunildo.org/test/InlineBlockLayout.html</a>
+   * @see <a href="http://www.tanfa.co.uk/archives/show.asp?var=300">http://www.tanfa.co.uk/archives/show.asp?var=300</a>
+   * @see <a href="http://www.brunildo.org/test/inline-block.html">http://www.brunildo.org/test/inline-block.html</a>
    *
    * @param element Element to set the display property inline-block on
    */
