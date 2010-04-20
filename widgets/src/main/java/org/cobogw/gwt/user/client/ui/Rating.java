@@ -320,7 +320,7 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
   }
 
   /**
-   * @deprecated Use {@link addValueChangeHandler} instead
+   * @deprecated Use {@link #addValueChangeHandler(ValueChangeHandler)} instead
    */
   @Deprecated
   public void addRatingListerner(RatingListener listener) {
@@ -379,8 +379,9 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
   }
 
   /**
-   * @deprecated Use the {@link HandlerRegistration#removeHandler} method on
-   * the object returned by {@link #addChangeHandler} instead
+   * @deprecated Use the {@link HandlerRegistration#removeHandler()} method on
+   * the object returned by {@link #addValueChangeHandler(ValueChangeHandler)}
+   * instead
    */
   @Deprecated
   public void removeRatingListerner(RatingListener listener) {
@@ -457,7 +458,7 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
    * rating set is below zero) or full (if the rating set is above total number
    * of items).
    *
-   * @param rating
+   * @param value
    *          New rating value to set
    */
   public void setValue(Integer value) {

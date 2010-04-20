@@ -67,7 +67,7 @@ public class CSSImplIE6 extends CSSImpl {
    * smaller than 8.
    * 
    * @return Returns the documentMode
-   * @see http://www.howtocreate.co.uk/emails/AlexeiWhite.html
+   * @see <a href="http://www.howtocreate.co.uk/emails/AlexeiWhite.html">http://www.howtocreate.co.uk/emails/AlexeiWhite.html</a>
    */
   private static native float documentMode() /*-{
     return $doc.documentMode || 5.0;
@@ -90,9 +90,9 @@ public class CSSImplIE6 extends CSSImpl {
    * Compatibility View when running in IE 8 Standards mode it return 8. These
    * are also the only conditions in which we want the inline-block. 
    *
-   * @see http://www.brunildo.org/test/InlineBlockLayout.html
-   * @see http://www.tanfa.co.uk/archives/show.asp?var=300
-   * @see http://www.brunildo.org/test/inline-block.html
+   * @see <a href="http://www.brunildo.org/test/InlineBlockLayout.html">http://www.brunildo.org/test/InlineBlockLayout.html</a>
+   * @see <a href="http://www.tanfa.co.uk/archives/show.asp?var=300">http://www.tanfa.co.uk/archives/show.asp?var=300</a>
+   * @see <a href="http://www.brunildo.org/test/inline-block.html">http://www.brunildo.org/test/inline-block.html</a>
    *
    * @param element Element to set the display property inline-block on
    */

@@ -39,7 +39,7 @@
     <url>http://code.google.com/p/cobogw/issues</url>
   </issueManagement>
   
-   <distributionManagement>
+  <distributionManagement>
     <repository>
       <id>cobogw</id>
       <name>Cobogw repository at googlecode</name>
@@ -159,17 +159,26 @@
           <tagBase>https://cobogw.googlecode.com/svn/tags/widgets</tagBase>
         </configuration>
       </plugin>
-    </plugins>
-  </build>
-  <reporting>
-    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>2.6.1</version>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+			        <goals>
+		            <goal>jar</goal>
+			        </goals>
+			        <configuration>
+		            <attach>true</attach>
+			        </configuration>
+				    </execution>
+				</executions>
         <configuration>
           <reportOutputDirectory>doc</reportOutputDirectory>
+          <charset>iso-8859-1</charset>
           <destDir>javadoc</destDir>
+          <excludedocfilessubdir>impl</excludedocfilessubdir>
           <doctitle>ORG.COBOGW.GWT package</doctitle>
           <bottom>Copyright © 2007-2010 Hilbrand Bouwkamp. All Rights Reserved.</bottom>
           <noqualifier>all</noqualifier>
@@ -179,5 +188,5 @@
         </configuration>
       </plugin>
     </plugins>
-  </reporting>
+  </build>
 </project>

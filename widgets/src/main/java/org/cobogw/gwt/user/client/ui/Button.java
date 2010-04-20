@@ -66,7 +66,7 @@ import com.google.gwt.user.client.ui.HasHTML;
  * <li>.cbg-Button-hover { }</li>
  * </ul>
  *
- * @see http://stopdesign.com/archive/2009/02/04/recreating-the-button.html
+ * @see <a href="http://stopdesign.com/archive/2009/02/04/recreating-the-button.html">http://stopdesign.com/archive/2009/02/04/recreating-the-button.html</a>
  */
 @SuppressWarnings("deprecation")
 public class Button extends FocusPanel implements HasHTML {

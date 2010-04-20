@@ -50,7 +50,7 @@ public class CSSImplMozilla extends CSSImpl {
    * a element with this property may not set it to, this will result in
    * broken layouts.
    *
-   * @see http://reference.sitepoint.com/css/moz-inline-box
+   * @see <a href="http://reference.sitepoint.com/css/moz-inline-box">http://reference.sitepoint.com/css/moz-inline-box</a>
    */
   @Override
   public void setInlineBlock(Element e) {
