@@ -279,6 +279,8 @@ public class RoundedPanel extends SimplePanel {
   private final DivElement body; // body of widget
   private DivElement divElement; // div element containing widget
 
+  private int totalCornerHeight;
+
   /**
    * Creates a new <code>RoundedPanel</code> with all corners rounded and
    * height of corners 2px. Use <code>setWidget</code> to add the widget.
@@ -456,6 +458,15 @@ public class RoundedPanel extends SimplePanel {
     }
   }
 
+  @Override
+  public void setHeight(String height) {
+    getWidget().setHeight(
+      height.contains("px") ?
+        (Integer.parseInt(height.substring(0, height.indexOf('p'))) -
+            totalCornerHeight) + "px" :
+        height);
+  }
+  
   /**
    * Overwrite of parent getContainerElement()
    */
@@ -541,6 +552,8 @@ public class RoundedPanel extends SimplePanel {
   private DivElement addLine(int corner, int heightIndex) {
     // margin 4 fields : top right bottom left  => "0 <width>px 0 <width>px"
     final String mw = CORNERMARGIN[cornerHeight - 1][heightIndex] + "px ";
+
+    totalCornerHeight += CORNERHEIGHT[cornerHeight - 1][heightIndex];
     final String margin =
         "0 " + (inMask(corner, RIGHT) ? mw : "0 ") +
         "0 " + (inMask(corner, LEFT) ? mw : "0");
