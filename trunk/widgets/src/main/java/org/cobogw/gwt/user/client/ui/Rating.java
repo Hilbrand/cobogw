@@ -99,7 +99,7 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
   private boolean selectedVisible;
 
   private Integer currentRating;
-  
+
   private Integer hoverValue = -1;
 
 
@@ -172,8 +172,6 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
         default:
           super.onBrowserEvent(event);
         }
-      } else {
-        event.stopPropagation();
       }
     }
 
@@ -352,7 +350,7 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
    * @return The rating corresponding with image the user hovers over
    */
   public Integer getHoverValue() {
-    return hoverValue; 
+    return hoverValue;
   }
 
   /**
@@ -371,6 +369,13 @@ public class Rating extends FocusPanel implements HasValue<Integer>,
    */
   public boolean isReadOnly() {
     return readOnly;
+  }
+
+  @Override
+  public void onBrowserEvent(Event event) {
+    if (!readOnly) {
+      super.onBrowserEvent(event);
+    }
   }
 
   /**
