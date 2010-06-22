@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.cobogw.gwt</groupId>
   <artifactId>cobogw</artifactId>
   <packaging>jar</packaging>
   <name>The Cobogw GWT Library</name>
-  <version>1.3.1-SNAPSHOT</version>
+  <version>1.3.1</version>
   <description>
     The Cobogw library is a set of widgets and other useful classes for GWT.
   </description>
@@ -21,9 +20,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:http://cobogw.googlecode.com/svn/trunk/widgets</connection>
-    <developerConnection>scm:svn:https://cobogw.googlecode.com/svn/trunk/widgets</developerConnection>
-    <url>http://cobogw.googlecode.com/svn/trunk/widgets</url>
+    <connection>scm:svn:http://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</connection>
+    <developerConnection>scm:svn:https://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</developerConnection>
+    <url>http://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</url>
   </scm>
 
   <developers>
