@@ -5,7 +5,7 @@
   <artifactId>cobogw</artifactId>
   <packaging>jar</packaging>
   <name>The Cobogw GWT Library</name>
-  <version>1.3.1</version>
+  <version>1.3.2-SNAPSHOT</version>
   <description>
     The Cobogw library is a set of widgets and other useful classes for GWT.
   </description>
@@ -20,9 +20,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:svn:http://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</connection>
-    <developerConnection>scm:svn:https://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</developerConnection>
-    <url>http://cobogw.googlecode.com/svn/tags/widgets/cobogw-1.3.1</url>
+    <connection>scm:svn:http://cobogw.googlecode.com/svn/trunk/widgets</connection>
+    <developerConnection>scm:svn:https://cobogw.googlecode.com/svn/trunk/widgets</developerConnection>
+    <url>http://cobogw.googlecode.com/svn/trunk/widgets</url>
   </scm>
 
   <developers>
