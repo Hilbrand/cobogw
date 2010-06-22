@@ -43,7 +43,7 @@
     <repository>
       <id>cobogw</id>
       <name>Cobogw repository at googlecode</name>
-      <url>https://cobogw.googlecode.com/svn/maven2</url>
+      <url>dav:https://cobogw.googlecode.com/svn/maven2</url>
     </repository>
   </distributionManagement>
 
