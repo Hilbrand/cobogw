@@ -154,7 +154,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <version>2.0</version>
         <configuration>
-          <preparationGoals>clean verify javadoc:javadoc</preparationGoals>
+          <preparationGoals>clean</preparationGoals>
           <branchBase>https://cobogw.googlecode.com/svn/branches/widgets</branchBase>
           <tagBase>https://cobogw.googlecode.com/svn/tags/widgets</tagBase>
         </configuration>
@@ -162,7 +162,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.6.1</version>
+        <version>2.7</version>
         <executions>
           <execution>
             <phase>verify</phase>
@@ -175,11 +175,11 @@
 				    </execution>
 				</executions>
         <configuration>
-          <reportOutputDirectory>doc</reportOutputDirectory>
           <charset>iso-8859-1</charset>
-          <destDir>javadoc</destDir>
-          <excludedocfilessubdir>impl</excludedocfilessubdir>
-          <doctitle>ORG.COBOGW.GWT package</doctitle>
+          <docencoding>iso-8859-1</docencoding>
+          <encoding>iso-8859-1</encoding>
+          <excludes>**/impl/**</excludes>
+          <doctitle>org.cobogw.gwt package</doctitle>
           <bottom>Copyright © 2007-2010 Hilbrand Bouwkamp. All Rights Reserved.</bottom>
           <noqualifier>all</noqualifier>
           <links>
