@@ -33,33 +33,33 @@ body {
   border-left:2px solid #FF8C00;
   border-right:2px solid #FF8C00;
   background-color:#FFFAF7;
-	padding: 8px;
-	font:normal 16px Arial, Helvetica, sans-serif;
+  padding: 8px;
+  font:normal 16px Arial, Helvetica, sans-serif;
 }
 
 .demo-FP-2 {
-	font:normal 16px Arial, Helvetica, sans-serif;
+  font:normal 16px Arial, Helvetica, sans-serif;
 }
 .demo-enableCB {
-	padding-right:40px;
+  padding-right:40px;
 }
 .demo-FP-3 {
-	padding: 5px;
+  padding: 5px;
 }
 
 .demo-FP-3 .cbg-Button {
-	font-size:70%;
-	margin-right: 10px;
+  font-size:70%;
+  margin-right: 10px;
 }
 
 .demo-FP-CSS {
-	border: 1px solid orange;
-	background-color: #FFF7F7;
-	font-size:12px;
-	font-family: monospace;
-	white-space: pre;
-	padding: 10px;
-	width: 35em;
+  border: 1px solid orange;
+  background-color: #FFF7F7;
+  font-size:12px;
+  font-family: monospace;
+  white-space: pre;
+  padding: 10px;
+  width: 35em;
 }
 
 .cbg-TabBarItem{
@@ -67,7 +67,7 @@ body {
 }
 
 .cbg-TabBarItem .gwt-Label {
-	background-color:#D3D3D3;
+  background-color:#D3D3D3;
 /*  border-bottom: solid 2px lightblue;*/ 
 }
 .cbg-TabBarItem .cbg-RP {
@@ -148,7 +148,7 @@ background-color:maroon;
   padding: 0 20px;
 }
 .cbg-ratingwithtext {
-	font-size: 8pt;
+  font-size: 8pt;
 }
 
 /* Button Style */
@@ -234,14 +234,14 @@ background-color:maroon;
 }
 
 .cbg-triangle .cbg-RP {
-	background-color: red;
+  background-color: red;
 }
 
 .cbg-triangle .gwt-HTML {
   font:normal 9px Arial, Helvetica, sans-serif;
-	background-color: red;
-	padding: 1px 2px 0 2px;
-	color: white;
-	width:9px;
-	cursor: pointer;
+  background-color: red;
+  padding: 1px 2px 0 2px;
+  color: white;
+  width:9px;
+  cursor: pointer;
 }
