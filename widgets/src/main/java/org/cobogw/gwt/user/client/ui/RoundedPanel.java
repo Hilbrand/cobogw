@@ -460,13 +460,15 @@ public class RoundedPanel extends SimplePanel {
 
   @Override
   public void setHeight(String height) {
-    getWidget().setHeight(
-      height.contains("px") ?
-        (Integer.parseInt(height.substring(0, height.indexOf('p'))) -
-            totalCornerHeight) + "px" :
-        height);
+    if (getWidget() != null) {
+      getWidget().setHeight(
+          height != null && height.contains("px") ?
+          (Integer.parseInt(height.substring(0, height.indexOf('p'))) -
+              totalCornerHeight) + "px" :
+          height);
+    }
   }
-  
+
   /**
    * Overwrite of parent getContainerElement()
    */
