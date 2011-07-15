@@ -20,6 +20,7 @@ import org.cobogw.gwt.user.client.CSS;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -302,7 +303,7 @@ public class RoundedPanel extends SimplePanel {
    *
    * @param corners set custom rounded corners
    */
-  public RoundedPanel(int corners) {
+   public RoundedPanel(int corners) {
     this(corners, 2);
   }
 
@@ -312,12 +313,20 @@ public class RoundedPanel extends SimplePanel {
    * 1 to 9. The height for a value 5 or higher is actually larger, e.g. for
    * 5 the height is 6px.
    * Use {@link #setWidget(Widget)} to add widget.
+   * </br>
+   * </br>
+   * This constructor can be used with UiBinder, but you need to set the corner
+   * value as an integer and not via the constants, as it's not possible to use
+   * those constants. Example:</br>
+   * <code>
+   *   &lt;cbg:RoundedPanel corners="15" cornerHeight="2" >...
+   * </code>
    *
    * @param corners set custom rounded corners
    * @param cornerHeight height index between and including 1 and 9
    * @throws IndexOutOfBoundsException when cornerHeight below 1 or above 9
    */
-  public RoundedPanel(int corners, int cornerHeight) {
+  @UiConstructor public RoundedPanel(int corners, int cornerHeight) {
     super();
     body = getElement().cast();
     if (cornerHeight < 1 || cornerHeight > 9) {

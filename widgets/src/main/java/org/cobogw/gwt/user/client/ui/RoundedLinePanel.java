@@ -16,6 +16,7 @@
 package org.cobogw.gwt.user.client.ui;
 
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -49,7 +50,7 @@ public class RoundedLinePanel extends RoundedPanel {
   /*
    * {@see RoundedPanel#RoundedPanel(int corners, int cornerHeight)}
    */
-  public RoundedLinePanel(int corners, int cornerHeight) {
+  @UiConstructor public RoundedLinePanel(int corners, int cornerHeight) {
     super(corners, cornerHeight);
   }
 
