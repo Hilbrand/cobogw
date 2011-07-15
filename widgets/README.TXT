@@ -5,4 +5,4 @@ Two step to use this library in your project:
 
 For more information see: www.cobogw.org
 Hilbrand Bouwkamp
-hs@bouwkamp.com
+hilbrand@h72.nl

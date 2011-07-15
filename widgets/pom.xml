@@ -6,9 +6,7 @@
   <packaging>jar</packaging>
   <name>The Cobogw GWT Library</name>
   <version>1.3.2-SNAPSHOT</version>
-  <description>
-    The Cobogw library is a set of widgets and other useful classes for GWT.
-  </description>
+  <description>The Cobogw library is a set of widgets and other useful classes for GWT.</description>
   <url>http://www.cobogw.org</url>
 
   <licenses>
@@ -27,9 +25,10 @@
 
   <developers>
     <developer>
-      <id>hs@bouwkamp.com</id>
+      <id>hilbrand@h72.nl</id>
       <name>Hilbrand Bouwkamp</name>
-      <email>hs@bouwkamp.com</email>
+      <organization>H72</organization>
+      <email>hilbrand@h72.nl</email>
     </developer>
   </developers>
 
@@ -47,7 +46,7 @@
   </distributionManagement>
 
   <properties>
-    <gwt.version>2.0.3</gwt.version>
+    <gwt.version>2.3.0</gwt.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -72,6 +71,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>
@@ -151,7 +151,6 @@
       <plugin>
       <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.0</version>
         <configuration>
           <preparationGoals>clean</preparationGoals>
           <branchBase>https://cobogw.googlecode.com/svn/branches/widgets</branchBase>
@@ -179,7 +178,7 @@
           <encoding>iso-8859-1</encoding>
           <excludes>**/impl/**</excludes>
           <doctitle>org.cobogw.gwt package</doctitle>
-          <bottom>Copyright © 2007-2010 Hilbrand Bouwkamp. All Rights Reserved.</bottom>
+          <bottom>Copyright © 2007-2011 Hilbrand Bouwkamp. All Rights Reserved.</bottom>
           <noqualifier>all</noqualifier>
           <links>
             <link>http://google-web-toolkit.googlecode.com/svn/javadoc/2.0</link>
