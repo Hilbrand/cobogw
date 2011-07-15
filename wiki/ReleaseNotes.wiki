@@ -1,5 +1,9 @@
 #summary Release Notes Cobogw library
 
+==Release notes 1.3.2 July 15, 2011 ==
+  * Fixed issues issue 29, issue 33
+  * Fixed issue 34, which adds ie9 support.
+
 ==Release notes 1.3.1 June 22, 2010==
   * Fixed issues issue 26, issue 27, issue 31, issue 32
 
